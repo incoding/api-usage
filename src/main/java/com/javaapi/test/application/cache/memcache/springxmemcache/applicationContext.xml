@@ -1,0 +1,51 @@
+<?xml version= "1.0"  encoding= "UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+ <bean name="memcachedClientBuilder" class="net.rubyeye.xmemcached.XMemcachedClientBuilder">        
+        <constructor-arg>
+            <list>
+                <bean class="java.net.InetSocketAddress">
+                    <constructor-arg>
+                        <value>127.0.0.1</value>
+<!--                         <value>192.168.100.102</value> -->
+                    </constructor-arg>
+                    <constructor-arg>
+                        <value>11211</value>
+                    </constructor-arg>
+                </bean>
+                <!-- 
+                <bean class="java.net.InetSocketAddress">
+                    <constructor-arg>
+                        <value>localhost</value>
+                    </constructor-arg>
+                    <constructor-arg>
+                        <value>12001</value>
+                    </constructor-arg>
+                </bean>
+                 -->
+            </list>
+        </constructor-arg>
+        <constructor-arg>
+            <list>                 
+                <value>1</value>
+                <!--
+                <value>2</value>
+                 -->
+            </list>
+        </constructor-arg>        
+        <property name="connectionPoolSize" value="2"></property>
+<!--         <property name="commandFactory"> -->
+<!--             <bean class="net.rubyeye.xmemcached.command.TextCommandFactory"/> -->
+<!--         </property> -->
+        <property name="sessionLocator">
+            <bean class="net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator" />
+        </property>
+<!--         <property name="transcoder"> -->
+<!--             <bean class="net.rubyeye.xmemcached.transcoders.SerializingTranscoder" /> -->
+<!--         </property> -->
+    </bean>    
+    <bean name="memcachedClient" factory-bean="memcachedClientBuilder"
+        factory-method="build" destroy-method="shutdown" />    
+    <!-- 引入Memcached客户端结束 -->    
+</beans>

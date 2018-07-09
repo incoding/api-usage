@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<description>Hessian服务的客户端配置(中心服务)</description>
+<!-- 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> -->
+<!-- 		<property name="ignoreUnresolvablePlaceholders" value="true"/> -->
+<!-- 		<property name="locations"> -->
+<!-- 			<list> -->
+<!-- 				<value>classpath:remoting-service.properties</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+	<!-- 彩期维护相关远程服务 -->
+	<bean id="issueManagerService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean"  >
+		<property name="readTimeout" value="3000" />
+		<property name="chunkedPost" value="false" />
+		<property name="overloadEnabled" value="true" />
+		<property name="serviceUrl" value="http://coreservice.no300.com/coreservice/remoting/issueManagerService"/>
+		<property name="serviceInterface" value="com.aicaipiao.common.service.issue.IssueManagerService" />
+	</bean>
+</beans>

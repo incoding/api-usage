@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration  
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">  
+  
+<configuration>  
+<typeHandlers>
+	<typeHandler handler="com.javaapi.test.dao.mybatis.MyTypeHandler" javaType="com.javaapi.test.dao.mybatis.UserInfo" jdbcType="VARCHAR"/>
+<!-- 	如果指定了package属性,则需要使用注解 @MappedTypes   @MappedJdbcTypes  ,来指定javaType 和jdbcType -->
+
+<!-- 	<package name=""/> -->
+</typeHandlers>
+<!--     <mappers>   -->
+<!--         <mapper resource="com\\javaapi\\test\\dao\\mybatis\\springInterface\\UserMapper.xml" />   -->
+<!--         <mapper resource="com\\javaapi\\test\\dao\\mybatis\\springInterface\\SocialMapper.xml" /> -->
+<!--         <mapper resource="com/javaapi/test/dao/mybatis/springInterface/BillMapper.xml" /> -->
+<!--     </mappers>   -->
+</configuration>

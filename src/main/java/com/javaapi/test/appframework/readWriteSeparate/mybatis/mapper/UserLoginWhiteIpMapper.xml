@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javaapi.test.appframework.readWriteSeparate.dao.UserLoginWhiteIpMapper">
+    <insert id="save">
+        INSERT INTO ac_user_login_white_ip
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="ip != null" >
+                ip,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="ip != null" >
+                #{ip,jdbcType=VARCHAR},
+            </if>
+        </trim>
+
+
+    </insert>
+
+    <select id="selectFirst" parameterType="com.javaapi.test.appframework.readWriteSeparate.entity.UserLoginWhiteIp"
+            resultType="com.javaapi.test.appframework.readWriteSeparate.entity.UserLoginWhiteIp">
+        SELECT * FROM ac_user_login_white_ip limit 1;
+    </select>
+</mapper>

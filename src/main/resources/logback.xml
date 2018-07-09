@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 参考 http://aub.iteye.com/blog/1101260 -->
+<configuration>
+	<property name="APP_NAME" value="apiTest" />
+	<contextName>${APP_NAME}</contextName>
+	<!-- 标准输出 -->
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%-4relative %date %contextName [%thread] %level %class{5}
+				%message%n</pattern>
+		</encoder>
+		<!-- <encoder> -->
+		<!-- <pattern>{"date":%date,"app":%contextName,"thread":[%thread],"level":%level,"file":%class{36},"msg":%message%n}</pattern> -->
+		<!-- </encoder> -->
+		<!-- 只输出level级别的日志 -->
+		<!-- <filter class = "ch.qos.logback.classic.filter.LevelFilter"> -->
+		<!-- <level>INFO</level> -->
+		<!-- <onMatch>ACCEPT</onMatch> -->
+		<!-- <onMismatch>DENY</onMismatch> -->
+		<!-- </filter> -->
+	</appender>
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern>%-4relative %date %contextName [%thread] %level %class{36}
+				%message%n</pattern>
+		</encoder>
+		<!-- 只输出level级别以上的日志 -->
+		<!-- <filter class="ch.qos.logback.classic.filter.ThresholdFilter"> -->
+		<!-- <level>INFO</level> -->
+		<!-- </filter> -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>log/${APP_NAME}.%d{yyyyMMddHH}.log</fileNamePattern>
+		</rollingPolicy>
+	</appender>
+
+	<!-- 控制包或者类的日志输出,以及日志输出级别 -->
+	<logger name="com.javaapi.test.application.log.log.logback.TestLogback" level="INFO"  additivity="false">
+        <appender-ref ref="stdout" />
+    </logger>
+
+	<logger name="net.rubyeye.xmemcached" level="INFO" />
+	<logger name="com.google.code.yanf4j" level="INFO" />
+	<logger name="com.google.code.yanf4j.core" level="INFO" />
+	<logger name="com.javaapi.test" level="INFO" />
+	<logger name="com.javaapi.test.spring.aop.springaop1ProxyFactoryBean1">
+		<level value="INFO" />
+	</logger>
+	<logger name="com.javaapi.test.spring.aop.springaop2AutoProxy2">
+		<level value="INFO" />
+	</logger>
+	<logger name="org.springframework">
+		<level value="INFO" />
+	</logger>
+	
+	<logger name="com.ibatis" level="DEBUG" />
+    <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="DEBUG" />
+    <logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG" />
+    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG" />
+    <logger name="java.sql.Connection" level="DEBUG" />
+    <logger name="java.sql.Statement" level="DEBUG" />
+    <logger name="java.sql.PreparedStatement" level="DEBUG" />
+	<logger name="java.sql.ResultSet" level="DEBUG" />
+	
+<!-- 	com.javaapi.test.dao  自己得dao层设置为Trace级别就能让mybatis打印所有返回值 -->
+	<logger name="com.javaapi.test.dao" level="ALL" />
+    <logger name="org.hibernate.engine.jdbc.spi.SqlStatementLoggger" level="DEBUG"/>
+
+
+    <logger name="org.apache.ibatis" level="trace" />
+	
+	
+	<root level="info">
+		<appender-ref ref="stdout" />
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.javaapi.test.dao.hibernate.biz.idGenerator"  >
+ <!-- 包名+类名唯一标识
+  	此处User在Oracle中是一个关键字，可以指定table来更换表名，如果表名已经固定，此时也可以通过
+  	table="`user`"这样把它作为一个字符串 -->
+<!--   <class name="BillDetail" table="billdetail"  lazy="true"> -->
+  <class name="BillDetail" table="billdetail"  lazy="false">
+  	<!-- column不写自动和name相同,unsave-value用来设置主键值等于所给定的值时，
+  	是一个未保存的对象，默认是0,null... -->
+    <id name="id" column="id">
+      <generator class="native" />
+    </id>
+    <property name="create_user" column="create_user" />
+    <many-to-one name="bill"  column="billid" unique="true" cascade="save-update" />
+  </class>
+</hibernate-mapping>

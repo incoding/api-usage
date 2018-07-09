@@ -1,0 +1,22 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"-->
+                                         <!--"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">-->
+<!--<hibernate-configuration>-->
+	<!--<session-factory>-->
+		<!--&lt;!&ndash; hibernate.前缀可写可不写 &ndash;&gt;-->
+ 		<!--<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>-->
+
+ 		<!--&lt;!&ndash; connection.url中的///表示本地并且端口号是默认的3306 &ndash;&gt;-->
+ 		<!--<property name="connection.url">jdbc:mysql://127.0.0.1:3306/test</property>-->
+ 		<!--<property name="connection.username">root</property>-->
+ 		<!--<property name="connection.password">root</property>-->
+ 		<!--&lt;!&ndash; SQL方言 &ndash;&gt;-->
+ 		<!--<property name="dialect">org.hibernate.dialect.MySQLDialect</property>-->
+ 		<!--&lt;!&ndash; 是否创建表 create-drop,create,update,validate(校验)&ndash;&gt;-->
+		<!--&lt;!&ndash; <property name="hbm2ddl.auto">create</property> &ndash;&gt;-->
+ 		<!--<property name="show_sql">true</property>-->
+
+ 		<!--<mapping resource="com/javaapi/test/dao/hibernate/biz/relation/one2one/Bill.hbm.xml"></mapping>-->
+ 		<!--<mapping resource="com/javaapi/test/dao/hibernate/biz/relation/one2one/BillDetail.hbm.xml"></mapping>-->
+	<!--</session-factory>-->
+<!--</hibernate-configuration>-->

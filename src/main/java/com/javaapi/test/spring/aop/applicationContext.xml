@@ -1,0 +1,17 @@
+<?xml version= "1.0"  encoding= "UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+<bean id="personTarget" class="com.javaapi.test.spring.aop.PersonImpl">  
+    <property name="name" value="Raymond.chen"/>  
+    <property name="age" value="30"/>  
+</bean>  
+<!-- 常用得就这几种 ,around 实现的是aop组织的接口-->
+<bean id="personAroundAdvice" class="com.javaapi.test.spring.aop.PersonAroundAdvice"/>  
+<bean id="personBeforeAdvice" class="com.javaapi.test.spring.aop.PersonBeforeAdvice"/>   
+<bean id="personAfterReturningAdvice" class="com.javaapi.test.spring.aop.PersonAfterReturningAdvice"/>   
+<bean id="personThrowsAdvice" class="com.javaapi.test.spring.aop.PersonThrowsAdvice"/>  
+
+<import resource="applicationContext2.xml"/>
+<!-- <import resource="applicationContext.xml"/> -->
+</beans>

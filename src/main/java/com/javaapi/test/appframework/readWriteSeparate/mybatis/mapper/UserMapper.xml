@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+  
+<mapper namespace="com.javaapi.test.appframework.readWriteSeparate.dao.UserMapper">
+    <insert id="save">
+        INSERT INTO i_user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="username != null" >
+                username,
+            </if>
+            <if test="password != null" >
+                password,
+            </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="username != null" >
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                #{password,jdbcType=VARCHAR},
+            </if>
+        </trim>
+
+
+    </insert>
+
+    <select id="selectOne" resultType="com.javaapi.test.appframework.readWriteSeparate.entity.User" parameterType="com.javaapi.test.appframework.readWriteSeparate.entity.User">
+        SELECT * FROM i_user
+        <where>
+            <if test="username != null">
+                username=#{username}
+            </if>
+            <if test="password !=null">
+                ,password=#{password}
+            </if>
+
+        </where>
+        LIMIT 1;
+    </select>
+</mapper>

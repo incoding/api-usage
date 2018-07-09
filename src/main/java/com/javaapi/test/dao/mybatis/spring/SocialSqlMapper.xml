@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="testSqlNamespace">  
+<!-- 可以实现更灵活的配置 -->
+<resultMap  id="socialResultId" type="com.javaapi.test.dao.mybatis.Social">
+	   <result column="id" property="id" />
+       <result column="name" property="name" />
+       <result column="phone" property="phone" />
+       <result column="email" property="email"  />
+</resultMap>
+  <select id="selectWhereAndBefore" parameterType="map" resultType="map">
+  	select * from tbl_b  t
+  	<where>
+  		<if test="param1 !=null">
+  			and  t.id=1
+  		</if>
+  	</where>
+  </select>
+  <select id="selectTrimAndBefore" parameterType="map" resultType="map">
+  	select * from tbl_b  t
+  	<trim prefix="WHERE" prefixOverrides="and | or">
+  		<if test="param1 !=null">
+  			and  t.id=1
+  		</if>
+  	</trim>
+  </select>
+  <select id="selectWhereAndAfter" parameterType="map" resultType="map">
+  	select * from tbl_b  t
+  	<where>
+  		<if test="param1 !=null">
+  			  t.id=1 and
+  		</if>
+  	</where>
+  </select>
+  <update id="updateSetBefore" parameterType="map">
+  	update tbl_b 
+  	<set>
+  		<if test="param1 !=null">
+  		  ,id=1
+  		</if>
+  	</set>
+  	where id=1
+  </update>
+  <!-- set 能处理,在后面得情况 -->
+  <update id="updateSetAfter" parameterType="map">
+  	update tbl_b 
+  	<set>
+  		<if test="param1 !=null">
+  		  id=1,
+  		</if>
+  	</set>
+  	where id=1
+  </update>
+<!--   与set等价得trim写法 -->
+  <update id="updateTrimAfter" parameterType="map">
+  	update tbl_b 
+  	<trim prefix="SET" suffixOverrides=",">
+  		<if test="param1 !=null">
+  		  id=1,
+  		</if>
+  	</trim>
+  	where id=1
+  </update>
+  
+	<select id="selectForeachList" parameterType="list" resultType="map">
+		select * from tbl_b  t
+		where t.id in
+ 		<foreach collection="list" item="item" index="index"  open="(" separator="," close=")">
+      		#{item}
+		</foreach>
+	</select>
+	<select id="selectForeachMap" parameterType="map" resultType="map">
+		select * from tbl_b  t
+		where t.id in
+ 		<foreach collection="ids" item="item" index="index"  open="(" separator="," close=")">
+      		#{item}
+		</foreach>
+	</select>
+	<select id="selectForeachMap2" parameterType="map" resultType="map">
+		select * from tbl_b  t
+		where t.id in
+ 		<foreach collection="map" item="item" index="index"  open="(" separator="," close=")">
+      		#{item.key}
+		</foreach>
+	</select>
+	<select id="selectReturnMap" parameterType="map" resultType="map">
+		select * from tbl_b  
+	</select>
+	
+	<select id="selectForNotNull" parameterType="map" resultType="map">
+		<if test="id!=0">
+			select * from tbl_b limit 1
+		</if>
+	</select>
+	<update id="updateForNotNull">
+		<if test="id!=0">
+			update  tbl_b set id=1 where id=1
+		</if>
+	</update>
+<!-- 	if else -->
+	<sql id="onlyOne">
+		<choose>
+			<when test="1==1">
+				
+			</when>
+			<when test="2==2">
+			
+			</when>
+			<otherwise>
+			
+			</otherwise>
+		</choose>
+	</sql>
+</mapper> 
+
+ 

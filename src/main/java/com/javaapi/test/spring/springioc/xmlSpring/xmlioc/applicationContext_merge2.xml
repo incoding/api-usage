@@ -1,0 +1,20 @@
+<?xml version= "1.0"  encoding= "UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+<!-- 测试name属性bean,name属性是对id属性的扩充 ,可以允许重复值等 -->
+								  
+	<bean id="htmlPage" class="com.javaapi.test.spring.springioc.xmlSpring.xmlioc.HtmlPage" singleton="false">
+		<property name="list">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+		<property name="peoplelist">
+			<list>
+				<value>kk:19</value>
+				<value>ak:19</value>
+			</list>
+		</property>
+	</bean>
+</beans>

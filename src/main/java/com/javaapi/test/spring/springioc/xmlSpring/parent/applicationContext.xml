@@ -1,0 +1,20 @@
+<?xml version= "1.0"  encoding= "UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+<!-- 默认情况下，ApplicationContext（不是BeanFactory）会预实例化所有singleton的bean。因此很重要的一点是：如果你只想把一个（父）bean定义当作模板使用，而它又指定了class属性，那么你就得将'abstract'属性设置为'true'，否则应用上下文将会（试着）预实例化抽象bean。 -->
+	<bean name="people" class="com.javaapi.test.spring.xmlSpring.parent.People" abstract="true" >
+		<property name="name" value="people"/>
+		<property name="age" value="25"/>
+	</bean>
+	<bean id="teacher" parent="people" class="com.javaapi.test.spring.xmlSpring.parent.Teacher">
+		<property name="name" value="teacher"/>
+		<property name="position" value="common"/>
+	</bean>
+<!-- 	spring里的这个继承关系的意思和java类的继承不是一个概念的， -->
+<!-- 	spring里的这个继承关系就指继承那个bean的配置属性，不是类的继承，懂么？  http://www.iteye.com/problems/30708 -->
+	<bean id="worker" parent="people" class="com.javaapi.test.spring.xmlSpring.parent.Worker">
+		<property name="name" value="woker"/>
+		<property name="home" value="workerhome"/>
+	</bean>
+</beans>
