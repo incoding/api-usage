@@ -27,12 +27,24 @@ public class Client {
     }
 
     /**
-     * fastjson 反序列化枚举 ,如果不存在则是序列化null
+
      */
     @Test
     public void testDeserializeEnum2() {
+        String s = "{\"checkInStatus\":\"CheckIn\"}";
+        RefundCondition derfund = JSONObject.parseObject(s, RefundCondition.class);
+        System.out.println("derfund = " + derfund);
+    }
+
+
+    /**
+     * fastjson 反序列化枚举 ,如果不存在则是序列化null
+     */
+    @Test
+    public void testDeserializeEnum3() {
         String s = "{\"checkInStatus\":\"aaa\"}";
         RefundCondition derfund = JSONObject.parseObject(s, RefundCondition.class);
         System.out.println("derfund = " + derfund);
     }
+
 }

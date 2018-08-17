@@ -29,11 +29,11 @@ public class Client {
     public void test3(){
         DateTimeFormatter format = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
 //时间解析
-        DateTime dateTime = DateTime.parse("2018-07-13 00:00:00", format);
+        DateTime dateTime = DateTime.parse("2018-06-23 07:59:59", format);
         DateTime dateTime1 = dateTime.plusDays(30);
-        System.out.println("dateTime1 = " + dateTime1);
+        System.out.println("dateTime1 = " + dateTime1.toString("yyyy-MM-dd HH:mm:ss"));
         DateTime dateTime2 = dateTime.plusDays(60);
-        System.out.println("dateTime2 = " + dateTime2);
+        System.out.println("dateTime2 = " + dateTime2.toString("yyyy-MM-dd HH:mm:ss"));
 
 
     }

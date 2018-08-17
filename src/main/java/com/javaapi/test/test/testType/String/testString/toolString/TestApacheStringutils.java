@@ -24,5 +24,18 @@ public class TestApacheStringutils {
 		String center = StringUtils.center(str, 10+str.length(), "#");
 		System.out.println(center);
 	}
-	
+
+    @Test
+    public void testSubString() throws Exception {
+        String s = "12345678912";
+        String getre = getHeadAndTail(s);
+        System.out.println("getHeadAndTail = " + getre);
+    }
+
+    private String getHeadAndTail(String s) {
+        int length = s.length();
+        String substring = s.substring(0, 4);
+        String substring1 = s.substring(length - 4, length);
+        return substring+substring1;
+    }
 }

@@ -12,8 +12,8 @@ import java.util.List;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.DateUtil;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class PoiUtil {
 	private static final SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -39,6 +39,41 @@ public class PoiUtil {
 		return hss;
 	}
 
+	public static Workbook readDocument2(String filePath) {
+		Workbook book = null;
+		FileInputStream s = null;
+		try {
+			try {
+				book = new XSSFWorkbook(filePath);
+			} catch (Exception ex) {
+				book = new HSSFWorkbook(new FileInputStream(filePath));
+			}
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (s != null) {
+			try {
+				s.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return book;
+	}
+	public static List<List<List<String>>> getAllSheetInfo2(Workbook hssfWorkbook) {
+		List<List<List<String>>> list = new ArrayList<>();
+		int sheetSize = hssfWorkbook.getNumberOfSheets();
+		for (int i = 0; i < sheetSize; i++) {
+			Sheet sheetAt = hssfWorkbook.getSheetAt(i);
+			List<List<String>> sheetList = getOneSheet2(sheetAt);
+			list.add(sheetList);
+		}
+		return list;
+	}
+
 	public static List<List<List<String>>> getAllSheetInfo(HSSFWorkbook hssfWorkbook) {
 		List<List<List<String>>> list = new ArrayList<>();
 		int sheetSize = hssfWorkbook.getNumberOfSheets();
@@ -57,10 +92,36 @@ public class PoiUtil {
 			List<String> rowList = getOneRow(sheetAt.getRow(i));
 			list.add(rowList);
 		}
+
+
 		return list;
 	}
 
+	private static List<List<String>> getOneSheet2(Sheet sheetAt) {
+		List<List<String>> list = new ArrayList<>();
+		int size = sheetAt.getPhysicalNumberOfRows();
+		for (int i = 0; i < size; i++) {
+			List<String> rowList = getOneRow2(sheetAt.getRow(i));
+			list.add(rowList);
+		}
+
+
+		return list;
+	}
+
+
+
 	private static List<String> getOneRow(HSSFRow row) {
+		List<String> list = new ArrayList<>();
+		int cellNum = row.getPhysicalNumberOfCells();
+		for (int i = 0; i < cellNum; i++) {
+			String cellStringValue = getCellStringValue(row.getCell(i));
+			list.add(cellStringValue);
+		}
+		return list;
+	}
+
+	private static List<String> getOneRow2(Row row) {
 		List<String> list = new ArrayList<>();
 		int cellNum = row.getPhysicalNumberOfCells();
 		for (int i = 0; i < cellNum; i++) {

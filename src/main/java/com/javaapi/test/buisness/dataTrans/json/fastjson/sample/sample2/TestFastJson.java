@@ -9,6 +9,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.util.TypeUtils;
 import com.javaapi.test.buisness.dataTrans.json.fastjson.pojo.generic.Withdraw;
 import com.javaapi.test.buisness.dataTrans.json.fastjson.pojo.generic.WithdrawVo;
+import com.javaapi.test.spring.springioc.xmlSpring.Student;
 import jodd.io.FileUtil;
 import org.apache.commons.lang.CharEncoding;
 import org.apache.commons.lang.time.StopWatch;
@@ -175,6 +176,13 @@ public class TestFastJson {
         String a = "nihao";
         String s = JSON.toJSONString(a);
         System.out.println("s = " + s);
+    }
+
+    @Test
+    public void testStringEmpty(){
+        String a = "";
+        Student student = JSON.parseObject(a, Student.class);
+        System.out.println("student = " + student);
     }
 
     @Test

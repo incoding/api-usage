@@ -1,4 +1,4 @@
-package com.javaapi.test.testUtil.math.number;
+package com.javaapi.test.testUtil.math.number.bigdecimal;
 
 import org.junit.Test;
 
@@ -99,6 +99,16 @@ public class TestBigDemcial {
         BigDecimal big = new BigDecimal("1");
         System.out.println("bigDecimal = " + big.scale());
     }
+
+	/**
+	 * 获取对应的负数
+	 */
+	@Test
+	public void testNegate(){
+		BigDecimal positive = new BigDecimal("123");
+		BigDecimal negate = positive.negate();
+		System.out.println("negate = " + negate);
+	}
 
 	@Test
 	public void testToString() throws Exception {

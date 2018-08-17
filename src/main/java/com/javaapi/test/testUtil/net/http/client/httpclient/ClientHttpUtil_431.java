@@ -1,6 +1,6 @@
 package com.javaapi.test.testUtil.net.http.client.httpclient;
 
-import com.javaapi.test.testUtil.sample.fileUtil4.TestYoukuUtil;
+//import com.javaapi.test.testUtil.sample.fileUtil4.TestYoukuUtil;
 import org.junit.Test;
 
 /**
@@ -9,8 +9,8 @@ import org.junit.Test;
 public class ClientHttpUtil_431 {
     @Test
     public void test() {
-        String s = HttpUtil_431.get(TestYoukuUtil.YKUrl, null);
-        System.out.println("s = " + s);
+//        String s = HttpUtil_431.get(TestYoukuUtil.YKUrl, null);
+//        System.out.println("s = " + s);
 
     }
 }

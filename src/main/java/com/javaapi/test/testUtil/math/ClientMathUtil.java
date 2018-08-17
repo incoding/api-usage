@@ -10,17 +10,17 @@ import java.math.BigDecimal;
 public class ClientMathUtil {
     @Test
     public void test() {
-        BigDecimal divide = divide(new BigDecimal(7), new BigDecimal(7 + 1095));
+        BigDecimal divide = divide(new BigDecimal(7), new BigDecimal(7 + 1095), 0);
         System.out.println("divide = " + divide);
     }
 
 
 
-    public static BigDecimal divide(BigDecimal refundRate, BigDecimal divisor) {
+    public static BigDecimal divide(BigDecimal refundRate, BigDecimal divisor, int scale) {
         if (refundRate == null) {
             refundRate = BigDecimal.ZERO;
         }
-        BigDecimal divide = refundRate.divide(divisor,4, BigDecimal.ROUND_HALF_UP);
+        BigDecimal divide = refundRate.divide(divisor, scale, BigDecimal.ROUND_HALF_UP);
         return divide;
     }
 }

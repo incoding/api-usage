@@ -5,6 +5,15 @@ import java.util.Map;
 public class BusinessException extends RuntimeException {
     private static final long serialVersionUID = 1L;
     private ErrorCode errorCode;
+    private Object ext;
+
+    public <T> T getExt() {
+        return (T)ext;
+    }
+
+    public void setExt(Object ext) {
+        this.ext = ext;
+    }
 
     public BusinessException() {
         super();
