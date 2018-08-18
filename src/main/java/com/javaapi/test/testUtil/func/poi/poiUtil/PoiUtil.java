@@ -16,8 +16,7 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class PoiUtil {
-	private static final SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	
+
 	public static HSSFWorkbook readDocument(String filePath) {
 		HSSFWorkbook hss = null;
 		FileInputStream s = null;
@@ -147,7 +146,7 @@ public class PoiUtil {
 			break;
 		case Cell.CELL_TYPE_NUMERIC:
 			if(DateUtil.isCellDateFormatted(cell)) {
-				cellVal= sd.format(cell.getDateCellValue());
+				cellVal= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cell.getDateCellValue());
 			}else {
 				cellVal = new BigDecimal(cell.getNumericCellValue()).toString();
 			}

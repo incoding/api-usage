@@ -9,7 +9,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.junit.Test;
 
-import com.javaapi.test.buisness.dataTrans.json.fastjson.util.JsonUtil;
+import com.javaapi.test.buisness.data.json.fastjson.util.JsonUtil;
 
 public class JsoupUtil{
 	@Test

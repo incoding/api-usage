@@ -139,8 +139,8 @@ public class IP {
     private static void load() {
         lastModifyTime = ipFile.lastModified();
         FileInputStream fin = null;
-        lock.lock();
         try {
+            lock.lock();
             dataBuffer = ByteBuffer.allocate(Long.valueOf(ipFile.length()).intValue());
             fin = new FileInputStream(ipFile);
             int readBytesLength;

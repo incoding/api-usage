@@ -1,10 +1,8 @@
 package com.javaapi.test.application.cache.redis.jedis.SeriUtil;
 
-import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.javaapi.test.buisness.dataTrans.json.jackson.sample.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
