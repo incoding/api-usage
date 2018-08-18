@@ -55,6 +55,12 @@ public class Pager<T> extends SimplePage implements java.io.Serializable,
                 this.totalPage = super.getTotalPage();
 	}
 
+	@Override
+	public void setTotalCount(int totalCount) {
+		super.setTotalCount(totalCount);
+		this.totalPage = super.getTotalPage();
+	}
+
 	/**
 	 * 第一条数据位置
 	 * 
@@ -88,9 +94,15 @@ public class Pager<T> extends SimplePage implements java.io.Serializable,
 		this.list = list;
 	}
 
-    @Override
-    public String toString() {
-        return "Pagination{" + "list=" + list + '}';
-    }
-        
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("Pager{");
+		sb.append("totalPage=").append(totalPage);
+		sb.append(", list=").append(list);
+		sb.append(", totalCount=").append(totalCount);
+		sb.append(", pageSize=").append(pageSize);
+		sb.append(", pageNo=").append(pageNo);
+		sb.append('}');
+		return sb.toString();
+	}
 }

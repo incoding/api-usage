@@ -7,90 +7,93 @@ import java.util.List;
 
 /**
  * 列表分页。包含list属性。
- * 
- *
  */
 @SuppressWarnings("serial")
 public class Pagination<T> extends SimplePage implements java.io.Serializable,
-		Paginable {
-        private int totalPage;
-    
-	public Pagination() {
-	}
+        Paginable {
+    private int totalPage;
 
-	public Pagination(int pageNo, int pageSize) {
-		super(pageNo, pageSize);
-	}
+    public Pagination() {
+    }
+
+    public Pagination(int pageNo, int pageSize) {
+        super(pageNo, pageSize);
+    }
 
 
-	/**
-	 * 构造器
-	 * 
-	 * @param pageNo
-	 *            页码
-	 * @param pageSize
-	 *            每页几条数据
-	 * @param totalCount
-	 *            总共几条数据
-	 */
-	public Pagination(int pageNo, int pageSize, int totalCount) {
-		super(pageNo, pageSize, totalCount);
-	}
+    /**
+     * 构造器
+     *
+     * @param pageNo     页码
+     * @param pageSize   每页几条数据
+     * @param totalCount 总共几条数据
+     */
+    public Pagination(int pageNo, int pageSize, int totalCount) {
+        super(pageNo, pageSize, totalCount);
+    }
 
-	/**
-	 * 构造器
-	 * 
-	 * @param pageNo
-	 *            页码
-	 * @param pageSize
-	 *            每页几条数据
-	 * @param totalCount
-	 *            总共几条数据
-	 * @param list
-	 *            分页内容
-	 */
-	public Pagination(int pageNo, int pageSize, int totalCount, List<T> list) {
-		super(pageNo, pageSize, totalCount);
-		this.list = list;
-                this.totalPage = super.getTotalPage();
-	}
+    /**
+     * 构造器
+     *
+     * @param pageNo     页码
+     * @param pageSize   每页几条数据
+     * @param totalCount 总共几条数据
+     * @param list       分页内容
+     */
+    public Pagination(int pageNo, int pageSize, int totalCount, List<T> list) {
+        super(pageNo, pageSize, totalCount);
+        this.list = list;
+        this.totalPage = super.getTotalPage();
+    }
 
-	/**
-	 * 第一条数据位置
-	 * 
-	 * @return
-	 */
-	public int getFirstResult() {
-		return (pageNo - 1) * pageSize;
-	}
+    @Override
+    public void setTotalCount(int totalCount) {
+        super.setTotalCount(totalCount);
+        this.totalPage = super.getTotalPage();
+    }
 
-	/**
-	 * 当前页的数据
-	 */
-	private List<T> list;
+    /**
+     * 第一条数据位置
+     *
+     * @return
+     */
+    public int getFirstResult() {
+        return (pageNo - 1) * pageSize;
+    }
 
-	/**
-	 * 获得分页内容
-	 * 
-	 * @return
-	 */
-	public List<T> getList() {
-		return list;
-	}
+    /**
+     * 当前页的数据
+     */
+    private List<T> list;
 
-	/**
-	 * 设置分页内容
-	 * 
-	 * @param list
-	 */
-	@SuppressWarnings("unchecked")
-	public void setList(List<T> list) {
-		this.list = list;
-	}
+    /**
+     * 获得分页内容
+     *
+     * @return
+     */
+    public List<T> getList() {
+        return list;
+    }
+
+    /**
+     * 设置分页内容
+     *
+     * @param list
+     */
+    @SuppressWarnings("unchecked")
+    public void setList(List<T> list) {
+        this.list = list;
+    }
 
     @Override
     public String toString() {
-        return "Pagination{" + "list=" + list + '}';
+        final StringBuilder sb = new StringBuilder("Pagination{");
+        sb.append("totalPage=").append(totalPage);
+        sb.append(", list=").append(list);
+        sb.append(", totalCount=").append(totalCount);
+        sb.append(", pageSize=").append(pageSize);
+        sb.append(", pageNo=").append(pageNo);
+        sb.append('}');
+        return sb.toString();
     }
-        
 }
