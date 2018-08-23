@@ -46,7 +46,7 @@ public class Client {
         treeMap.put((long) 1000, "nihao1000");
         treeMap.put((long) 10000, "nihao10000");
 
-        Long[] longs = {0l, 2l, 103l, 10004l};
+        Long[] longs = {0L, 2L, 103L, 10004L};
         for (Long tmp: longs) {
             SortedMap<Long, String> longStringSortedMap = treeMap.tailMap(tmp);
         }
@@ -63,7 +63,7 @@ public class Client {
         treeMap.put((long) 1000, "nihao1000");
         treeMap.put((long) 10000, "nihao10000");
 
-        Long[] longs = {0l, 2l, 103l, 10004l};
+        Long[] longs = {0L, 2L, 103L, 10004L};
         for (Long tmp: longs) {
             String value = getKey(treeMap, tmp);
             System.out.println("给定的key为"+tmp+",得到的值为 value = " + value);
