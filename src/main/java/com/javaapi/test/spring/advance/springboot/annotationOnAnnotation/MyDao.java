@@ -1,4 +1,4 @@
-package com.javaapi.test.spring.advance.annotationOnAnnotation;
+package com.javaapi.test.spring.advance.springboot.annotationOnAnnotation;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
