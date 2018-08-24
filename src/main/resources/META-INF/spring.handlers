@@ -1,1 +1,1 @@
-http\://blog.csdn.net/cutesource/schema/people=com.javaapi.test.spring.feature.selfnamespacehandler.MyNamespaceHandler
+http\://blog.csdn.net/cutesource/schema/people=com.javaapi.test.spring.feature.config.selfnamespacehandler.MyNamespaceHandler
