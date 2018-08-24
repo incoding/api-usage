@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.data.json.fastjson.SerDeser.serialize.pojoToKey.ser;
+package com.javaapi.test.buisness.data.json.fastjson.io.serialize.pojoToKey.ser;
 
 import com.alibaba.fastjson.serializer.JSONSerializer;
 import com.alibaba.fastjson.serializer.ObjectSerializer;

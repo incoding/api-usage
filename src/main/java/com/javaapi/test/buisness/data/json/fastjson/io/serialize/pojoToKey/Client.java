@@ -1,8 +1,8 @@
-package com.javaapi.test.buisness.data.json.fastjson.SerDeser.serialize.pojoToKey;
+package com.javaapi.test.buisness.data.json.fastjson.io.serialize.pojoToKey;
 
 import com.alibaba.fastjson.JSON;
 import com.javaapi.test.buisness.constant.constant.classconstant.ConstantGame;
-import com.javaapi.test.buisness.data.json.fastjson.SerDeser.serialize.pojoToKey.pojo.Student;
+import com.javaapi.test.buisness.data.json.fastjson.io.serialize.pojoToKey.pojo.Student;
 import org.junit.Test;
 
 /**

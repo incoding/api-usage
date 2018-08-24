@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.data.json.fastjson.SerDeser.serialize.pojoToKey.pojo;
+package com.javaapi.test.buisness.data.json.fastjson.io.serialize.pojoToKey.pojo;
 
 import com.javaapi.test.buisness.constant.constant.classconstant.ConstantGame;
 

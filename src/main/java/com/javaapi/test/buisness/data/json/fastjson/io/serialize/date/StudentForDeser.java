@@ -1,4 +1,6 @@
-package com.javaapi.test.buisness.data.json.fastjson.SerDeser.serialize.date;
+package com.javaapi.test.buisness.data.json.fastjson.io.serialize.date;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.util.Date;
 
@@ -11,8 +13,10 @@ import java.util.Date;
  * |   @version     | V1.0                    |
  * -------------------------------------------
  */
-public class StudentForSer {
+public class StudentForDeser {
     private String name;
+
+    @JSONField(format = "yyyy-MM-dd")
     private Date date;
 
     public String getName() {

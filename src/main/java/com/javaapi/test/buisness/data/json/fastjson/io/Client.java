@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.data.json.fastjson.SerDeser;
+package com.javaapi.test.buisness.data.json.fastjson.io;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;

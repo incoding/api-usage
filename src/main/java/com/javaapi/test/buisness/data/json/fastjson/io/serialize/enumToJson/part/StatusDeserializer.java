@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.data.json.fastjson.SerDeser.serialize.enumToJson.part;
+package com.javaapi.test.buisness.data.json.fastjson.io.serialize.enumToJson.part;
 
 import com.alibaba.fastjson.parser.DefaultJSONParser;
 import com.alibaba.fastjson.parser.JSONLexer;

@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.data.json.fastjson.SerDeser.serialize.date;
+package com.javaapi.test.buisness.data.json.fastjson.io.serialize.date;
 
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;

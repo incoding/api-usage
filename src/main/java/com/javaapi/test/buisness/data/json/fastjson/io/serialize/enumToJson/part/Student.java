@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.data.json.fastjson.SerDeser.serialize.enumToJson.part;
+package com.javaapi.test.buisness.data.json.fastjson.io.serialize.enumToJson.part;
 
 /**
  * Created by user on 18/3/11.
