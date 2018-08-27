@@ -3,7 +3,6 @@ package com.javaapi.test.spring.advance.strategy.sample1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -12,7 +11,7 @@ import java.util.Map;
 @Component
 public class ContextStrategyFactory {
     @Autowired
-    private Map<String, IContextStrategy> contextStrategy = new HashMap<String,IContextStrategy>();
+    private Map<String, IContextStrategy> contextStrategy;
 
     public Map<String, IContextStrategy> getContextStrategy() {
         return contextStrategy;
@@ -22,11 +21,10 @@ public class ContextStrategyFactory {
         this.contextStrategy = contextStrategy;
     }
 
-    public IContextStrategy doStrategy(String type){
+    public IContextStrategy doStrategy(String type) {
 
         return this.contextStrategy.get(type);
     }
-
 
 
 }

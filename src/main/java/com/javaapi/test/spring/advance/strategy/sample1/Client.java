@@ -9,6 +9,8 @@ import javax.annotation.Resource;
 
 /**
  * Created by user on 2018/8/24
+ *https://blog.csdn.net/sinat_21184471/article/details/76862808
+ * referrence https://blog.csdn.net/zlts000/article/details/54754789
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("applicationContext.xml")
