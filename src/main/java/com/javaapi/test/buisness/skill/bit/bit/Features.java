@@ -14,7 +14,7 @@ public class Features {
     private  int features = 0;
 
     /**
-     * 一种形式
+     * 第一种写法
      *
      * @param feature
      * @return
@@ -24,12 +24,22 @@ public class Features {
     }
 
     /**
-     * 另一种形式
+     * 第二种写法
      *
      * @param feature
      * @return
      */
-    public Boolean hasFeatureOther(int feature) {
+    public Boolean hasFeatureSecond(int feature) {
+        return (features & feature) == feature;
+    }
+
+    /**
+     * 第三种写法
+     *
+     * @param feature
+     * @return
+     */
+    public Boolean hasFeatureOtherThird(int feature) {
         return (features & feature) == feature;
     }
 

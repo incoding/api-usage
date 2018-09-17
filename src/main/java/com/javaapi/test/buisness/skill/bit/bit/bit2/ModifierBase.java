@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.skill.bit.bit2;
+package com.javaapi.test.buisness.skill.bit.bit.bit2;
 
 /**
  * http://blog.csdn.net/superbeck/article/details/5387476

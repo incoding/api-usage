@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class TestBit2 {
     /**
-     * 异或
+     * 异或 相同为真，不同为假
      */
     @Test
     public void test(){

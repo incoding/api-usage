@@ -40,7 +40,7 @@ public class JodaTransferDate {
      * 2018-03-18 08:11:25 星期日
      */
     @Test
-    public void testStringToJoda(){
+    public void testJodaToString(){
         DateTime dateTime = new DateTime();
         String string_u = dateTime.toString("yyyy-MM-dd HH:mm:ss EE");
         System.out.println("string_u = " + string_u);

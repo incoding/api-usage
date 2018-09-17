@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+/**
+ * http://www.cnblogs.com/DengGao/p/6387708.html
+ * @param <S>
+ */
 public class Shard<S> { // S类封装了机器节点的信息 ，如name、password、ip、port等
 
 	private TreeMap<Long, S> nodes; // 虚拟节点

@@ -38,7 +38,7 @@ public class DateTranferJoda {
     }
 
     @Test
-    public void test(){
+    public void testStringToJoda(){
         DateTimeFormatter format = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
 //时间解析
         DateTime dateTime = DateTime.parse("2012-12-21 23:22:45", format);
