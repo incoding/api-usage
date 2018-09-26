@@ -2,10 +2,7 @@ package com.javaapi.test.test.dataStructure.map.hashmap;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * http://www.cnblogs.com/hubingxu/archive/2012/02/21/2361281.html</br>
@@ -23,6 +20,31 @@ public class TestHashMap {
 		map.put("1", "2");
 		System.out.println(map.get("1"));
 	}
+
+    /**
+     * hash 后取模
+     */
+    @Test
+    public void testOrder() {
+        HashMap<Integer, String> map = new HashMap<>();
+        map.put(1, "1");
+        map.put(2, "2");
+        map.put(3, "3");
+        map.put(4, "4");
+        map.put(5, "5");
+        map.put(6, "6");
+        map.put(7, "6");
+        map.put(8, "6");
+        map.put(9, "6");
+        map.put(17, "6");
+        Iterator<Map.Entry<Integer, String>> iterator = map.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Integer, String> next = iterator.next();
+            Integer key = next.getKey();
+            String value = next.getValue();
+            System.out.println("key = " + key+"value="+value);
+        }
+    }
 
     @Test
     public void testHashMapSize() {
