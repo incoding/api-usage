@@ -1,4 +1,4 @@
-package com.javaapi.test.arithmetic.quchong.digui.node;
+package com.javaapi.test.arithmetic.recursion.node;
 
 /**
  * 无限级节点模型

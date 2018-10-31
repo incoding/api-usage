@@ -1,4 +1,4 @@
-package com.javaapi.test.arithmetic.paixu.bitSort;
+package com.javaapi.test.arithmetic.sort.bitSort;
 
 import org.junit.Test;
 

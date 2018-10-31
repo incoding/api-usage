@@ -1,4 +1,4 @@
-package com.javaapi.test.arithmetic.quchong.quanzhong2;
+package com.javaapi.test.arithmetic.weight.quanzhong2;
 
 import org.junit.Test;
 

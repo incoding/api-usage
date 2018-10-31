@@ -1,4 +1,4 @@
-package com.javaapi.test.arithmetic.quchong.digui.node;
+package com.javaapi.test.arithmetic.recursion.node;
 
 import java.util.ArrayList;
 import java.util.Iterator;

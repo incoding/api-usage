@@ -1,4 +1,4 @@
-package com.javaapi.test.arithmetic.quchong.digui;
+package com.javaapi.test.arithmetic.recursion;
 
 public class Perm {
 	

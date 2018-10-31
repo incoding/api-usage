@@ -1,4 +1,4 @@
-package com.javaapi.test.arithmetic.quchong.digui.node2;
+package com.javaapi.test.arithmetic.recursion.node2;
 
 import java.util.HashMap;
 import java.util.Map;

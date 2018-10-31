@@ -31,9 +31,10 @@ public class Shard<S> { // S类封装了机器节点的信息 ，如name、passw
 		for (int i = 0; i != shards.size(); ++i) { 
 			final S shardInfo = shards.get(i);
 
-			for (int n = 0; n < NODE_NUM; n++)
+			for (int n = 0; n < NODE_NUM; n++) {
 				// 一个真实机器节点关联NODE_NUM个虚拟节点
 				nodes.put(hash("SHARD-" + i + "-NODE-" + n), shardInfo);
+			}
 		}
 	}
 

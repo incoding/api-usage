@@ -9,6 +9,7 @@ public class Client {
     @Test
     public void test(){
         Person p =null;
-        p.getPerson();
+        String niaho = "niaho";
+        p.getPerson(niaho);
     }
 }

@@ -1,6 +1,6 @@
-package com.javaapi.test.arithmetic.quchong.quanzhong3lottery;
+package com.javaapi.test.arithmetic.weight.quanzhong3lottery;
 
-import com.javaapi.test.arithmetic.quchong.quanzhong2.Weight;
+import com.javaapi.test.arithmetic.weight.quanzhong2.Weight;
 
 import java.util.Objects;
 

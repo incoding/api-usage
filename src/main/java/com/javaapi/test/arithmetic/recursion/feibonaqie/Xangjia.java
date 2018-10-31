@@ -1,4 +1,4 @@
-package com.javaapi.test.arithmetic.quchong.digui.feibonaqie;
+package com.javaapi.test.arithmetic.recursion.feibonaqie;
 
 public class Xangjia {
     public static int xiangjia(int n) {

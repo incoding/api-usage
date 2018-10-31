@@ -5,7 +5,7 @@ package com.javaapi.test.refactor.idearefactor;
  */
 public class PersonImp1  implements Person{
     @Override
-    public String getPerson() {
+    public String getPerson(String niaho) {
         return null;
     }
 }

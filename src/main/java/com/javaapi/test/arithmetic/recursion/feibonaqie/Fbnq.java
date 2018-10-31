@@ -1,4 +1,4 @@
-package com.javaapi.test.arithmetic.quchong.digui.feibonaqie;
+package com.javaapi.test.arithmetic.recursion.feibonaqie;
 
 import java.util.ArrayList;
 import java.util.List;

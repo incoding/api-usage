@@ -1,4 +1,4 @@
-package com.javaapi.test.arithmetic.quchong.quanzhong;
+package com.javaapi.test.arithmetic.weight.quanzhong;
 
 import java.util.ArrayList;
 import java.util.List;
