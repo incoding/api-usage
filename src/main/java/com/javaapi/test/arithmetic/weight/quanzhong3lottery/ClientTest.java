@@ -1,7 +1,7 @@
 package com.javaapi.test.arithmetic.weight.quanzhong3lottery;
 
 import com.javaapi.test.arithmetic.weight.quanzhong2.WeightUtils;
-import com.javaapi.test.testUtil.math.MathUtil;
+import com.javaapi.test.util.math.MathUtil;
 import org.junit.Test;
 
 import java.math.BigDecimal;
