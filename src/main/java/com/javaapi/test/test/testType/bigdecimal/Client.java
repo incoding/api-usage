@@ -14,8 +14,12 @@ public class Client {
         BigDecimal bigDecimal = new BigDecimal(s);
         System.out.println("bigDecimal = " + bigDecimal.intValue());
 
-
-
+    }
+    @Test
+    public void test2(){
+        Long num = null;
+        BigDecimal bigDecimal = BigDecimal.valueOf(num);
+        System.out.println("bigDecimal = " + bigDecimal);
 
     }
 }

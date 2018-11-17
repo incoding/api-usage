@@ -17,12 +17,12 @@ import java.util.jar.JarFile;
 /**
  * 类相关的工具类
  *
- * @author <a href="mailto:ohergal@gmail.com">ohergal</a>
+ * @author
  */
 public class ClassUtil {
 
     public static void main(String[] args) throws Exception {
-        List<Class> classes = ClassUtil.getAllClassByInterface(Class.forName("com.threeti.dao.base.IGenericDao"));
+        List<Class> classes = ClassUtil.getAllClassByInterface(Class.forName("com.javaapi.test.test.testReflect.classScan"));
         for (Class clas : classes) {
             System.out.println(clas.getName());
         }

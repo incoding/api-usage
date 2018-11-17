@@ -1,5 +1,7 @@
 package com.javaapi.test.spring.advance.strategy.sample1;
 
+import com.javaapi.test.spring.advance.strategy.sample1.strategy.context.ContextStrategy;
+import com.javaapi.test.spring.advance.strategy.sample1.strategy.IContextStrategy;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -16,7 +18,7 @@ import javax.annotation.Resource;
 @ContextConfiguration("applicationContext.xml")
 public class Client {
     @Resource
-    private ContextStrategyFactory strategyFactory;
+    private ContextStrategy strategyFactory;
 
     @Test
     public void testStrategy(){

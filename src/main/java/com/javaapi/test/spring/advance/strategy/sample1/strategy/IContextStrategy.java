@@ -1,4 +1,4 @@
-package com.javaapi.test.spring.advance.strategy.sample1;
+package com.javaapi.test.spring.advance.strategy.sample1.strategy;
 
 /**
  * Created by user on 2018/8/24

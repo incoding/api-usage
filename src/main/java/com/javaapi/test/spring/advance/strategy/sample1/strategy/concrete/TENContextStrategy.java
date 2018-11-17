@@ -1,5 +1,6 @@
-package com.javaapi.test.spring.advance.strategy.sample1;
+package com.javaapi.test.spring.advance.strategy.sample1.strategy.concrete;
 
+import com.javaapi.test.spring.advance.strategy.sample1.strategy.IContextStrategy;
 import org.springframework.stereotype.Component;
 
 @Component

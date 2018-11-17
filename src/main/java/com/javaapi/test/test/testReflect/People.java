@@ -1,8 +1,6 @@
 package com.javaapi.test.test.testReflect;
 
-enum Sex {
-	MALE, FEMALE
-}
+
 
 public class People {
 	public int id = 1;

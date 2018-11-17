@@ -16,7 +16,7 @@
 	http://www.springframework.org/schema/aop  
 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd" default-lazy-init="true">
 <!-- 测试name属性bean,name属性是对id属性的扩充 ,可以允许重复值等 -->
-	<bean id="contextStrategyFactory" class="com.javaapi.test.spring.advance.strategy.sample1.ContextStrategyFactory">
+	<bean id="contextStrategyFactory" class="com.javaapi.test.spring.advance.strategy.sample1.strategy.context.ContextStrategy">
 		<property name="contextStrategy">
 			<map>
 				<entry key="1" value-ref="aLIContextStrategy"/>
@@ -25,8 +25,8 @@
 			</map>
 		</property>
 	</bean>
-	<bean id="aLIContextStrategy" class="com.javaapi.test.spring.advance.strategy.sample1.ALIContextStrategy"/>
-	<bean id="bDUContextStrategy" class="com.javaapi.test.spring.advance.strategy.sample1.BDUContextStrategy"/>
-	<bean id="tENContextStrategy" class="com.javaapi.test.spring.advance.strategy.sample1.TENContextStrategy"/>
+	<bean id="aLIContextStrategy" class="com.javaapi.test.spring.advance.strategy.sample1.strategy.concrete.ALIContextStrategy"/>
+	<bean id="bDUContextStrategy" class="com.javaapi.test.spring.advance.strategy.sample1.strategy.concrete.BDUContextStrategy"/>
+	<bean id="tENContextStrategy" class="com.javaapi.test.spring.advance.strategy.sample1.strategy.concrete.TENContextStrategy"/>
 
 </beans>
