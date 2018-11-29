@@ -54,6 +54,14 @@ public class JodaIntervalsTest {
 	}
 
 	@Test
+	public void testBetween(){
+		DateTime now = new DateTime();
+		DateTime old = now.minusMonths(1);
+		System.out.println("dateTime2 = " + Days.daysBetween(now, old).getDays());
+		System.out.println("dateTime2 = " + Days.daysBetween(old, now).getDays());
+	}
+
+	@Test
 	public void test2(){
 		Calendar calendar = Calendar.getInstance();
 
