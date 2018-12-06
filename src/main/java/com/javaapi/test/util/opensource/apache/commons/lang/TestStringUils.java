@@ -25,6 +25,14 @@ public class TestStringUils {
         String s = "2018-03-02";
         System.out.println("s = " + s);
         System.out.println("StringUtils = " + StringUtils.remove(s,"-"));
+    }
+
+    @Test
+    public void testUpper(){
+        String s = "sia";
+        String s1 = StringUtils.upperCase(s);
+        System.out.println("s1 = " + s1);
 
     }
+
 }
