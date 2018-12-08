@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
- *  快速排序第四课
+ *  快速排序第四课 扫描和交换 2
  */
 public class ScanAndSwapArr {
 

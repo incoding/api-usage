@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
- *  快速排序第六课
+ *  快速排序第五课
  *  一轮完整的遍历
  */
 public class ScanAndSwapArrInWhile {

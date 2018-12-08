@@ -3,7 +3,7 @@ package com.javaapi.test.util.math.algorithm.sort.base;
 import org.junit.Test;
 
 /**
- * 快速排序第三课
+ * 快速排序第三课 扫描
  */
 public class ScanTwoSide {
 

@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
- *  快速排序第四课
+ *  快速排序第四课 扫描和交换 1
  */
 public class ScanAndSwitch {
 
@@ -80,7 +80,7 @@ public class ScanAndSwitch {
             a[right] = a[left];
             --right;
         }
-        System.out.println("left after = " + Arrays.toString(a));
+//        System.out.println("left after = " + Arrays.toString(a));
 
     }
 
