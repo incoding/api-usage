@@ -10,7 +10,8 @@ import java.util.Arrays;
  */
 public class HeapSort {
     public static void main(String[] args) {
-        int arr[] = { 4, 5, 2, 1, 8, 10, 2 };
+//        int arr[] = { 4, 5, 2, 1, 8, 10, 2 };
+        int arr[] = { 5, 4};
         System.out.println("before sort:" + Arrays.toString(arr));
         heapSortAsc(arr, arr.length);
         System.out.println("after sort:" + Arrays.toString(arr));
@@ -83,10 +84,10 @@ public class HeapSort {
         }
         if (temp >= arr[left]) {
             return;
-        } else {
-            arr[start] = arr[left];
-            arr[left] = temp;
         }
+
+        arr[start] = arr[left];
+        arr[left] = temp;
         // 继续调整被破坏的子堆
         adjustHeapWithRecur(arr, left, end);
     }
@@ -106,7 +107,8 @@ public class HeapSort {
             // 把最大值放在数组的末尾
             swap(arr, i, 0);
             // 继续调整0~i-1使之成为最大堆
-            adjustDown(arr, 0, i - 1);
+//            adjustDown(arr, 0, i - 1);
+            adjustHeapWithRecur(arr, 0, i - 1);
         }
     }
 
