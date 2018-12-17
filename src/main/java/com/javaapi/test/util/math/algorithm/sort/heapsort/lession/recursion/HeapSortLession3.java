@@ -19,9 +19,14 @@ public class HeapSortLession3 {
         heapSort(arr, length);
         System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
     }
+
+    /**
+     * 注意处理最大值的逻辑, 默认取当前节点为最大值, 如果有左子树就判断左子树,如果有右子树就判断右子树
+     */
     @Test
     public void heapSort2() {
-        int[] arr = new int[]{7,3,5};
+//        int[] arr = new int[]{7,5};
+        int[] arr = new int[]{7};
         int length = arr.length;
         System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
         heapSort(arr, length);
