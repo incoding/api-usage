@@ -1,4 +1,4 @@
-package com.javaapi.test.util.math.algorithm.sort.heapsort.lession.recursion;
+package com.javaapi.test.util.math.algorithm.sort.heapsort.lession.nonrecursion;
 
 import org.junit.Test;
 
@@ -6,9 +6,9 @@ import java.util.Arrays;
 
 
 /**
- * 构建大堆顶,速通 递归
+ * 构建大堆顶,速通 非递归
  */
-public class HeapSortLession4 {
+public class HeapSortLession5 {
 
     @Test
     public void test(){
@@ -21,23 +21,34 @@ public class HeapSortLession4 {
 
     private void buildMaxHeap(int[] a, int length) {
         for (int i=a.length/2-1;i>=0;i--) {
-            buildHeap(a, i, length);
+            buildHeapWithNoRecursion(a, i, length);
         }
         for(int i=length-1;i>0;i--) {
             swap(a, i, 0);
-            buildHeap(a,0,i);
+            buildHeapWithNoRecursion(a,0,i);
         }
 
     }
 
-    private void buildHeap(int[] a, int i, int length) {
+
+    private void buildHeapWithNoRecursion(int[] a, int i, int length) {
         int left = 2 * i + 1;
         int right = left + 1;
-        int largestIndex = getLargestIndex(a, i, length, left, right);
-        if (largestIndex != i) {
+
+        while (true) {
+            int largestIndex = getLargestIndex(a, i, length, left, right);
+            if (largestIndex ==i) {
+                break;
+            }
             swap(a, i, largestIndex);
-            buildHeap(a,largestIndex,length);
+
+            i = left;
+            left = 2*i+1;
+            right = left + 1;
         }
+
+
+
     }
 
     private void swap(int[] a, int i, int largestIndex) {
