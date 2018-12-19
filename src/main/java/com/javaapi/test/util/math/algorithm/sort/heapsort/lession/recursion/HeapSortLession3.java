@@ -34,10 +34,10 @@ public class HeapSortLession3 {
     }
 
     private void heapSort(int[] arr, int length) {
-        buildMaxHeap(arr,length);
+        buildMaxHeap(arr, length);
         for (int i = length - 1; i > 0; i--) {
             HeapSortLession2.swap(arr, i, 0);
-            HeapSortLession2.buildHeap(arr, 0, i - 1);
+            HeapSortLession2.buildHeap(arr, 0, i);
         }
     }
 
@@ -46,8 +46,6 @@ public class HeapSortLession3 {
             HeapSortLession2.buildHeap(arr, i, length);
         }
     }
-
-
 
 
 }
