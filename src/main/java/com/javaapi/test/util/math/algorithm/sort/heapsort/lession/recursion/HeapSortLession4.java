@@ -12,7 +12,7 @@ public class HeapSortLession4 {
 
     @Test
     public void test(){
-        int[] a = {1, 9, 3, 4, 9, 6, 7, 8, 9, 10};
+        int[] a = {1, 5, 3, 4, 9, 6, 7, 8, 9, 10};
 
         System.out.println("a = " + Arrays.toString(a));
         buildMaxHeap(a,a.length);

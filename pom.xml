@@ -710,7 +710,16 @@
             <artifactId>hadoop-common</artifactId>
             <version>0.22.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>net.jodah</groupId>
+            <artifactId>failsafe</artifactId>
+            <version>1.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.4</version>
+        </dependency>
     </dependencies>
 
     <!-- spring 版本管理 -->
