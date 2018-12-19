@@ -108,7 +108,7 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                             <!--<mainClass>com.javaapi.test.application.rpc.dubbo.LuncherProvider</mainClass>-->
-                            <mainClass>com.javaapi.test.test.testType.integer.TestInteger</mainClass>
+                            <mainClass>com.javaapi.test.test.type.integer.TestInteger</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

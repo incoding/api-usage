@@ -3,7 +3,7 @@ package com.javaapi.test.buisness.constant.constant.classconstant;
 import com.alibaba.fastjson.annotation.JSONType;
 import com.javaapi.test.buisness.constant.constant.classconstant.jsonSerialize.ConstantGameDeserializer;
 import com.javaapi.test.buisness.constant.constant.classconstant.jsonSerialize.ConstantGameSerializer;
-import com.javaapi.test.test.testReflect.serializable.ser1.CustomTest;
+import com.javaapi.test.test.reflect.serializable.ser1.CustomTest;
 
 import java.io.Serializable;
 import java.util.ArrayList;
