@@ -10,6 +10,8 @@ import java.util.regex.Pattern;
  * Created by user on 17/12/22.
  */
 public class TestStringUils {
+
+
     @Test
     public void test(){
         String fbItem = "*a";
@@ -26,6 +28,14 @@ public class TestStringUils {
         System.out.println("s = " + s);
         System.out.println("StringUtils = " + StringUtils.remove(s,"-"));
     }
+
+    @Test
+    public void testRemoveMany(){
+        String s = "2018-03-02 12:12";
+        System.out.println("s = " + s);
+        System.out.println("StringUtils = " + StringUtils.removePattern(s,"-|\\s|:"));
+    }
+
 
     @Test
     public void testUpper(){
