@@ -1,4 +1,4 @@
-package com.javaapi.test.refactor.eclipseRefactor;
+package com.javaapi.test.misc.refactor.eclipseRefactor;
 
 public class TheOtherClass {
     public void sayOther() {

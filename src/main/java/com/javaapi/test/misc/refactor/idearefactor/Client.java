@@ -1,4 +1,4 @@
-package com.javaapi.test.refactor.idearefactor;
+package com.javaapi.test.misc.refactor.idearefactor;
 
 import org.junit.Test;
 

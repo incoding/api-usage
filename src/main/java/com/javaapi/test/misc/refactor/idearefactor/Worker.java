@@ -1,4 +1,4 @@
-package com.javaapi.test.refactor.idearefactor;
+package com.javaapi.test.misc.refactor.idearefactor;
 
 /**
  * Created by user on 2018/10/27

@@ -1,4 +1,4 @@
-package com.javaapi.test.jrebel;
+package com.javaapi.test.misc.jrebel;
 
 public class Test {
 public static void main(String[] args) {

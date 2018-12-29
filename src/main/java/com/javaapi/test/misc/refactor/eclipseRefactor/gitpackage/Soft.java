@@ -1,4 +1,4 @@
-package com.javaapi.test.refactor.eclipseRefactor.gitpackage;
+package com.javaapi.test.misc.refactor.eclipseRefactor.gitpackage;
 
 public class Soft {
 public static void main(String[] args) {

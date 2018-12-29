@@ -1,4 +1,4 @@
-package com.javaapi.test.refactor.eclipseRefactor;
+package com.javaapi.test.misc.refactor.eclipseRefactor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
