@@ -1,12 +1,18 @@
 package com.javaapi.test.buisness.pattern.listener;
 
 
+import org.junit.Test;
+
 /**
  * Created by user on 2018/12/28
  */
 public class Client {
-    public static void main(String[] args) {
 
+    /**
+     * 匿名函数初始化
+     */
+    @Test
+    public void testAnonymous(){
         OrderStatusManager orderStatusManager = new OrderStatusManager();
         orderStatusManager.addOrderStatusListener(new OrderStatusChangeListener<OrderStatusEvent<OrderStatus>>() {
             @Override
@@ -31,5 +37,25 @@ public class Client {
 
         orderStatusManager.notifyListeners(new OrderStatusEvent(OrderStatus.FINISH));
         orderStatusManager.notifyListeners(new OrderStatusEvent(OrderStatus.INIT));
+    }
+
+    @Test
+    public void testConcrete(){
+        OrderStatusManager orderStatusManager = new OrderStatusManager();
+        orderStatusManager.addOrderStatusListener(new OrderStatusEventListener());
+        orderStatusManager.notifyListeners(new OrderStatusEvent(OrderStatus.INIT));
+
+    }
+
+
+
+    @Test
+    public void testType() throws Exception {
+        OrderStatusSuccessListener<String> stringOrderStatusSuccessListener = new OrderStatusSuccessListener<>();
+        stringOrderStatusSuccessListener.change("nihao");
+        OrderStatusSuccessListener<OrderStatusEvent<OrderStatus>> eventListener = new OrderStatusSuccessListener<OrderStatusEvent<OrderStatus>>();
+        OrderStatusEvent<OrderStatus> event = new OrderStatusEvent<>(OrderStatus.INIT);
+        eventListener.change(event);
+
     }
 }
