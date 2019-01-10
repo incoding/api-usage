@@ -1,7 +1,7 @@
 package com.javaapi.test.buisness.pattern.listener;
 
 /**
- * @see com.javaapi.test.test.genericType.gengericinterface.FruitGenerator
+ * @see com.javaapi.test.test.javafeature.version_1_5.genericType.gengericinterface.FruitGenerator
  * Created by user on 2018/12/28
  */
 public class OrderStatusSuccessListener<T> implements OrderStatusChangeListener<T> {
