@@ -239,7 +239,10 @@ public class StringUtil {
             System.out.println("s1 = " + s1);
         }
         System.out.println("----------");
-
-
+    }
+    @Test
+    public void testOutput(){
+        String s = "1\n2";
+        System.out.println(s);
     }
 }
