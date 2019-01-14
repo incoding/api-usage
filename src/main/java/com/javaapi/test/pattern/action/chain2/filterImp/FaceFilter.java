@@ -10,11 +10,12 @@ public class FaceFilter implements Filter {
 
     @Override
     public void doFilter(Request request, Response response, FilterChain chain) {
-        request.requestStr = request.getRequestStr().replace(":)",
-                "^V^-------FaceFilter");
+        request.requestStr = request
+                .getRequestStr()
+                .replace(":)", "^V^-------FaceFilter");
+        System.out.println("FaceFilter before");
         chain.doFilter(request, response, chain);
-        response.responseStr += "-------FaceFilter";
-
+        System.out.println("FaceFilter after" + (response.responseStr += "-------FaceFilter"));
     }
 
 }

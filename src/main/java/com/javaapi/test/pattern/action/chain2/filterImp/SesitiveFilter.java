@@ -10,11 +10,13 @@ public class SesitiveFilter implements Filter {
 
     @Override
     public void doFilter(Request request, Response response, FilterChain chain) {
-        request.requestStr = request.getRequestStr().replace("敏感", "  ")
+        request.requestStr = request
+                .getRequestStr()
+                .replace("敏感", "  ")
                 .replace("猫猫", "haha------SesitiveFilter");
+        System.out.println("FaceFilter before");
         chain.doFilter(request, response, chain);
-        response.responseStr += "------SesitiveFilter";
-
+        System.out.println("FaceFilter after"+(response.responseStr += "------SesitiveFilter"));
     }
 
 }

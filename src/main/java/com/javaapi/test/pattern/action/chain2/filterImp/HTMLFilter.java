@@ -15,11 +15,13 @@ public class HTMLFilter implements Filter {
 
     @Override
     public void doFilter(Request request, Response response,FilterChain chain) {
-        request.requestStr = request.getRequestStr().replace("<", "[")
-                .replace(">", "] --------HTMLFilter");
+        request.requestStr = request.getRequestStr()
+                                    .replace("<", "[")
+                                    .replace(">", "] --------HTMLFilter");
+        System.out.println("htmlfilter before");
         chain.doFilter(request, response, chain);
-        response.responseStr += "--------HTMLFilter";
-        
+        System.out.println("htmlfilter after "+(response.responseStr += "--------HTMLFilter"));
+
     }
 
 }

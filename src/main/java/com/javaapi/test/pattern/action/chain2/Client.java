@@ -1,11 +1,12 @@
 package com.javaapi.test.pattern.action.chain2;
 
-import org.junit.Test;
-
-import com.javaapi.test.pattern.action.chain2.filterImp.FaceFilter;
 import com.javaapi.test.pattern.action.chain2.filterImp.HTMLFilter;
 import com.javaapi.test.pattern.action.chain2.filterImp.SesitiveFilter;
+import org.junit.Test;
 
+/**
+ * https://isudox.com/2016/06/06/using-chain-of-responsibility-pattern/
+ */
 public class Client {
     @Test
     public void test() throws Exception {
