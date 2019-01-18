@@ -1,7 +1,7 @@
-package com.javaapi.test.pattern.action.chain2;
+package com.javaapi.test.pattern.action.chain2.case7revert;
 
-import com.javaapi.test.pattern.action.chain2.filterImp.HTMLFilter;
-import com.javaapi.test.pattern.action.chain2.filterImp.SesitiveFilter;
+import com.javaapi.test.pattern.action.chain2.case7revert.filterImp.HTMLFilter;
+import com.javaapi.test.pattern.action.chain2.case7revert.filterImp.SesitiveFilter;
 import org.junit.Test;
 
 /**
@@ -10,7 +10,7 @@ import org.junit.Test;
 public class Client {
     @Test
     public void test() throws Exception {
-        String message = "敏感词汇，重庆，<script> 躲猫猫 :)";
+        String message = "敏感词汇，重庆，<script> 敏感2 :)";
         Request request = new Request();
         request.setRequestStr(message);
         Response response = new Response();

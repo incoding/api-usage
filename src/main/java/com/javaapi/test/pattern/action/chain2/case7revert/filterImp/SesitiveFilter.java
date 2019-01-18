@@ -1,9 +1,9 @@
-package com.javaapi.test.pattern.action.chain2.filterImp;
+package com.javaapi.test.pattern.action.chain2.case7revert.filterImp;
 
-import com.javaapi.test.pattern.action.chain2.Filter;
-import com.javaapi.test.pattern.action.chain2.FilterChain;
-import com.javaapi.test.pattern.action.chain2.Request;
-import com.javaapi.test.pattern.action.chain2.Response;
+import com.javaapi.test.pattern.action.chain2.case7revert.Filter;
+import com.javaapi.test.pattern.action.chain2.case7revert.FilterChain;
+import com.javaapi.test.pattern.action.chain2.case7revert.Request;
+import com.javaapi.test.pattern.action.chain2.case7revert.Response;
 
 
 public class SesitiveFilter implements Filter {
@@ -13,7 +13,7 @@ public class SesitiveFilter implements Filter {
         request.requestStr = request
                 .getRequestStr()
                 .replace("敏感", "  ")
-                .replace("猫猫", "haha------SesitiveFilter");
+                .replace("敏感2", "haha------SesitiveFilter");
         System.out.println("FaceFilter before");
         chain.doFilter(request, response, chain);
         System.out.println("FaceFilter after"+(response.responseStr += "------SesitiveFilter"));

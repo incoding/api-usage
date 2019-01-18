@@ -1,8 +1,10 @@
-package com.javaapi.test.pattern.action.chain2;
+package com.javaapi.test.pattern.action.chain2.case6io;
 
-
+/**
+ * Created by user on 2019/1/18
+ */
 public class Response {
-    public String responseStr;
+    String responseStr;
 
     public String getResponseStr() {
         return responseStr;
@@ -11,5 +13,4 @@ public class Response {
     public void setResponseStr(String responseStr) {
         this.responseStr = responseStr;
     }
-
 }

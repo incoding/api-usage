@@ -1,9 +1,9 @@
-package com.javaapi.test.pattern.action.chain2.filterImp;
+package com.javaapi.test.pattern.action.chain2.case7revert.filterImp;
 
-import com.javaapi.test.pattern.action.chain2.Filter;
-import com.javaapi.test.pattern.action.chain2.FilterChain;
-import com.javaapi.test.pattern.action.chain2.Request;
-import com.javaapi.test.pattern.action.chain2.Response;
+import com.javaapi.test.pattern.action.chain2.case7revert.Filter;
+import com.javaapi.test.pattern.action.chain2.case7revert.FilterChain;
+import com.javaapi.test.pattern.action.chain2.case7revert.Request;
+import com.javaapi.test.pattern.action.chain2.case7revert.Response;
 
 
 public class FaceFilter implements Filter {
