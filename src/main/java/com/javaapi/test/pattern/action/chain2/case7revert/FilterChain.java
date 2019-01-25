@@ -15,8 +15,10 @@ public class FilterChain implements Filter {
 
     @Override
     public void doFilter(Request request, Response response, FilterChain chain) {
-        if (index == filters.size())
+        if (index == filters.size()) {
+            System.out.println("do some job");
             return;
+        }
         Filter f = filters.get(index);
         index++;
         f.doFilter(request, response, chain);

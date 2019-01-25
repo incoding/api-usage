@@ -1,7 +1,6 @@
 package com.javaapi.test.pattern.action.chain2.case7revert;
 
-import com.javaapi.test.pattern.action.chain2.case7revert.filterImp.HTMLFilter;
-import com.javaapi.test.pattern.action.chain2.case7revert.filterImp.SesitiveFilter;
+import com.javaapi.test.pattern.action.chain2.case7revert.filterImp.*;
 import org.junit.Test;
 
 /**
@@ -16,7 +15,8 @@ public class Client {
         Response response = new Response();
         response.setResponseStr("response");
         FilterChain fc = new FilterChain();
-        fc.addFilter(new HTMLFilter()).addFilter(new SesitiveFilter());
+        fc.addFilter(new MyAfterFilter());
+        fc.addFilter(new HTMLFilter()).addFilter(new SesitiveFilter()).addFilter(new FaceFilter());
 
 //        FilterChain fc2 = new FilterChain();
 //        fc2.addFilter(new FaceFilter());
