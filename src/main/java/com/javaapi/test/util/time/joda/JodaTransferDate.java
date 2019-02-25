@@ -45,4 +45,15 @@ public class JodaTransferDate {
         String string_u = dateTime.toString("yyyy-MM-dd HH:mm:ss EE");
         System.out.println("string_u = " + string_u);
     }
+
+    /**
+     * 输出为
+     * 2018-03-18 08:11:25 星期日
+     */
+    @Test
+    public void testJodaToString2(){
+        DateTime dateTime = new DateTime();
+        String string_u = dateTime.toString("yyyyMMddHHmmssS");
+        System.out.println("string_u = " + string_u);
+    }
 }
