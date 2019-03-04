@@ -25,6 +25,16 @@ public class BaseResult<T> implements Serializable {
      */
     private List<BaseError> errorList;
 
+    /**
+     * 是否从缓存读取
+     */
+    private Boolean fromCache;
+
+    /**
+     * 是否使用后端返回的错误
+     */
+    private Boolean useError;
+
     public BaseResult() {
     }
 
@@ -158,6 +168,15 @@ public class BaseResult<T> implements Serializable {
         return !getOk();
     }
 
+
+    public Boolean getUseError() {
+        return useError;
+    }
+
+    public void setUseError(Boolean useError) {
+        this.useError = useError;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("HttpResult{");
@@ -171,4 +190,11 @@ public class BaseResult<T> implements Serializable {
     }
 
 
+    public Boolean getFromCache() {
+        return fromCache;
+    }
+
+    public void setFromCache(Boolean fromCache) {
+        this.fromCache = fromCache;
+    }
 }

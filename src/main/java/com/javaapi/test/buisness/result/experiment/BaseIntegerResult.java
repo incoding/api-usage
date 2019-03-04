@@ -1,9 +1,9 @@
-package com.javaapi.test.buisness.result.abs;
+package com.javaapi.test.buisness.result.experiment;
 
 /**
  * Created by user on 2019/3/2
  */
-public class BaseStringResult<D> extends AbstractBaseResult<String> {
+public class BaseIntegerResult<D> extends AbstractBaseResult<Integer> {
 
     private D data;
 

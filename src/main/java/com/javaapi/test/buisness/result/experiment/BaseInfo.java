@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.result.abs;
+package com.javaapi.test.buisness.result.experiment;
 
 /**
  * Created by user on 2019/3/2
