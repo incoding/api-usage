@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.result.client;
+package com.javaapi.test.buisness.result.base;
 
 import com.alibaba.fastjson.JSON;
 import com.javaapi.test.buisness.result.base.BaseError;
@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  */
-public class Client {
+public class BaseResultTest {
 
     /**
      * test ok
