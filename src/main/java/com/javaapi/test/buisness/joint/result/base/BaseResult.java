@@ -78,30 +78,30 @@ public class BaseResult<T> implements Serializable {
         return new BaseResult<>(false, BaseError.G_ERROR_DISPLAY_CODE, msg, null);
     }
 
-    public static <T> BaseResult<T> error(String code, String msg) {
+    public static <T> BaseResult<T> newError(String code, String msg) {
         return new BaseResult<>(false, code, msg, null);
     }
 
-    public static <T> BaseResult<T> error(BaseError baseError) {
+    public static <T> BaseResult<T> newError(BaseError baseError) {
         return new BaseResult<>(baseError);
     }
 
-    public static <T> BaseResult<T> error(String code, String msg, T result) {
+    public static <T> BaseResult<T> newError(String code, String msg, T result) {
         return new BaseResult<>(false, code, msg, result);
     }
 
-    public static <T> BaseResult<T> errorList() {
+    public static <T> BaseResult<T> newErrorList() {
         BaseResult<T> objectBaseResult = new BaseResult<>(false, BaseError.G_ERROR_LIST, null, null, new ArrayList<>());
         return objectBaseResult;
     }
 
-    public static <T> BaseResult<T> errorList(BaseError error) {
+    public static <T> BaseResult<T> newErrorList(BaseError error) {
         BaseResult<T> objectBaseResult = new BaseResult<>(false, BaseError.G_ERROR_LIST, null, null, new ArrayList<>());
         objectBaseResult.errorListAdd(error);
         return objectBaseResult;
     }
 
-    public static <T> BaseResult<T> errorList(String code, String msg) {
+    public static <T> BaseResult<T> newErrorList(String code, String msg) {
         BaseResult<T> objectBaseResult = new BaseResult<>(false, BaseError.G_ERROR_LIST, null, null, new ArrayList<>());
         objectBaseResult.errorListAdd(new BaseError(code, msg));
         return objectBaseResult;
@@ -127,6 +127,22 @@ public class BaseResult<T> implements Serializable {
         this.getErrorList().add(new BaseError(code, msg));
         return this;
     }
+
+    public BaseResult<T> beError(BaseError baseError) {
+        this.setOk(false);
+        this.setCode(baseError.getCode());
+        this.setMsg(baseError.getMsg());
+        return this;
+    }
+
+    public BaseResult<T> beError(String code, String msg) {
+        this.setOk(false);
+        this.setCode(code);
+        this.setMsg(msg);
+        return this;
+    }
+
+
     /***************************************/
 
 

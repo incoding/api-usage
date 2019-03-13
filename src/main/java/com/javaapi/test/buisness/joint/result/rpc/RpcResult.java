@@ -71,7 +71,7 @@ public class RpcResult<T> extends BaseResult<T> {
      * @param <T>
      * @return
      */
-    public static <T> RpcResult<T> displayError(String msg) {
+    public static <T> RpcResult<T> newDisplayError(String msg) {
         return new RpcResult<>(false, BaseError.G_ERROR_DISPLAY_CODE, msg, null);
     }
 
@@ -125,14 +125,39 @@ public class RpcResult<T> extends BaseResult<T> {
         return this;
     }
 
+
+    @Override
+    public RpcResult<T> beError(BaseError baseError) {
+        this.setOk(false);
+        this.setCode(baseError.getCode());
+        this.setMsg(baseError.getMsg());
+        return this;
+    }
+
+    @Override
+    public RpcResult<T> beError(String code, String msg) {
+        this.setOk(false);
+        this.setCode(code);
+        this.setMsg(msg);
+        return this;
+    }
+
+    public RpcResult<T> readServerSide() {
+        this.readServerSide = true;
+        return this;
+    }
+
+
     /********************* getter and setter *******************/
 
     public Boolean getReadServerSide() {
         return readServerSide;
     }
 
-    public void setReadServerSide(Boolean readServerSide) {
+
+    public RpcResult<T> setReadServerSide(Boolean readServerSide) {
         this.readServerSide = readServerSide;
+        return this;
     }
 
     public String getParam() {

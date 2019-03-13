@@ -3,6 +3,7 @@ package com.javaapi.test.buisness.joint.result.rpc;
 import com.alibaba.fastjson.JSON;
 import com.javaapi.test.buisness.joint.result.base.BaseError;
 import com.javaapi.test.buisness.joint.result.base.ResultModel;
+import com.javaapi.test.buisness.joint.result.base.ResultModelRequest;
 import org.junit.Test;
 
 /**
@@ -26,7 +27,13 @@ public class RpcResultTest {
 
     @Test
     public void testExceptionReadServerSide() throws Exception {
-        RpcResult<ResultModel> result = methodRemoteServiceReadServerSide();
+        RpcResult<ResultModel> result = methodRemoteServiceReadServerSideException();
+        System.out.println("result = " + JSON.toJSONString(result));
+    }
+
+    @Test
+    public void testErrorReadServerSide() throws Exception {
+        RpcResult<ResultModel> result = methodRemoteServiceReadServerSideError();
         System.out.println("result = " + JSON.toJSONString(result));
     }
 
@@ -46,18 +53,18 @@ public class RpcResultTest {
     }
 
 
-
-
-    private RpcResult<ResultModel> methodRemoteServiceReadServerSide() {
+    private RpcResult<ResultModel> methodRemoteServiceReadServerSideException() {
         // service code
-        String param = "";
+        ResultModelRequest resultModelRequest = new ResultModelRequest();
+        resultModelRequest.setName("param request");
+        String param = JSON.toJSONString(resultModelRequest);
         RpcResult<ResultModel> result = RpcResult.ok();
-        // mock error
+        // mock newError
         if (true) {
             try {
                 throw new RuntimeException();
             } catch (RuntimeException e) {
-                result.errorListAdd(BaseError.NEED_LOGIN).setParam(param).setDetailStack(e);
+                result.beError(BaseError.NEED_LOGIN).setParam(param).setDetailStack(e).readServerSide();
                 return result;
             }
         }
@@ -66,19 +73,13 @@ public class RpcResultTest {
 
     }
 
-//    private RpcResult<ResultModel> methodRemoteServiceReadServerSide() {
-//        // service code
-//        String param = "";
-//        boolean isError = true;
-//        RpcResult<ResultModel> result = RpcResult.<ResultModel>ok();
-//        try {
-//            throw new RuntimeException();
-//        } catch (RuntimeException e) {
-//            result.errorListAdd(BaseError.NEED_LOGIN).setParam(param).setDetailStack(e);
-//            return inputParam;
-//        }
-//RpcResult<ResultModel> inputParam = RpcResult.<ResultModel>error(BaseError.NEED_LOGIN).setParam(param).setDetailStack(e);
-    //        return resultModelRpcResult;
-//
-//    }
+    private RpcResult<ResultModel> methodRemoteServiceReadServerSideError() {
+        // service code
+        ResultModelRequest resultModelRequest = new ResultModelRequest();
+        resultModelRequest.setName("param request");
+        String param = JSON.toJSONString(resultModelRequest);
+        RpcResult<ResultModel> resultModelRpcResult = RpcResult.<ResultModel>newError(BaseError.NEED_LOGIN).setParam(param).readServerSide();
+        return resultModelRpcResult;
+
+    }
 }
