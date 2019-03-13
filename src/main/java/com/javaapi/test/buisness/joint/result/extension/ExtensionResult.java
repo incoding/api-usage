@@ -1,6 +1,6 @@
-package com.javaapi.test.buisness.result.extension;
+package com.javaapi.test.buisness.joint.result.extension;
 
-import com.javaapi.test.buisness.result.base.BaseResult;
+import com.javaapi.test.buisness.joint.result.base.BaseResult;
 
 /**
  * Created by user on 2019/3/2

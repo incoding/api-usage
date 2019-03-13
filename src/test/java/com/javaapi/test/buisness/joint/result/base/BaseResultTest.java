@@ -1,8 +1,6 @@
-package com.javaapi.test.buisness.result.base;
+package com.javaapi.test.buisness.joint.result.base;
 
 import com.alibaba.fastjson.JSON;
-import com.javaapi.test.buisness.result.base.BaseError;
-import com.javaapi.test.buisness.result.base.BaseResult;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -172,14 +170,14 @@ public class BaseResultTest {
     @Test
     public void testErrorList() {
         BaseResult<Object> nihao = BaseResult.errorList(new BaseError("need.login", "请先登录"))
-                                             .addError("need.item.2", "条件2不符合");
+                                             .errorListAdd("need.item.2", "条件2不符合");
         System.out.println(JSON.toJSONString(nihao));
     }
 
     @Test
     public void testErrorList_v2() {
         BaseResult<Object> nihao = BaseResult.errorList("need.item.1", "条件1不符合")
-                                             .addError("need.item.2", "条件2不符合");
+                                             .errorListAdd("need.item.2", "条件2不符合");
         System.out.println(JSON.toJSONString(nihao));
     }
 
@@ -222,20 +220,20 @@ public class BaseResultTest {
     private <T> BaseResult<T> validParamForErrorList(String username, String password, int age) {
         BaseResult<T> result = BaseResult.ok();
         if (!"username".equals(username)) {
-            result.addError("username is wrong", "username不正确");
+            result.errorListAdd("username is wrong", "username不正确");
         }
         if (!"password".equals(password)) {
-            result.addError("password is wrong", "password不正确");
+            result.errorListAdd("password is wrong", "password不正确");
         }
         return result;
     }
 
     private <T> BaseResult<T> validParamForErrorList(String username, String password, int age, BaseResult baseResult) {
         if (!"username".equals(username)) {
-            baseResult.addError("username is wrong", "username不正确");
+            baseResult.errorListAdd("username is wrong", "username不正确");
         }
         if (!"password".equals(password)) {
-            baseResult.addError("password is wrong", "password不正确");
+            baseResult.errorListAdd("password is wrong", "password不正确");
         }
         return baseResult;
     }

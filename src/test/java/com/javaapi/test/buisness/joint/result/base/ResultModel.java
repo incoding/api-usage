@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.result.base;
+package com.javaapi.test.buisness.joint.result.base;
 
 import java.io.Serializable;
 

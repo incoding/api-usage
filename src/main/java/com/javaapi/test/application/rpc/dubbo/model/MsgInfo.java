@@ -1,4 +1,4 @@
-package com.javaapi.test.application.rpc.dubbo;
+package com.javaapi.test.application.rpc.dubbo.model;
 
 import java.io.Serializable;
 import java.util.List;

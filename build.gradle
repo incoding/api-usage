@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
-sourceSets.main.resources { srcDirs = ["src/main/java","src/main/resources"]; include "**/*.*" }
+sourceSets.main.resources { srcDirs = ["src/main/java","src/main/resources"]; include "**/*" }
 
 
 group = 'JavaApiSample'
@@ -108,8 +108,16 @@ exclude(module: 'netty')
 
 // 新增
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
+    compile group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
+    compile group: 'org.glassfish.web', name: 'javax.el', version: '3.0.0'
 
 
 
 
 }
+//processResources {
+//    from('src/main/java') {
+//        include '**/*'
+//        exclude "**/*.java"
+//    }
+//}

@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.result.extension;
+package com.javaapi.test.buisness.joint.result.extension;
 
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;

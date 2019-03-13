@@ -1,4 +1,8 @@
-package com.javaapi.test.application.rpc.dubbo;
+package com.javaapi.test.application.rpc.dubbo.facade;
+
+import com.javaapi.test.application.rpc.dubbo.model.EnumSample;
+import com.javaapi.test.application.rpc.dubbo.model.MsgInfo;
+
 public interface DemoService {
 	
     public void sayHello();

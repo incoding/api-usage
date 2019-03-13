@@ -17,7 +17,7 @@ public class LuncherProvider  {
 //        System.out.println(configLocation);
 //        ApplicationContext context = new FileSystemXmlApplicationContext("file:" + configLocation);
 //        System.out.println("path is:" + configLocation);
-        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:" + "com/javaapi/test/application/rpc/dubbo/dubbo-provider.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:" + "com/javaapi/test/application/rpc/dubbo/facadeImpl/dubbo-provider.xml");
         String[] names = context.getBeanDefinitionNames();
         System.out.print("Beans:");
         for (String string : names) {

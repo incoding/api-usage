@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.result.base;
+package com.javaapi.test.buisness.joint.result.base;
 
 import java.io.Serializable;
 
@@ -12,7 +12,7 @@ public class BaseError implements Serializable{
     public static final BaseError SYS_ERR = new BaseError("common.sys.err","系统内部异常");
 
 
-    public static final String G_ERROR_LIST = "errorList";
+    public static final String G_ERROR_LIST = "newErrorList";
     public static final String G_SUCCESS_CODE = "success";
     public static final String G_SUCCESS_MSG = "成功";
     public static final String G_ERROR_DISPLAY_CODE = "display";

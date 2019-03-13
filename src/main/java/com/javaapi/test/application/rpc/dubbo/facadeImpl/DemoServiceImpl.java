@@ -1,15 +1,22 @@
-package com.javaapi.test.application.rpc.dubbo;
+package com.javaapi.test.application.rpc.dubbo.facadeImpl;
 
-public class DemoServiceImpl implements DemoService{
+import com.javaapi.test.application.rpc.dubbo.facade.DemoService;
+import com.javaapi.test.application.rpc.dubbo.model.EnumSample;
+import com.javaapi.test.application.rpc.dubbo.model.MsgInfo;
+
+public class DemoServiceImpl implements DemoService {
 	
+	@Override
 	public void sayHello() {
 		System.out.println("hello world!");
 	}
 
+	@Override
 	public String returnHello() {
 		return "hello world!";
 	}
 
+	@Override
 	public MsgInfo returnMsgInfo(MsgInfo info) {
 		info.getMsgs().add("处理完毕");
 		return info;

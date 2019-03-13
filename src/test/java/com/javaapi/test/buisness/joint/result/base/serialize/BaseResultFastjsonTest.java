@@ -1,7 +1,9 @@
-package com.javaapi.test.buisness.result.base;
+package com.javaapi.test.buisness.joint.result.base.serialize;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
+import com.javaapi.test.buisness.joint.result.base.BaseResult;
+import com.javaapi.test.buisness.joint.result.base.ResultModel;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +13,7 @@ import java.util.List;
 /**
  * Created by user on 2019/3/5
  */
-public class BaseResultSerializeTest {
+public class BaseResultFastjsonTest {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 

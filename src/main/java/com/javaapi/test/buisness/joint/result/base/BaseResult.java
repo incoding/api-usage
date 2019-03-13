@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.result.base;
+package com.javaapi.test.buisness.joint.result.base;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -58,6 +58,7 @@ public class BaseResult<T> implements Serializable {
         this.data = data;
         this.errorList = errorList;
     }
+    /***************************************/
 
     public static <T> BaseResult<T> ok() {
         return new BaseResult<>(true, BaseError.G_SUCCESS_CODE, BaseError.G_SUCCESS_MSG, null);
@@ -67,6 +68,12 @@ public class BaseResult<T> implements Serializable {
         return new BaseResult<>(true, BaseError.G_SUCCESS_CODE, BaseError.G_SUCCESS_MSG, result);
     }
 
+    /**
+     * easy to display
+     * @param msg
+     * @param <T>
+     * @return
+     */
     public static <T> BaseResult<T> displayError(String msg) {
         return new BaseResult<>(false, BaseError.G_ERROR_DISPLAY_CODE, msg, null);
     }
@@ -90,15 +97,74 @@ public class BaseResult<T> implements Serializable {
 
     public static <T> BaseResult<T> errorList(BaseError error) {
         BaseResult<T> objectBaseResult = new BaseResult<>(false, BaseError.G_ERROR_LIST, null, null, new ArrayList<>());
-        objectBaseResult.addError(error);
+        objectBaseResult.errorListAdd(error);
         return objectBaseResult;
     }
 
     public static <T> BaseResult<T> errorList(String code, String msg) {
         BaseResult<T> objectBaseResult = new BaseResult<>(false, BaseError.G_ERROR_LIST, null, null, new ArrayList<>());
-        objectBaseResult.addError(new BaseError(code, msg));
+        objectBaseResult.errorListAdd(new BaseError(code, msg));
         return objectBaseResult;
     }
+
+
+    public BaseResult<T> errorListAdd(BaseError error) {
+        if (this.getErrorList() == null) {
+            this.code = BaseError.G_ERROR_LIST;
+            this.errorList = new ArrayList<>();
+        }
+        this.getErrorList().add(error);
+        return this;
+    }
+
+    public BaseResult<T> errorListAdd(String code, String msg) {
+
+        if (this.getErrorList() == null) {
+            this.ok = false;
+            this.code = BaseError.G_ERROR_LIST;
+            this.errorList = new ArrayList<>();
+        }
+        this.getErrorList().add(new BaseError(code, msg));
+        return this;
+    }
+    /***************************************/
+
+
+
+    /**
+     *  easy to read
+     */
+    public boolean failed() {
+        return !getOk();
+    }
+
+
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("HttpResult{");
+        sb.append("ok=").append(ok);
+        sb.append(", code='").append(code).append('\'');
+        sb.append(", msg='").append(msg).append('\'');
+        sb.append(", data=").append(data);
+        sb.append(", newErrorList=").append(errorList);
+        sb.append('}');
+        return sb.toString();
+    }
+
+
+
+    /********************* getter and setter *******************/
+
+    public Boolean getOk() {
+        return ok;
+    }
+
+    public void setOk(Boolean ok) {
+        this.ok = ok;
+    }
+
+
 
     public String getCode() {
         return code;
@@ -132,40 +198,14 @@ public class BaseResult<T> implements Serializable {
         this.errorList = errorList;
     }
 
-    public BaseResult<T> addError(BaseError error) {
-        if (this.getErrorList() == null) {
-            this.code = BaseError.G_ERROR_LIST;
-            this.errorList = new ArrayList<>();
-        }
-        this.getErrorList().add(error);
-        return this;
+
+
+    public Boolean getFromCache() {
+        return fromCache;
     }
 
-    public BaseResult<T> addError(String code, String msg) {
-
-        if (this.getErrorList() == null) {
-            this.ok = false;
-            this.code = BaseError.G_ERROR_LIST;
-            this.errorList = new ArrayList<>();
-        }
-        this.getErrorList().add(new BaseError(code, msg));
-        return this;
-    }
-
-
-    public Boolean getOk() {
-        return ok;
-    }
-
-    public void setOk(Boolean ok) {
-        this.ok = ok;
-    }
-
-    /**
-     * 人性化方法 易于读取
-     */
-    public boolean failed() {
-        return !getOk();
+    public void setFromCache(Boolean fromCache) {
+        this.fromCache = fromCache;
     }
 
 
@@ -175,26 +215,5 @@ public class BaseResult<T> implements Serializable {
 
     public void setUseError(Boolean useError) {
         this.useError = useError;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("HttpResult{");
-        sb.append("ok=").append(ok);
-        sb.append(", code='").append(code).append('\'');
-        sb.append(", msg='").append(msg).append('\'');
-        sb.append(", data=").append(data);
-        sb.append(", errorList=").append(errorList);
-        sb.append('}');
-        return sb.toString();
-    }
-
-
-    public Boolean getFromCache() {
-        return fromCache;
-    }
-
-    public void setFromCache(Boolean fromCache) {
-        this.fromCache = fromCache;
     }
 }

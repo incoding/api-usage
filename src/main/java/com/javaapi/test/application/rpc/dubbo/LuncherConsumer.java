@@ -3,9 +3,12 @@ package com.javaapi.test.application.rpc.dubbo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.javaapi.test.application.rpc.dubbo.facade.DemoService;
+import com.javaapi.test.application.rpc.dubbo.facade.MyTestService;
+import com.javaapi.test.application.rpc.dubbo.model.EnumSample;
+import com.javaapi.test.application.rpc.dubbo.model.MsgInfo;
 import org.apache.xbean.spring.context.ClassPathXmlApplicationContext;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 
 /**
@@ -23,7 +26,7 @@ public class LuncherConsumer  {
 
 //        String configLocation = LuncherConsumer.class.getResource("").getPath() + "dubbo-consumer.xml";
 //        ApplicationContext context = new FileSystemXmlApplicationContext("file:" + configLocation);
-        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:" + "com/javaapi/test/application/rpc/dubbo/dubbo-consumer.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:" + "com/javaapi/test/application/rpc/dubbo/facade/dubbo-consumer.xml");
 		DemoService ds=(DemoService) context.getBean("demoService");
 		String [] names=context.getBeanDefinitionNames();
 		System.out.print("Beans:");
@@ -50,7 +53,7 @@ public class LuncherConsumer  {
         System.out.println("============");
 
         DemoService demoService = (DemoService) context.getBean("demoService");
-        demoService.returnMsgInfo2("winter",EnumSample.Winter);
+        demoService.returnMsgInfo2("winter", EnumSample.Winter);
         demoService.returnMsgInfo2("summer",EnumSample.Summer);
         demoService.returnMsgInfo2("autum",EnumSample.a2);
 

@@ -1,4 +1,4 @@
-package com.javaapi.test.application.rpc.dubbo;
+package com.javaapi.test.application.rpc.dubbo.model;
 
 /**
  * Created by user on 16/2/29.
