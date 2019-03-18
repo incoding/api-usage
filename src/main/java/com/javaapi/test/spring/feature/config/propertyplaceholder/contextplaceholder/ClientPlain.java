@@ -1,4 +1,4 @@
-package com.javaapi.test.spring.feature.config.propertyplaceholder;
+package com.javaapi.test.spring.feature.config.propertyplaceholder.contextplaceholder;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

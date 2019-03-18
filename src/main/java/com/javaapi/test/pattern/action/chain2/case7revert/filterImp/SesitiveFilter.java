@@ -14,9 +14,9 @@ public class SesitiveFilter implements Filter {
                 .getRequestStr()
                 .replace("敏感", "  ")
                 .replace("敏感2", "haha------SesitiveFilter");
-        System.out.println("FaceFilter before");
+        System.out.println("SesitiveFilter before");
         chain.doFilter(request, response, chain);
-        System.out.println("FaceFilter after"+(response.responseStr += "------SesitiveFilter"));
+        System.out.println("SesitiveFilter after"+(response.responseStr += "------SesitiveFilter"));
     }
 
 }

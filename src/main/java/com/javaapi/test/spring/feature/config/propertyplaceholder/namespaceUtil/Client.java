@@ -1,4 +1,4 @@
-package com.javaapi.test.spring.feature.config.namespaceUtil;
+package com.javaapi.test.spring.feature.config.propertyplaceholder.namespaceUtil;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

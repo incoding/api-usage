@@ -29,8 +29,9 @@
 <!-- 			</bean> -->
 <!-- 		</property> -->
 <!-- 	</bean> -->
-	<bean id="taskJobXml" class="com.javaapi.test.spring.feature.config.propertyplaceholder.TaskJobXml" >
+	<bean id="taskJobXml" class="com.javaapi.test.spring.feature.config.propertyplaceholder.contextplaceholder.TaskJobXml" >
 		<property name="taskName" value="${nihao}"/>
 	</bean>
-	<context:property-placeholder location="classpath:com/javaapi/test/spring/feature/config/propertyplaceholder/config.properties" file-encoding="UTF-8" ignore-resource-not-found="true" ignore-unresolvable="true" />
+	<bean id="propertiesPojo" class="com.javaapi.test.spring.feature.config.propertyplaceholder.contextplaceholder.PropertiesPojo"/>
+	<context:property-placeholder location="classpath:com/javaapi/test/spring/feature/config/propertyplaceholder/contextplaceholder/config.properties" file-encoding="UTF-8" ignore-resource-not-found="true" ignore-unresolvable="true" />
 </beans>

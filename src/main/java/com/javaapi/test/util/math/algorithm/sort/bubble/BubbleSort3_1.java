@@ -49,7 +49,7 @@ public class BubbleSort3_1 {
         int indexInc = 4;
 
         for (int i = 0; i < arr.length - indexInc; i++) {
-            log.info("a[i]={},a[i+1]={}", arr[i], arr[i + indexInc]);
+            log.info("a[i]={},a[i+1]={}", arr[i], arr[i + 1]);
         }
     }
 

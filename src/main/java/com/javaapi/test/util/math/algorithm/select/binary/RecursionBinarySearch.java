@@ -14,12 +14,14 @@ public class RecursionBinarySearch {
      */
     public int recursionBinarySearch(int[] arr, int key,int low,int high) {
         int middle = (high + low) / 2;
-        if (key == arr[middle]) {
-            return middle;
-        }
         if (middle<low || middle>high){
             return -1;
         }
+
+        if (key == arr[middle]) {
+            return middle;
+        }
+
         if (key > arr[middle]) {
             return recursionBinarySearch(arr, key,middle+1,high);
         } else if (key < arr[middle]) {

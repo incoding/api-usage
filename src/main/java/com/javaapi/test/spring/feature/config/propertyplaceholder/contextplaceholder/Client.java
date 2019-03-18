@@ -1,4 +1,4 @@
-package com.javaapi.test.spring.feature.config.propertyplaceholder;
+package com.javaapi.test.spring.feature.config.propertyplaceholder.contextplaceholder;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,13 +24,28 @@ public class Client {
 	@Qualifier("taskJobXml")
 	TaskJobXml jobXml;
 
+	/**
+	 * value 使用 $是读外部配置
+	 * value 使用 #是读bean属性
+	 * refer https://www.cnblogs.com/larryzeal/p/5910149.html
+	 */
     @Autowired
     @Value("${nihao}")
     private String name;
+
+	/**
+	 * value 使用 $是读外部配置
+	 * value 使用 #是读bean属性
+	 * refer https://www.cnblogs.com/larryzeal/p/5910149.html
+	 */
+	@Autowired
+	@Value("#{propertiesPojo.name}")
+	private String propertiesPojoName;
 
 	@Test
 	public void test() {
 		System.out.println(jobXml.getTaskName());
         System.out.println(name);
+        System.out.println(propertiesPojoName);
     }
 }
