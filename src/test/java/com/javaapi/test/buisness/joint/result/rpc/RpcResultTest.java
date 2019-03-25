@@ -1,7 +1,7 @@
 package com.javaapi.test.buisness.joint.result.rpc;
 
 import com.alibaba.fastjson.JSON;
-import com.javaapi.test.buisness.joint.result.base.BaseError;
+import com.javaapi.test.buisness.joint.error.BaseError;
 import com.javaapi.test.buisness.joint.result.base.ResultModel;
 import com.javaapi.test.buisness.joint.result.base.ResultModelRequest;
 import org.junit.Test;

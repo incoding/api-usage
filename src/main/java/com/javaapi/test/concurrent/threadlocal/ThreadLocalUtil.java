@@ -20,7 +20,7 @@ public class ThreadLocalUtil {
         local.set(map);
     }
 
-    public static <T> void setLocalKeyValue(String key, T value) {
+    public static <T> void set(String key, T value) {
         if (local.get() == null) {
             HashMap<String, Object> map = new HashMap<String, Object>();
             local.set(map);
@@ -29,7 +29,7 @@ public class ThreadLocalUtil {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> T getLocalKeyValue(String key) {
+    public static <T> T get(String key) {
         if (local.get() == null) {
             HashMap<String, Object> map = new HashMap<String, Object>();
             local.set(map);

@@ -1,6 +1,7 @@
 package com.javaapi.test.buisness.joint.result.base;
 
 import com.alibaba.fastjson.JSON;
+import com.javaapi.test.buisness.joint.error.BaseError;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -163,20 +164,20 @@ public class BaseResultTest {
 
     @Test
     public void testErrorCode() {
-        BaseResult<Object> nihao = BaseResult.error("need.login", "请先登录");
+        BaseResult<Object> nihao = BaseResult.newError("need.login", "请先登录");
         System.out.println(JSON.toJSONString(nihao));
     }
 
     @Test
     public void testErrorList() {
-        BaseResult<Object> nihao = BaseResult.errorList(new BaseError("need.login", "请先登录"))
+        BaseResult<Object> nihao = BaseResult.newErrorList(new BaseError("need.login", "请先登录"))
                                              .errorListAdd("need.item.2", "条件2不符合");
         System.out.println(JSON.toJSONString(nihao));
     }
 
     @Test
     public void testErrorList_v2() {
-        BaseResult<Object> nihao = BaseResult.errorList("need.item.1", "条件1不符合")
+        BaseResult<Object> nihao = BaseResult.newErrorList("need.item.1", "条件1不符合")
                                              .errorListAdd("need.item.2", "条件2不符合");
         System.out.println(JSON.toJSONString(nihao));
     }
@@ -254,32 +255,32 @@ public class BaseResultTest {
 
     private <T> BaseResult<T> validParamOneError(String username, String password, int age, BaseResult<T> baseResult) {
         if (!"a".equals(username)) {
-            return BaseResult.error(BaseError.NEED_LOGIN);
+            return BaseResult.newError(BaseError.NEED_LOGIN);
         }
-        BaseResult.error(BaseError.SYS_ERR);
+        BaseResult.newError(BaseError.SYS_ERR);
         return baseResult;
     }
 
 
     private <T> BaseResult<T> bussiness1(String username, String password) {
         if (!"a".equals(username)) {
-            return BaseResult.error(BaseError.NEED_LOGIN);
+            return BaseResult.newError(BaseError.NEED_LOGIN);
         }
-        return BaseResult.error(BaseError.SYS_ERR);
+        return BaseResult.newError(BaseError.SYS_ERR);
     }
 
     private <T> BaseResult<T> bussiness2(String username, String password) {
         if (!"p".equals(password)) {
             return BaseResult.displayError("password 不正确");
         }
-        return BaseResult.error(BaseError.SYS_ERR);
+        return BaseResult.newError(BaseError.SYS_ERR);
     }
 
     private <T> BaseResult<T> bussiness3(String username, String password) {
         if (!"a".equals(password)) {
             return BaseResult.displayError("password 不正确");
         }
-        return BaseResult.error(BaseError.SYS_ERR);
+        return BaseResult.newError(BaseError.SYS_ERR);
     }
 
 

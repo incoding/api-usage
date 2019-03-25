@@ -1,5 +1,8 @@
 package com.javaapi.test.buisness.joint.result.base;
 
+import com.javaapi.test.buisness.joint.error.BaseError;
+import com.javaapi.test.buisness.joint.error.BaseErrorConstant;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,11 +64,11 @@ public class BaseResult<T> implements Serializable {
     /***************************************/
 
     public static <T> BaseResult<T> ok() {
-        return new BaseResult<>(true, BaseError.G_SUCCESS_CODE, BaseError.G_SUCCESS_MSG, null);
+        return new BaseResult<>(true, BaseErrorConstant.G_SUCCESS_CODE, BaseErrorConstant.G_SUCCESS_MSG, null);
     }
 
     public static <T> BaseResult<T> ok(T result) {
-        return new BaseResult<>(true, BaseError.G_SUCCESS_CODE, BaseError.G_SUCCESS_MSG, result);
+        return new BaseResult<>(true, BaseErrorConstant.G_SUCCESS_CODE, BaseErrorConstant.G_SUCCESS_MSG, result);
     }
 
     /**
@@ -75,7 +78,7 @@ public class BaseResult<T> implements Serializable {
      * @return
      */
     public static <T> BaseResult<T> displayError(String msg) {
-        return new BaseResult<>(false, BaseError.G_ERROR_DISPLAY_CODE, msg, null);
+        return new BaseResult<>(false, BaseErrorConstant.G_ERROR_DISPLAY_CODE, msg, null);
     }
 
     public static <T> BaseResult<T> newError(String code, String msg) {
@@ -91,18 +94,18 @@ public class BaseResult<T> implements Serializable {
     }
 
     public static <T> BaseResult<T> newErrorList() {
-        BaseResult<T> objectBaseResult = new BaseResult<>(false, BaseError.G_ERROR_LIST, null, null, new ArrayList<>());
+        BaseResult<T> objectBaseResult = new BaseResult<>(false, BaseErrorConstant.G_ERROR_LIST, null, null, new ArrayList<>());
         return objectBaseResult;
     }
 
     public static <T> BaseResult<T> newErrorList(BaseError error) {
-        BaseResult<T> objectBaseResult = new BaseResult<>(false, BaseError.G_ERROR_LIST, null, null, new ArrayList<>());
+        BaseResult<T> objectBaseResult = new BaseResult<>(false, BaseErrorConstant.G_ERROR_LIST, null, null, new ArrayList<>());
         objectBaseResult.errorListAdd(error);
         return objectBaseResult;
     }
 
     public static <T> BaseResult<T> newErrorList(String code, String msg) {
-        BaseResult<T> objectBaseResult = new BaseResult<>(false, BaseError.G_ERROR_LIST, null, null, new ArrayList<>());
+        BaseResult<T> objectBaseResult = new BaseResult<>(false, BaseErrorConstant.G_ERROR_LIST, null, null, new ArrayList<>());
         objectBaseResult.errorListAdd(new BaseError(code, msg));
         return objectBaseResult;
     }
@@ -110,7 +113,7 @@ public class BaseResult<T> implements Serializable {
 
     public BaseResult<T> errorListAdd(BaseError error) {
         if (this.getErrorList() == null) {
-            this.code = BaseError.G_ERROR_LIST;
+            this.code = BaseErrorConstant.G_ERROR_LIST;
             this.errorList = new ArrayList<>();
         }
         this.getErrorList().add(error);
@@ -121,7 +124,7 @@ public class BaseResult<T> implements Serializable {
 
         if (this.getErrorList() == null) {
             this.ok = false;
-            this.code = BaseError.G_ERROR_LIST;
+            this.code = BaseErrorConstant.G_ERROR_LIST;
             this.errorList = new ArrayList<>();
         }
         this.getErrorList().add(new BaseError(code, msg));

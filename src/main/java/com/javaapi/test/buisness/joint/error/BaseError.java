@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.joint.result.base;
+package com.javaapi.test.buisness.joint.error;
 
 import java.io.Serializable;
 
@@ -8,15 +8,8 @@ import java.io.Serializable;
 public class BaseError implements Serializable{
     private static final long serialVersionUID = -1;
 
-    public static final BaseError NEED_LOGIN = new BaseError("common.biz.needlogin","请先登录");
-    public static final BaseError SYS_ERR = new BaseError("common.sys.err","系统内部异常");
-
-
-    public static final String G_ERROR_LIST = "newErrorList";
-    public static final String G_SUCCESS_CODE = "success";
-    public static final String G_SUCCESS_MSG = "成功";
-    public static final String G_ERROR_DISPLAY_CODE = "display";
-
+    public static final BaseError NEED_LOGIN = new BaseError(BaseErrorConstant.COMMON_BIZ_NEEDLOGIN, BaseErrorConstant.COMMON_BIZ_NEEDLOGIN_MSG);
+    public static final BaseError SYS_ERR = new BaseError(BaseErrorConstant.COMMON_SYS_ERR, BaseErrorConstant.COMMON_SYS_ERR_MSG);
 
 
     private String code;
@@ -48,7 +41,7 @@ public class BaseError implements Serializable{
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("HttpError{");
+        final StringBuilder sb = new StringBuilder("BaseError{");
         sb.append("code='").append(code).append('\'');
         sb.append(", msg='").append(msg).append('\'');
         sb.append('}');

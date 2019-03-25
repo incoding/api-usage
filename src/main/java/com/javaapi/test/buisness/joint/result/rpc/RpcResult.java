@@ -1,6 +1,7 @@
 package com.javaapi.test.buisness.joint.result.rpc;
 
-import com.javaapi.test.buisness.joint.result.base.BaseError;
+import com.javaapi.test.buisness.joint.error.BaseError;
+import com.javaapi.test.buisness.joint.error.BaseErrorConstant;
 import com.javaapi.test.buisness.joint.result.base.BaseResult;
 
 import java.util.ArrayList;
@@ -58,11 +59,11 @@ public class RpcResult<T> extends BaseResult<T> {
 
 
     public static <T> RpcResult<T> ok() {
-        return new RpcResult<>(true, BaseError.G_SUCCESS_CODE, BaseError.G_SUCCESS_MSG, null);
+        return new RpcResult<>(true, BaseErrorConstant.G_SUCCESS_CODE, BaseErrorConstant.G_SUCCESS_MSG, null);
     }
 
     public static <T> RpcResult ok(T result) {
-        return new RpcResult<>(true, BaseError.G_SUCCESS_CODE, BaseError.G_SUCCESS_MSG, result);
+        return new RpcResult<>(true, BaseErrorConstant.G_SUCCESS_CODE, BaseErrorConstant.G_SUCCESS_MSG, result);
     }
 
     /**
@@ -72,7 +73,7 @@ public class RpcResult<T> extends BaseResult<T> {
      * @return
      */
     public static <T> RpcResult<T> newDisplayError(String msg) {
-        return new RpcResult<>(false, BaseError.G_ERROR_DISPLAY_CODE, msg, null);
+        return new RpcResult<>(false, BaseErrorConstant.G_ERROR_DISPLAY_CODE, msg, null);
     }
 
     public static <T> RpcResult<T> newError(String code, String msg) {
@@ -88,18 +89,18 @@ public class RpcResult<T> extends BaseResult<T> {
     }
 
     public static <T> RpcResult<T> newErrorList() {
-        RpcResult<T> rpcResult = new RpcResult<>(false, BaseError.G_ERROR_LIST, null, null, new ArrayList<>());
+        RpcResult<T> rpcResult = new RpcResult<>(false, BaseErrorConstant.G_ERROR_LIST, null, null, new ArrayList<>());
         return rpcResult;
     }
 
     public static <T> RpcResult<T> newErrorList(BaseError error) {
-        RpcResult<T> rpcResult = new RpcResult<>(false, BaseError.G_ERROR_LIST, null, null, new ArrayList<>());
+        RpcResult<T> rpcResult = new RpcResult<>(false, BaseErrorConstant.G_ERROR_LIST, null, null, new ArrayList<>());
         rpcResult.errorListAdd(error);
         return rpcResult;
     }
 
     public static <T> RpcResult<T> newErrorList(String code, String msg) {
-        RpcResult<T> rpcResult = new RpcResult<>(false, BaseError.G_ERROR_LIST, null, null, new ArrayList<>());
+        RpcResult<T> rpcResult = new RpcResult<>(false, BaseErrorConstant.G_ERROR_LIST, null, null, new ArrayList<>());
         rpcResult.errorListAdd(new BaseError(code, msg));
         return rpcResult;
     }
@@ -107,7 +108,7 @@ public class RpcResult<T> extends BaseResult<T> {
     @Override
     public RpcResult<T> errorListAdd(BaseError error) {
         if (this.getErrorList() == null) {
-            this.setCode(BaseError.G_ERROR_LIST);
+            this.setCode(BaseErrorConstant.G_ERROR_LIST);
             this.setErrorList(new ArrayList<>());
         }
         this.getErrorList().add(error);
@@ -118,7 +119,7 @@ public class RpcResult<T> extends BaseResult<T> {
     public RpcResult<T> errorListAdd(String code, String msg) {
         if (this.getErrorList() == null) {
             this.setOk(false);
-            this.setCode(BaseError.G_ERROR_LIST);
+            this.setCode(BaseErrorConstant.G_ERROR_LIST);
             this.setErrorList(new ArrayList<>());
         }
         this.getErrorList().add(new BaseError(code, msg));
