@@ -1,13 +1,11 @@
-package com.javaapi.test.dao.domain.page1.parent;
-
-import com.javaapi.test.dao.domain.page1.parent.Paginable;
+package com.javaapi.test.buisness.joint.page.base;
 
 import java.io.Serializable;
 
 /**
  * 简单分页类
  */
-public class SimplePage implements Paginable ,Serializable {
+public class SimplePage implements Paginable,Serializable {
 	private static final long serialVersionUID = 1L;
 	public static final int DEF_COUNT = 20;
     public static final int DEF_FIRST = 0;

@@ -288,6 +288,10 @@ public class TestString3 {
         String s = "3U,ZH";
         boolean zh = s.contains("ZH");
         System.out.println("zh = " + zh);
+    }
 
+    @Test
+    public void testInt(){
+        System.out.println("true = " + String.valueOf(new Integer(10)));
     }
 }

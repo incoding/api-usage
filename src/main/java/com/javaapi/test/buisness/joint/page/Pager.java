@@ -1,4 +1,4 @@
-package com.javaapi.test.dao.domain.page1.page2;
+package com.javaapi.test.buisness.joint.page;
 
 import com.javaapi.test.dao.domain.page1.parent.Paginable;
 import com.javaapi.test.dao.domain.page1.parent.SimplePage;

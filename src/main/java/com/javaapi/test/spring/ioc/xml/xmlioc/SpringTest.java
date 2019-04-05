@@ -68,7 +68,8 @@ public class SpringTest {
 		System.out.println(htmlPage.toString());
 		for (MediaType iterable_element : htmlPage.getList()) {
 			String type = iterable_element.getType();
-			String name = iterable_element.getCharset().name();
+
+			String name = iterable_element.getCharSet().name();
 			System.out.println(type+"==>"+name);
 		}
 		for (People iterable_element : htmlPage.getPeoplelist()) {

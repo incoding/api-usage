@@ -63,6 +63,14 @@ public class ClientStream {
         };
     }
 
+
+    @Test
+    public void testStreamOfNull(){
+
+
+
+    }
+
     @Test
     public void testArray() throws Exception {
 

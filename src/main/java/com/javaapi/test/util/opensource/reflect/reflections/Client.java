@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
 
+import java.io.BufferedReader;
 import java.util.Set;
 
 /**
