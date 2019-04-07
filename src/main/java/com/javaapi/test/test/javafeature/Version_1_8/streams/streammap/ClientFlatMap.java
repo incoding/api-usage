@@ -1,5 +1,6 @@
-package com.javaapi.test.test.javafeature.Version_1_8.streams;
+package com.javaapi.test.test.javafeature.Version_1_8.streams.streammap;
 
+import com.javaapi.test.test.javafeature.Version_1_8.streams.Person;
 import org.junit.Before;
 import org.junit.Test;
 

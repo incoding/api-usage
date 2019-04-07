@@ -54,8 +54,26 @@ public class OptinalTest {
         System.out.println("user = " + user);
     }
 
+    /**
+     * 使用map函数返回对象，使用flatMap返回Optional。例如：
+        refer https://cloud.tencent.com/developer/ask/35379
+        https://openhome.cc/Gossip/Java/FlatMap.html   好
+     */
+    @Test
+    public void testOptionalFlatMap(){
+        Optional<String> s = Optional.ofNullable("input");
+        System.out.println(s.map(OptinalTest::getOutput).orElse("nihao"));
+        System.out.println(s.flatMap(OptinalTest::getOutputOpt).orElse("nihao"));
+    }
 
 
+    static Optional<String> getOutputOpt(String input) {
+        return input == null ? Optional.empty() : Optional.of("output for " + input);
+    }
+
+    static String getOutput(String input) {
+        return input == null ? null : "output for " + input;
+    }
 
 
     /**

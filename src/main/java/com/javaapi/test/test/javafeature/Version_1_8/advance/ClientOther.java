@@ -1,4 +1,4 @@
-package com.javaapi.test.test.javafeature.Version_1_8.streams;
+package com.javaapi.test.test.javafeature.Version_1_8.advance;
 
 import org.junit.Test;
 

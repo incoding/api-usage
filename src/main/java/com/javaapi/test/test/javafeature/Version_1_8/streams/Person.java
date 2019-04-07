@@ -6,7 +6,8 @@ package com.javaapi.test.test.javafeature.Version_1_8.streams;
 public class Person {
 
     private String firstName, lastName, job, gender;
-    private int salary, age;
+    private Integer salary;
+    private Integer age;
 
     public Person(String firstName, String lastName, String job,
                   String gender, int age, int salary)       {
@@ -57,19 +58,19 @@ public class Person {
         this.gender = gender;
     }
 
-    public int getSalary() {
+    public Integer getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(Integer salary) {
         this.salary = salary;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
