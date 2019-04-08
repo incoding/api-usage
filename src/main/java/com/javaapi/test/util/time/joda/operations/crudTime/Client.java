@@ -5,6 +5,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.junit.Test;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -34,7 +35,16 @@ public class Client {
         System.out.println("dateTime1 = " + dateTime1.toString("yyyy-MM-dd HH:mm:ss"));
         DateTime dateTime2 = dateTime.plusDays(60);
         System.out.println("dateTime2 = " + dateTime2.toString("yyyy-MM-dd HH:mm:ss"));
+    }
 
+    @Test
+    public void test4(){
+        int dayOfWeek = new DateTime().getDayOfWeek();
+        System.out.println("dayOfWeek = " + dayOfWeek);
+        Calendar instance = Calendar.getInstance();
+        int i = instance.get(Calendar.DAY_OF_WEEK);
+        System.out.println("i = " + i);
 
     }
+
 }
