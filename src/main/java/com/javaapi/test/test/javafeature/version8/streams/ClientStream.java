@@ -2,6 +2,7 @@ package com.javaapi.test.test.javafeature.version8.streams;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.testng.collections.Lists;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -66,9 +67,11 @@ public class ClientStream {
 
     @Test
     public void testStreamOfNull(){
-
-
-
+        List<String> list = null;
+        // 会导致内部为空,但是不引发异常,所以要用filter过滤下
+        Stream.of(list).forEach(System.out::println);
+        List<Integer> collect = Stream.of(list).filter(strings -> strings!=null).map(strings -> strings.size()).collect(Collectors.toList());
+        System.out.println("collect = " + collect);
     }
 
     @Test

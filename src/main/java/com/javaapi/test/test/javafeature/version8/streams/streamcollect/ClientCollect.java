@@ -85,4 +85,13 @@ public class ClientCollect {
                 StringBuilder::append).toString();
         System.out.println("concat = " + concat);
     }
+
+
+    @Test
+    public void testCollect3() {
+        List<String> result = Lists.newArrayList("a","a" ,"b", "c", "d","d");
+        String concat = result.stream().collect(StringBuilder::new, StringBuilder::append,
+                StringBuilder::append).toString();
+        System.out.println("concat = " + concat);
+    }
 }

@@ -1,4 +1,4 @@
-package com.javaapi.test.application.test.testmockito.mockitSpring;
+package com.javaapi.test.application.test.testmockito.mockitSpring.service;
 
 public interface IRouteService {
 

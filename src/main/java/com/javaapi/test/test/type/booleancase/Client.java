@@ -1,4 +1,4 @@
-package com.javaapi.test.test.type.BooleanTest;
+package com.javaapi.test.test.type.booleancase;
 
 import org.junit.Test;
 

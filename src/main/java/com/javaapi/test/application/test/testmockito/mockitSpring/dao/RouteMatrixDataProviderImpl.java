@@ -1,4 +1,4 @@
-package com.javaapi.test.application.test.testmockito.mockitSpring;
+package com.javaapi.test.application.test.testmockito.mockitSpring.dao;
 
 import org.springframework.stereotype.Repository;
 

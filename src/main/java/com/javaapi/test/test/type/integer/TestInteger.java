@@ -1,6 +1,10 @@
 package com.javaapi.test.test.type.integer;
 
 import org.junit.Test;
+import org.testng.collections.Lists;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class TestInteger {
 
@@ -116,13 +120,44 @@ public class TestInteger {
 
 
     }
+
+    /**
+     * 测试 integer输出string
+     */
     @Test
     public void test4(){
         Integer a = 1;
         System.out.println("a = " + a.toString());
     }
 
-    public static void main(String[] args) {
-        System.out.println("nihao");
+    @Test
+    public void test(){
+        final Integer[] a = {1};
+        final Integer[] b = {0};
+        List<Integer> integers = Lists.newArrayList(1, 3, 3, 1, 3, 4, 5, 7, 2);
+        integers.forEach(integer -> {
+            a[0] += 1;
+            integers.forEach(integer1 -> {
+                b[0] += 1;
+            });
+        });
+        System.out.println("a = " + Arrays.toString(a));
+        System.out.println("b = " + Arrays.toString(b));
+    }
+
+    @Test
+    public void testModule(){
+        for (int j = 0; j <= 1000; j++) {
+            int module = getModule(j);
+            if (module == 0) {
+                System.out.println("module = " + j);
+            }
+        }
+
+
+    }
+
+    private int getModule(int a) {
+        return a % 100;
     }
 }

@@ -1,4 +1,4 @@
-package com.javaapi.test.test.type;
+package com.javaapi.test.test.type.doublecase;
 
 import org.junit.Test;
 

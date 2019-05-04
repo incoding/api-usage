@@ -3,6 +3,7 @@ package com.javaapi.test.test.javafeature.version8.streams.streamcomparator;
 import com.javaapi.test.test.javafeature.version8.streams.Person;
 import org.junit.Before;
 import org.junit.Test;
+import org.testng.collections.Lists;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -52,6 +53,7 @@ public class ClientComparator {
         };
     }
 
+
     public static int compareByNameThenAge(Person lhs, Person rhs) {
         if (lhs.getLastName().equals(rhs.getLastName())) {
             return lhs.getAge() - rhs.getAge();
@@ -60,12 +62,38 @@ public class ClientComparator {
         }
     }
 
+    /**
+     * 注意 stream sorted后是不影响原数据的
+     */
+    @Test
+    public void testInfluence(){
+        List<Integer> list = Lists.newArrayList(6, 2, 4, 1, 5, 8, 9, 3, 7 );
+        List<Integer> collect = list.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
+        System.out.println("collect = " + collect);
+        System.out.println("list = " + list);
+    }
+
+
+    @Test
+    public void testCompareInt(){
+        List<Integer> list = Lists.newArrayList(6, 2, 4, 1, 5, 8, 9, 3, 7 );
+        List<Integer> collect = list.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
+        System.out.println("collect = " + collect);
+    }
+
+
+    /**
+     * use method reference
+     */
     @Test
     public void test(){
         List<Person> collect = javaProgrammers.stream().sorted(ClientComparator::compareByNameThenAge).collect(Collectors.toList());
         System.out.println("collect = " + collect);
     }
 
+    /**
+     * use comparator
+     */
     @Test
     public void testComparator(){
         List<Person> collect = javaProgrammers.stream().sorted(Comparator.comparing(Person::getAge)).collect(Collectors.toList());

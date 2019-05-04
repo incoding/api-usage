@@ -1,4 +1,4 @@
-package com.javaapi.test.test.type.testChar;
+package com.javaapi.test.test.type.charcase;
 
 import org.junit.Test;
 

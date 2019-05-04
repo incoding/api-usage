@@ -1,6 +1,8 @@
 package com.javaapi.test.application.test.testmockito.mockitSpring;
 
+import com.javaapi.test.application.test.testmockito.mockitSpring.dao.IRouteMatrixDataProvider;
 import com.javaapi.test.application.test.testmockito.mockitSpring.po.RouteMatrix;
+import com.javaapi.test.application.test.testmockito.mockitSpring.service.IRouteService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +27,7 @@ import static org.mockito.Mockito.when;
 public class Client{  
    @InjectMocks  
    @Autowired  
-   private IRouteService service;  
+   private IRouteService service;
   
    @Mock  
    private IRouteMatrixDataProvider provider;
@@ -38,18 +40,51 @@ public class Client{
    public void myBefore() {  
        MockitoAnnotations.initMocks(this);  
    }  
-  
+
+
    @Test  
    public void testGetAirlineCode() {  
        RouteMatrix rm = new RouteMatrix();  
        rm.setAirlineCode("kkk");  
        Mockito.when(this.provider.getRevenueRoute("HKG", "AMM", true)).thenReturn(rm);  
        String code = this.service.getAirlineCode("HKG", "AMM", this.brand, this.cInfo, true);  
-       Assert.assertNotNull(code);  
-       Assert.assertEquals("nihao", code);  
+       Assert.assertEquals("nihao", code);
        code = this.service.getAirlineCode("HKG", "KKK", this.brand, this.cInfo, true);  
        Assert.assertNull(code);  
    }
+
+
+    /**
+     * when you are using mock ,wrong param will get nothing
+     */
+    @Test
+    public void testGetAirlineCode12() {
+        RouteMatrix value = new RouteMatrix();
+        String mockParam = "kk_airCode";
+        value.setAirlineCode(mockParam);
+        when(provider.getRevenueRoute("HKG", "AMM", true)).thenReturn(value);
+        RouteMatrix revenueRoute = provider.getRevenueRoute("HKG", "AMM", true);
+        Assert.assertNotNull(revenueRoute);
+        Assert.assertEquals(mockParam, revenueRoute.getAirlineCode());
+
+        // wrong case
+        RouteMatrix revenueRoute2 = provider.getRevenueRoute("PEK", "SHA", true);
+        Assert.assertNotNull(revenueRoute2);
+        Assert.assertEquals("nihao", revenueRoute2.getAirlineCode());
+    }
+
+    /**
+     * use Matchers.anyString
+     */
+    @Test
+    public void testGetAirlineCode22() {
+        RouteMatrix value = new RouteMatrix();
+        value.setAirlineCode("kk_airCode");
+        when(provider.getRevenueRoute(Matchers.anyString(), Matchers.anyString(), Matchers.anyBoolean())).thenReturn(value);
+        RouteMatrix revenueRoute = provider.getRevenueRoute("HKG", "AMM", true);
+        Assert.assertNotNull(revenueRoute);
+        Assert.assertEquals("nihao", revenueRoute.getAirlineCode());
+    }
 
     /**
      * 方法调用时，如果不想指定一个明确的参数，就可以用下面这样的写法来表示任意的参数。

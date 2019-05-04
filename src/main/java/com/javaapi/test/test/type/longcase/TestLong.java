@@ -1,4 +1,4 @@
-package com.javaapi.test.test.type.TestLong;
+package com.javaapi.test.test.type.longcase;
 
 import org.junit.Test;
 
