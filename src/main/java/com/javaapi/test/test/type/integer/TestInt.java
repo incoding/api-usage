@@ -45,4 +45,29 @@ public class TestInt {
         System.out.println(CHECKED);
         System.out.println(CHECKED == 2);
     }
+
+    /**
+     * 测试 只要是 null 跟原始类型比就会报错
+     */
+    @Test
+    public void testNullFirst(){
+        Integer a = null ;
+        if (a !=0) {
+            System.out.println("YES");
+        }else{
+            System.out.println("NO");
+        }
+    }
+    /**
+     * 测试 只要是 null 跟原始类型比就会报错
+     */
+    @Test
+    public void testNullSecond(){
+        Integer a = null ;
+        if (0 != a) {
+            System.out.println("YES");
+        }else{
+            System.out.println("NO");
+        }
+    }
 }

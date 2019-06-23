@@ -10,16 +10,34 @@ import java.util.Map;
  * 可以用来切分url 参数
  */
 public class TestSplitter {
+    /**
+     * 测试不使用 omitEmptyStrings
+     * 传入 foo,bar,qux,
+     * 得到 [foo, bar, qux, ]
+     */
     @Test
-    public void testSplitter() {
+    public void testSplitterNoneOmitEmptyStrings() {
         Iterable<String> split = Splitter.on(',')
-                .trimResults()
-                .omitEmptyStrings()
-                .split("foo,bar,,   qux");
+                                         .split("foo,bar,qux,");
         System.out.println("split = " + split);
     }
 
+    /**
+     * 测试使用 omitEmptyStrings
+     * 传入 foo,bar,,   qux,
+     * 得到 [foo, bar,    qux]
+     */
+    @Test
+    public void testSplitter() {
+        Iterable<String> split = Splitter.on(',')
+                .omitEmptyStrings()
+                .split("foo,bar,,   qux,");
+        System.out.println("split = " + split);
+    }
 
+    /**
+     * 传null异常
+     */
     @Test
     public void testSplitter0() {
         Iterable<String> split = Splitter.on(',')
@@ -74,5 +92,12 @@ public class TestSplitter {
         System.out.println("split = " + split);
         System.out.println("split = " + split.get("nihao1"));
 
+    }
+
+
+    @Test
+    public void testOne(){
+        List<String> strings = Splitter.on(",").splitToList("12");
+        System.out.println("strings = " + strings);
     }
 }
