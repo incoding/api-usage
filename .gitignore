@@ -1,4 +1,4 @@
-log/
+/log/
 !/src/main/java/com/javaapi/test/application/log/*
 output/
 /logContentFile.log*

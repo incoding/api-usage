@@ -1,4 +1,4 @@
-package com.javaapi.test.test.type.String.testString;
+package com.javaapi.test.test.type.String.testString.stringpool;
 
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;

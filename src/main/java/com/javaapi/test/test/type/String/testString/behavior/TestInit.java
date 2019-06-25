@@ -1,4 +1,4 @@
-package com.javaapi.test.test.type.String.testString;
+package com.javaapi.test.test.type.String.testString.behavior;
 
 public class TestInit {
 	// 赋值为null了，就不可以在static再赋值了

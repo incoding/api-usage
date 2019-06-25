@@ -1,4 +1,4 @@
-package com.javaapi.test.test.type.String.testString;
+package com.javaapi.test.test.type.String.testString.stringpool;
 
 public class StringTest {
     public static void main(String[] args) {

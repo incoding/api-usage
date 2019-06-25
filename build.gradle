@@ -20,8 +20,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'net.ltgt.apt-idea'
-
-
+apply plugin: 'idea'
 
 sourceSets.main.resources { srcDirs = ["src/main/java","src/main/resources"]; include "**/*" }
 
@@ -138,8 +137,6 @@ exclude(module: 'netty')
 
 
 // 新增
-
-
 //    compile group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
 //    compile group: 'org.glassfish.web', name: 'javax.el', version: '3.0.0'
     //    compile group: 'org.hibernate', name: 'hibernate-validator', version:'5.0.0.Final'
@@ -157,9 +154,3 @@ dependencyManagement {
         mavenBom "org.springframework:spring-framework-bom:$springVersion"
     }
 }
-//processResources {
-//    from('src/main/java') {
-//        include '**/*'
-//        exclude "**/*.java"
-//    }
-//}

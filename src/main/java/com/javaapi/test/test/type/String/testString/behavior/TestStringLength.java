@@ -1,4 +1,4 @@
-package com.javaapi.test.test.type.String.testString;
+package com.javaapi.test.test.type.String.testString.behavior;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
