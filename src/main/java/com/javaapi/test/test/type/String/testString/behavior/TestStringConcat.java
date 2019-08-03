@@ -6,6 +6,14 @@ import org.junit.Test;
  * Created by user on 2019/6/25
  */
 public class TestStringConcat {
+
+    @Test
+    public void testNull(){
+        String a = null;
+        String b = a+"nihao";
+        System.out.println("b = " + b);
+    }
+
     @Test
     public void test(){
         String a = null;

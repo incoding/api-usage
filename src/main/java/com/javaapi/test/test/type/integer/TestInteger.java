@@ -130,6 +130,9 @@ public class TestInteger {
         System.out.println("a = " + a.toString());
     }
 
+    /**
+     * Integer 传递到参数,要进行包装才能累加
+     */
     @Test
     public void test(){
         final Integer[] a = {1};
@@ -159,5 +162,16 @@ public class TestInteger {
 
     private int getModule(int a) {
         return a % 100;
+    }
+
+
+    /**
+     * 直接valueOf是会报错的
+     */
+    @Test
+    public void testValueOf(){
+        Integer integer = Integer.valueOf("22.5");
+        System.out.println("integer = " + integer);
+
     }
 }
