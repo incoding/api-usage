@@ -9,7 +9,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.util.TypeUtils;
 import com.javaapi.test.buisness.data.json.fastjson.pojo.generic.Withdraw;
 import com.javaapi.test.buisness.data.json.fastjson.pojo.generic.WithdrawVo;
-import com.javaapi.test.spring.ioc.xml.Student;
+import com.javaapi.test.spring.spring.ioc.xml.Student;
 import jodd.io.FileUtil;
 import org.apache.commons.lang.CharEncoding;
 import org.apache.commons.lang.time.StopWatch;

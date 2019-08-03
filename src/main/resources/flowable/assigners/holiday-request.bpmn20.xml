@@ -35,7 +35,7 @@
         </sequenceFlow>
 
         <serviceTask id="externalSystemCall" name="Enter holidays in external system"
-                     flowable:class="com.javaapi.test.flowable.first.CallExternalSystemDelegate"/>
+                     flowable:class="com.javaapi.test.projects.flowable.first.CallExternalSystemDelegate"/>
         <sequenceFlow sourceRef="externalSystemCall" targetRef="holidayApprovedTask"/>
 
         <userTask id="holidayApprovedTask" name="Holiday approved" flowable:assignee="${employee}"/>

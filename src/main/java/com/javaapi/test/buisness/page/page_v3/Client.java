@@ -4,7 +4,7 @@ import org.junit.Test;
 
 /**
  * 需要引入spring-data-commons
- * @see com.javaapi.test.dao.baseDao.page.PageOneRequest
+ * @see com.javaapi.test.buisness.dao.baseDao.page.PageOneRequest
  */
 public class Client {
 

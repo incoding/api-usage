@@ -44,10 +44,10 @@
 	<logger name="com.google.code.yanf4j" level="INFO" />
 	<logger name="com.google.code.yanf4j.core" level="INFO" />
 	<logger name="com.javaapi.test" level="INFO" />
-	<logger name="com.javaapi.test.spring.aop.springaop1ProxyFactoryBean1">
+	<logger name="com.javaapi.test.spring.spring.aop.springaop1ProxyFactoryBean1">
 		<level value="INFO" />
 	</logger>
-	<logger name="com.javaapi.test.spring.aop.springaop2AutoProxy2">
+	<logger name="com.javaapi.test.spring.spring.aop.springaop2AutoProxy2">
 		<level value="INFO" />
 	</logger>
 	<logger name="org.springframework">
@@ -64,7 +64,7 @@
 	<logger name="java.sql.ResultSet" level="DEBUG" />
 	
 <!-- 	com.javaapi.test.dao  自己得dao层设置为Trace级别就能让mybatis打印所有返回值 -->
-	<logger name="com.javaapi.test.dao" level="ALL" />
+	<logger name="com.javaapi.test.buisness.dao" level="ALL" />
     <logger name="org.hibernate.engine.jdbc.spi.SqlStatementLoggger" level="DEBUG"/>
 
 

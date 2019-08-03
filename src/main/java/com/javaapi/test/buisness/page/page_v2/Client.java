@@ -1,6 +1,6 @@
 package com.javaapi.test.buisness.page.page_v2;
 
-import com.javaapi.test.dao.domain.page2.DataPage;
+import com.javaapi.test.buisness.dao.domain.page2.DataPage;
 import org.junit.Test;
 
 /**

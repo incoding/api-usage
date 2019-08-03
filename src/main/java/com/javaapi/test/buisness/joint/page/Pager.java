@@ -1,7 +1,7 @@
 package com.javaapi.test.buisness.joint.page;
 
-import com.javaapi.test.dao.domain.page1.parent.Paginable;
-import com.javaapi.test.dao.domain.page1.parent.SimplePage;
+import com.javaapi.test.buisness.dao.domain.page1.parent.Paginable;
+import com.javaapi.test.buisness.dao.domain.page1.parent.SimplePage;
 
 import java.util.List;
 

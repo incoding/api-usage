@@ -7,12 +7,12 @@
     <persistence-unit name="PersistenceUnit" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-        <class>com.javaapi.test.dao.jpa.primitiveJpa.entity.Geek</class>
-        <class>com.javaapi.test.dao.jpa.primitiveJpa.entity.IdCard</class>
-        <class>com.javaapi.test.dao.jpa.primitiveJpa.entity.Period</class>
-        <class>com.javaapi.test.dao.jpa.primitiveJpa.entity.Person</class>
-        <class>com.javaapi.test.dao.jpa.primitiveJpa.entity.Phone</class>
-        <class>com.javaapi.test.dao.jpa.primitiveJpa.entity.Project</class>
+        <class>com.javaapi.test.buisness.dao.jpa.primitiveJpa.entity.Geek</class>
+        <class>com.javaapi.test.buisness.dao.jpa.primitiveJpa.entity.IdCard</class>
+        <class>com.javaapi.test.buisness.dao.jpa.primitiveJpa.entity.Period</class>
+        <class>com.javaapi.test.buisness.dao.jpa.primitiveJpa.entity.Person</class>
+        <class>com.javaapi.test.buisness.dao.jpa.primitiveJpa.entity.Phone</class>
+        <class>com.javaapi.test.buisness.dao.jpa.primitiveJpa.entity.Project</class>
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>

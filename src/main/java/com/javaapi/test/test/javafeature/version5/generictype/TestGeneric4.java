@@ -6,7 +6,7 @@ import java.util.Collection;
 import com.javaapi.test.test.javafeature.version5.generictype.generic.GenericSuper;
 import org.junit.Test;
 
-import com.javaapi.test.dao.mybatis.User;
+import com.javaapi.test.buisness.dao.mybatis.User;
 import com.javaapi.test.test.javafeature.version5.generictype.generic.GenericExtends;
 import com.javaapi.test.buisness.skill.branch.eg.PeopleI;
 
