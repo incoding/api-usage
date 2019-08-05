@@ -18,7 +18,7 @@
 
 
 	<bean id="agentScannerConfigurer" class="com.javaapi.test.spring.spring.feature.custombeanload.customscaner.frame.AgentScannerConfigurer">
-		<property name="basePackage" value="com.javaapi.test.spring.spring.feature.custombeanload.agent" />
+		<property name="basePackage" value="com.javaapi.test.spring.spring.feature.custombeanload.customscaner.agent" />
 	</bean>
 
 

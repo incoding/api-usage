@@ -1,5 +1,6 @@
 package com.javaapi.test.spring.spring.feature.custombeanload.customscaner;
 
+import com.javaapi.test.spring.spring.feature.custombeanload.customscaner.agent.CustomServiceInvoker;
 import com.javaapi.test.spring.spring.feature.custombeanload.customscaner.frame.AgentService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -23,10 +24,16 @@ public class Client {
     @Autowired
     ApplicationContext applicationContext;
 
+    @Autowired
+    private CustomServiceInvoker customServiceInvoker;
+
     @Test
     public void test(){
         String[] beanNamesForAnnotation = applicationContext.getBeanNamesForAnnotation(AgentService.class);
         log.info("result = {}",Arrays.toString(beanNamesForAnnotation));
+
+        String s = customServiceInvoker.invokeRemote();
+        System.out.println("s = " + s);
     }
 
 }

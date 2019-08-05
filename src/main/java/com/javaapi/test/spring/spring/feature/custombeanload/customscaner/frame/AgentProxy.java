@@ -13,7 +13,7 @@ public class AgentProxy implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         //这里不调用原方法,而是进行httpclient 调用
 //        method.invoke(proxy, args);
-        String someResult = null;
+        String someResult = "this is result";
 //        someResult = httpclient.post(method,args);
         return someResult;
 

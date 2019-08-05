@@ -6,5 +6,5 @@ package com.javaapi.test.spring.spring.feature.custombeanload.customscaner.agent
  */
 @com.javaapi.test.spring.spring.feature.custombeanload.customscaner.frame.AgentService
 public interface CustomServiceInvoker {
-
+    public String invokeRemote();
 }
