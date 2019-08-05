@@ -1,4 +1,4 @@
-package com.javaapi.test.spring.spring.feature.custombeanload.customcommon;
+package com.javaapi.test.spring.spring.custom.custombeanload.customcommon;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

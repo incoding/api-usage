@@ -17,8 +17,8 @@
 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
 
-	<bean id="agentScannerConfigurer" class="com.javaapi.test.spring.spring.feature.custombeanload.customscaner.frame.AgentScannerConfigurer">
-		<property name="basePackage" value="com.javaapi.test.spring.spring.feature.custombeanload.customscaner.agent" />
+	<bean id="agentScannerConfigurer" class="com.javaapi.test.spring.spring.custom.custombeanload.customscaner.frame.AgentScannerConfigurer">
+		<property name="basePackage" value="com.javaapi.test.spring.spring.custom.custombeanload.customscaner.agent" />
 	</bean>
 
 

@@ -1,4 +1,4 @@
-package com.javaapi.test.spring.spring.feature.custombeanload.customcommon;
+package com.javaapi.test.spring.spring.custom.custombeanload.customcommon;
 
 import org.springframework.stereotype.Component;
 

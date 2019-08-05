@@ -1,4 +1,4 @@
-package com.javaapi.test.spring.spring.feature.custombeanload.customscaner.frame;
+package com.javaapi.test.spring.spring.custom.custombeanload.customscaner.frame;
 
 import java.lang.annotation.*;
 

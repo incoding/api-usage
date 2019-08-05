@@ -1,7 +1,7 @@
-package com.javaapi.test.spring.spring.feature.custombeanload.customscaner;
+package com.javaapi.test.spring.spring.custom.custombeanload.customscaner;
 
-import com.javaapi.test.spring.spring.feature.custombeanload.customscaner.agent.CustomServiceInvoker;
-import com.javaapi.test.spring.spring.feature.custombeanload.customscaner.frame.AgentService;
+import com.javaapi.test.spring.spring.custom.custombeanload.customscaner.agent.CustomServiceInvoker;
+import com.javaapi.test.spring.spring.custom.custombeanload.customscaner.frame.AgentService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
