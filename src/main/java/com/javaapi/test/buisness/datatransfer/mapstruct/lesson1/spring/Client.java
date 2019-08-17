@@ -1,7 +1,7 @@
-package com.javaapi.test.buisness.datatransfer.mapstruct.spring;
+package com.javaapi.test.buisness.datatransfer.mapstruct.lesson1.spring;
 
-import com.javaapi.test.buisness.datatransfer.mapstruct.DataAfter;
-import com.javaapi.test.buisness.datatransfer.mapstruct.DataBefore;
+import com.javaapi.test.buisness.datatransfer.mapstruct.lesson1.DataAfter;
+import com.javaapi.test.buisness.datatransfer.mapstruct.lesson1.DataBefore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * Created by user on 2019/5/19
+ * 示范 映射不同字段
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("applicationContext.xml")

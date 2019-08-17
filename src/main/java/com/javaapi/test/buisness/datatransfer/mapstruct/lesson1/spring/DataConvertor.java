@@ -1,7 +1,7 @@
-package com.javaapi.test.buisness.datatransfer.mapstruct.spring;
+package com.javaapi.test.buisness.datatransfer.mapstruct.lesson1.spring;
 
-import com.javaapi.test.buisness.datatransfer.mapstruct.DataAfter;
-import com.javaapi.test.buisness.datatransfer.mapstruct.DataBefore;
+import com.javaapi.test.buisness.datatransfer.mapstruct.lesson1.DataAfter;
+import com.javaapi.test.buisness.datatransfer.mapstruct.lesson1.DataBefore;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.datatransfer.mapstruct;
+package com.javaapi.test.buisness.datatransfer.mapstruct.lesson1;
 
 import lombok.Data;
 
