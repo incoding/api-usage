@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.pattern.listener;
+package com.javaapi.test.buisness.pattern.ext.listener;
 
 import com.javaapi.test.test.javafeature.version5.generictype.gengericinterface.FruitGenerator;
 

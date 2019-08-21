@@ -134,6 +134,8 @@ exclude(module: 'netty')
 
     compile group: 'org.flowable', name: 'flowable-engine', version: '6.4.1'
     compile group: 'com.squareup', name: 'javapoet', version: '1.11.1'
+    compile group: 'org.squirrelframework', name: 'squirrel-foundation', version: '0.3.8'
+
 
 
 // 新增
