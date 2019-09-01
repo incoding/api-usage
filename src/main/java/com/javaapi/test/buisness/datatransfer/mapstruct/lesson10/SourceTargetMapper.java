@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * Created by user on 2019/8/17
+ * 示范映射map
  */
 @Mapper
 public interface SourceTargetMapper {

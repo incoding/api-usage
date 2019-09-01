@@ -3,7 +3,7 @@ package com.javaapi.test.buisness.datatransfer.mapstruct.lesson11;
 import org.junit.Test;
 
 /**
- * Created by user on 2019/8/17
+ * 示范映射枚举
  */
 public class Client {
     @Test
@@ -14,6 +14,5 @@ public class Client {
         System.out.println("externalOrderType2 = " + externalOrderType2);
         ExternalOrderType externalOrderType3 = OrderMapper.INSTANCE.orderTypeToExternalOrderType(OrderType.STANDARD);
         System.out.println("externalOrderType3 = " + externalOrderType3);
-
     }
 }

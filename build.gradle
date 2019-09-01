@@ -135,6 +135,10 @@ exclude(module: 'netty')
     compile group: 'org.flowable', name: 'flowable-engine', version: '6.4.1'
     compile group: 'com.squareup', name: 'javapoet', version: '1.11.1'
     compile group: 'org.squirrelframework', name: 'squirrel-foundation', version: '0.3.8'
+    // flink
+    compile group: 'org.apache.flink', name: 'flink-java', version: '1.9.0'
+    compile group: 'org.apache.flink', name: 'flink-streaming-java_2.11', version: '1.9.0'
+    compile group: 'org.apache.flink', name: 'flink-clients_2.11', version: '1.9.0'
 
 
 
@@ -147,6 +151,7 @@ exclude(module: 'netty')
     compileOnly 'org.mapstruct:mapstruct-processor:1.3.0.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.3.0.Final'
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
+
 
 
 
