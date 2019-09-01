@@ -1,6 +1,5 @@
 package com.javaapi.test.buisness.pattern.ext.builder;
 
-import com.javaapi.test.buisness.pattern.ext.builder.builder.Builder3;
 import com.javaapi.test.buisness.pattern.ext.builder.impl.Person2Builder;
 import com.javaapi.test.buisness.pattern.ext.builder.impl.Person3Builder;
 import com.javaapi.test.buisness.pattern.ext.builder.impl.PersonBuilder;
@@ -14,6 +13,7 @@ import javax.annotation.Resource;
 
 /**
  * 示范不同构造器
+ * 使用spring bean形式的builder可以获得更多能力
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("applicationContext.xml")
