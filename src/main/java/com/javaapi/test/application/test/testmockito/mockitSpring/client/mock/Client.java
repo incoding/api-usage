@@ -1,4 +1,4 @@
-package com.javaapi.test.application.test.testmockito.mockitSpring;
+package com.javaapi.test.application.test.testmockito.mockitSpring.client.mock;
 
 import com.javaapi.test.application.test.testmockito.mockitSpring.dao.IRouteMatrixDataProvider;
 import com.javaapi.test.application.test.testmockito.mockitSpring.po.RouteMatrix;
@@ -38,24 +38,26 @@ public class Client{
   
    @Before  
    public void myBefore() {  
-       MockitoAnnotations.initMocks(this);  
-   }  
-
-
-   @Test  
-   public void testGetAirlineCode() {  
-       RouteMatrix rm = new RouteMatrix();  
-       rm.setAirlineCode("kkk");  
-       Mockito.when(this.provider.getRevenueRoute("HKG", "AMM", true)).thenReturn(rm);  
-       String code = this.service.getAirlineCode("HKG", "AMM", this.brand, this.cInfo, true);  
-       Assert.assertEquals("nihao", code);
-       code = this.service.getAirlineCode("HKG", "KKK", this.brand, this.cInfo, true);  
-       Assert.assertNull(code);  
+       MockitoAnnotations.initMocks(this);
    }
 
 
     /**
-     * when you are using mock ,wrong param will get nothing
+     * mock 初步使用
+     */
+    @Test
+    public void testGetAirlineCode() {
+        RouteMatrix rm = new RouteMatrix();
+        rm.setAirlineCode("kkk");
+        Mockito.when(this.provider.getRevenueRoute("HKG", "AMM", true)).thenReturn(rm);
+        String code = this.service.getAirlineCode("HKG", "AMM", this.brand, this.cInfo, true);
+        Assert.assertEquals(rm.getAirlineCode(), code);
+    }
+
+
+    /**
+     * mock 参数不正确返回值为null
+     * when you are using mock ,wrong param will get null
      */
     @Test
     public void testGetAirlineCode12() {
@@ -83,14 +85,13 @@ public class Client{
         when(provider.getRevenueRoute(Matchers.anyString(), Matchers.anyString(), Matchers.anyBoolean())).thenReturn(value);
         RouteMatrix revenueRoute = provider.getRevenueRoute("HKG", "AMM", true);
         Assert.assertNotNull(revenueRoute);
-        Assert.assertEquals("nihao", revenueRoute.getAirlineCode());
+        Assert.assertEquals(value.getAirlineCode(), revenueRoute.getAirlineCode());
     }
 
     /**
      * 方法调用时，如果不想指定一个明确的参数，就可以用下面这样的写法来表示任意的参数。
      * 但是这里也有一个限制就是，如果有一个参数使用了any***()，则所有的参数都必需使用这种方式，不能像下面这样写
      Mockito.when(this.provider.getRevenueRoute(Matchers.anyString(), Matchers.anyString(), true))
-
      */
    @Test  
    public void testGetAirlineCode2() {  

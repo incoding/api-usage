@@ -1,13 +1,16 @@
-package com.javaapi.test.application.test.testmockito.mockitSpring.service;
+package com.javaapi.test.application.test.testmockito.mockitSpring.client.spy.service;
 
 import com.javaapi.test.application.test.testmockito.mockitSpring.dao.IRouteMatrixDataProvider;
 import com.javaapi.test.application.test.testmockito.mockitSpring.po.RouteMatrix;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.javaapi.test.application.test.testmockito.mockitSpring.service.IRouteService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 @Service
-public class RouteServiceImpl implements IRouteService {
-    @Autowired
+public class RouteWay2ServiceImpl implements IRouteService {
+
+    @Resource(name = "routeMatrixDataWay2ProviderImpl")
     private IRouteMatrixDataProvider provider;
 
     @Override
@@ -15,7 +18,6 @@ public class RouteServiceImpl implements IRouteService {
                                  Object cInfo, boolean b) {
         System.err.println("getAirlineCode method");
         RouteMatrix revenueRoute = provider.getRevenueRoute(string, string2, b);
-        System.err.println(revenueRoute);
         return revenueRoute.getAirlineCode();
     }
 
