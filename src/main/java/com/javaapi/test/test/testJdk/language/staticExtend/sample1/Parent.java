@@ -1,4 +1,4 @@
-package com.javaapi.test.test.testJdk.staticExtend.sample2;
+package com.javaapi.test.test.testJdk.language.staticExtend.sample1;
 
 /**
  * Created by user on 17/7/5.

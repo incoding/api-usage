@@ -1,4 +1,4 @@
-package com.javaapi.test.test.runtime;
+package com.javaapi.test.test.testJdk.runtime;
 
 import java.io.Console;
 

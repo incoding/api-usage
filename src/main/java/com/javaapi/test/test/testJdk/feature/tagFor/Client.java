@@ -1,4 +1,4 @@
-package com.javaapi.test.test.testJdk.tagFor;
+package com.javaapi.test.test.testJdk.feature.tagFor;
 
 import org.junit.Test;
 

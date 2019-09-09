@@ -1,4 +1,4 @@
-package com.javaapi.test.test.testJdk.jsEngine;
+package com.javaapi.test.test.testJdk.feature.jsEngine;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;

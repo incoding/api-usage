@@ -1,4 +1,4 @@
-package com.javaapi.test.test.testJdk.staticExtend.sample1;
+package com.javaapi.test.test.testJdk.language.staticExtend.sample1;
 
 class Son extends Parent {
 //    public static void getName() {

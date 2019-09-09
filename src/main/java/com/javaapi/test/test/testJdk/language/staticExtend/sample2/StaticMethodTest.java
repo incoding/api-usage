@@ -1,4 +1,4 @@
-package com.javaapi.test.test.testJdk.staticExtend.sample2;
+package com.javaapi.test.test.testJdk.language.staticExtend.sample2;
 
 import org.junit.Test;
 
