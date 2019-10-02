@@ -139,6 +139,9 @@ exclude(module: 'netty')
     compile group: 'org.apache.flink', name: 'flink-java', version: '1.9.0'
     compile group: 'org.apache.flink', name: 'flink-streaming-java_2.11', version: '1.9.0'
     compile group: 'org.apache.flink', name: 'flink-clients_2.11', version: '1.9.0'
+    // ttl
+    compile group: 'com.alibaba', name: 'transmittable-thread-local', version: '2.11.0'
+
 
 
 

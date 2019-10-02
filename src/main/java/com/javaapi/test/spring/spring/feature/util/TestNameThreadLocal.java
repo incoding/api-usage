@@ -13,5 +13,6 @@ public class TestNameThreadLocal {
         n.set("nihao");
         n.set("hello");
         System.out.println("n = " + n);
+        n.remove();
     }
 }
