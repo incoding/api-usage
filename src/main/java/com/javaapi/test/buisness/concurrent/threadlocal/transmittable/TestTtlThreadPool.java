@@ -23,10 +23,11 @@ public class TestTtlThreadPool {
     private static ThreadPoolExecutor executor = new ThreadPoolExecutor(CORE_SIZE, 20, 1000, TimeUnit.HOURS, new ArrayBlockingQueue<Runnable>(100));
 
     /**
-     * 使用原始类型,然后包装
+     * 包装任务
+     * 将包装过的任务传入线程池
      */
     @Test
-    public void testInheritableThreadLocal() {
+    public void testTaskWrapper() {
         initCoreSize();
         InheritableRequestContext requestContext = new InheritableRequestContext();
         requestContext.setCount(111);
@@ -37,11 +38,12 @@ public class TestTtlThreadPool {
     }
 
     /**
-     * 通过使用特定线程池
+     * 通过包装线程池
+     *
      * 省去每次Runnable和Callable传入线程池时的修饰，这个逻辑可以在线程池中完成。
      */
     @Test
-    public void test() {
+    public void testThreadPoolWrapper() {
         // 额外的处理，生成修饰了的对象executorService
         initCoreSize();
         ExecutorService executorService = TtlExecutors.getTtlExecutorService(executor);
@@ -60,7 +62,8 @@ public class TestTtlThreadPool {
 
         @Override
         public void run() {
-            System.out.println("context count = " + requestContext.getCount());
+            String name = Thread.currentThread().getName();
+            System.out.println("threadname=" + name + " context count = " + requestContext.getCount());
         }
     }
 
@@ -78,7 +81,7 @@ public class TestTtlThreadPool {
     }
 
     /**
-     * 初始化核心线程池, 避免新建线程
+     * 初始化核心线程池, 避免新建线程.也就是模拟已经创建好线程的线程池
      */
     private void initCoreSize() {
         for (int i = 0; i < CORE_SIZE; i++) {
@@ -86,7 +89,7 @@ public class TestTtlThreadPool {
             executor.execute(new Runnable() {
                 @Override
                 public void run() {
-                    System.out.println("init" + finalI);
+                    System.out.println("thread=" + Thread.currentThread().getName() + " =" + finalI);
                 }
             });
 
