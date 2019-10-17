@@ -6,7 +6,10 @@ import org.springframework.stereotype.Component;
 public class CustomerBoImp  implements CustomerBo {
 	@Override
 	public void addCustomer() {
-		System.out.println(CustomerBoImp.class.getSimpleName());
+        if (true) {
+            throw new RuntimeException();
+        }
+        System.out.println(CustomerBoImp.class.getSimpleName());
 	}
 
 	@Override
