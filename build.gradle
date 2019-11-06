@@ -141,6 +141,12 @@ exclude(module: 'netty')
     compile group: 'org.apache.flink', name: 'flink-clients_2.11', version: '1.9.0'
     // ttl
     compile group: 'com.alibaba', name: 'transmittable-thread-local', version: '2.11.0'
+//    resilience4j
+    compile group: 'io.github.resilience4j', name: 'resilience4j-retry', version: '1.1.0'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-circuitbreaker', version: '1.1.0'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-ratelimiter', version: '1.1.0'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-bulkhead', version: '1.1.0'
+
 
 
 
