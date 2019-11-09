@@ -1,19 +1,17 @@
 package com.javaapi.test.spring.spring.custom.registry.exceptionhandler.handler.impl;
 
+import com.javaapi.test.buisness.joint.result.base.BaseResult;
 import com.javaapi.test.spring.spring.custom.registry.exceptionhandler.handler.ExceptionHandler;
+import com.javaapi.test.spring.spring.custom.registry.exceptionhandler.handler.constants.ExceptionHandlerConstants;
 import com.javaapi.test.spring.spring.custom.registry.exceptionhandler.model.ExceptionContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by user on 2019/10/19
+ * 默认的异常处理器
+ * 默认返回JSON
  */
 @Component
-public class CommonExceptionHandler implements ExceptionHandler {
-
-    Logger logger = LoggerFactory.getLogger(this.getClass());
-
+public class JsonExceptionHandler implements ExceptionHandler {
 
     /**
      * 异常处理顺序
@@ -22,7 +20,7 @@ public class CommonExceptionHandler implements ExceptionHandler {
      */
     @Override
     public Integer getOrder() {
-        return 1;
+        return Integer.MAX_VALUE;
     }
 
     /**
@@ -32,15 +30,13 @@ public class CommonExceptionHandler implements ExceptionHandler {
      */
     @Override
     public String getCode() {
-        return "390";
+        return ExceptionHandlerConstants.EXCEPTION_DEFAULT_HANDLER;
     }
 
     @Override
     public void handle(ExceptionContext exceptionHandler) {
-        String message = exceptionHandler.getMsg();
-        if (message.contains("common error")) {
-            logger.error("发现普通错误,code={} message={}", message);
-        }
-        exceptionHandler.setNeedContinue(true);
+        BaseResult tBaseResult = BaseResult.newError(exceptionHandler.getException().getError());
+        exceptionHandler.setResult(tBaseResult);
+        exceptionHandler.setNeedContinue(false);
     }
 }

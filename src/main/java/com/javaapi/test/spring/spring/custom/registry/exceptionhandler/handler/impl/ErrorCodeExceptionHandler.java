@@ -2,7 +2,6 @@ package com.javaapi.test.spring.spring.custom.registry.exceptionhandler.handler.
 
 import com.javaapi.test.spring.spring.custom.registry.exceptionhandler.handler.ExceptionHandler;
 import com.javaapi.test.spring.spring.custom.registry.exceptionhandler.model.ExceptionContext;
-import com.javaapi.test.spring.spring.custom.registry.exceptionhandler.model.ExceptionResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class ErrorCodeExceptionHandler implements ExceptionHandler {
+
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
@@ -35,13 +35,11 @@ public class ErrorCodeExceptionHandler implements ExceptionHandler {
     }
 
     @Override
-    public ExceptionResult handle(ExceptionContext exceptionHandler) {
-        String message = exceptionHandler.getMessage();
+    public void handle(ExceptionContext exceptionHandler) {
+        String message = exceptionHandler.getMsg();
         if (message.contains("special error")) {
             logger.error("发现特别错误,code={} message={}", message);
         }
-        ExceptionResult result = new ExceptionResult<>();
-        result.setNeedContinue(true);
-        return result;
+        exceptionHandler.setNeedContinue(true);
     }
 }

@@ -1,7 +1,6 @@
 package com.javaapi.test.spring.spring.custom.registry.exceptionhandler.handler;
 
 import com.javaapi.test.spring.spring.custom.registry.exceptionhandler.model.ExceptionContext;
-import com.javaapi.test.spring.spring.custom.registry.exceptionhandler.model.ExceptionResult;
 
 /**
  * 异常处理器
@@ -22,5 +21,5 @@ public interface ExceptionHandler {
      */
     public String getCode();
 
-    ExceptionResult handle(ExceptionContext exceptionHandler);
+    void handle(ExceptionContext exceptionHandler);
 }

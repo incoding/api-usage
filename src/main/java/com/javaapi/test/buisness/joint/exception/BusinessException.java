@@ -5,7 +5,7 @@ import com.javaapi.test.buisness.joint.error.BaseErrorConstant;
 
 public class BusinessException extends RuntimeException {
     private static final long serialVersionUID = 1L;
-    private BaseError errorCode;
+    private BaseError error;
     private Object ext;
 
     public <T> T getExt() {
@@ -20,50 +20,50 @@ public class BusinessException extends RuntimeException {
         super();
     }
 
-    public BusinessException(BaseError errorCode) {
-        super(errorCode.getMsg());
-        this.errorCode = errorCode;
+    public BusinessException(BaseError error) {
+        super(error.getMsg());
+        this.error = error;
     }
 
-    public BusinessException(BaseError errorCode, Throwable cause) {
-        super(errorCode.getMsg(), cause);
-        this.errorCode = errorCode;
+    public BusinessException(BaseError error, Throwable cause) {
+        super(error.getMsg(), cause);
+        this.error = error;
     }
 
     public BusinessException(String message) {
         super(message);
-        this.errorCode = new BaseError(BaseErrorConstant.G_ERROR, message);
+        this.error = new BaseError(BaseErrorConstant.G_ERROR, message);
     }
 
     public BusinessException(String message, Throwable cause) {
         super(message, cause);
-        this.errorCode = new BaseError(BaseErrorConstant.G_ERROR, message);
+        this.error = new BaseError(BaseErrorConstant.G_ERROR, message);
     }
 
     public BusinessException(String key, String message) {
         super(message);
-        this.errorCode = new BaseError(key, message);
+        this.error = new BaseError(key, message);
     }
 
     public BusinessException(String key, String message, Throwable cause) {
         super(message, cause);
-        this.errorCode = new BaseError(key, message);
+        this.error = new BaseError(key, message);
     }
 
     public String getMsg() {
-        return errorCode.getMsg();
+        return error.getMsg();
     }
 
-    public String getKey() {
-        return errorCode.getCode();
+    public String getCode() {
+        return error.getCode();
     }
 
-    public BaseError getErrorCode() {
-        return errorCode;
+    public BaseError getError() {
+        return error;
     }
 
-    public void setErrorCode(BaseError errorCode) {
-        this.errorCode = errorCode;
+    public void setError(BaseError error) {
+        this.error = error;
     }
 
 

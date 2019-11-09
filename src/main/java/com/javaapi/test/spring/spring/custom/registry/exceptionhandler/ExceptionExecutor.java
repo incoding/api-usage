@@ -1,10 +1,14 @@
 package com.javaapi.test.spring.spring.custom.registry.exceptionhandler;
 
 import com.google.common.collect.Maps;
+import com.javaapi.test.buisness.joint.exception.BusinessException;
 import com.javaapi.test.spring.spring.custom.registry.exceptionhandler.handler.ExceptionHandler;
+import com.javaapi.test.spring.spring.custom.registry.exceptionhandler.handler.constants.ExceptionHandlerConstants;
 import com.javaapi.test.spring.spring.custom.registry.exceptionhandler.model.ExceptionContext;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -20,6 +24,7 @@ import java.util.stream.Collectors;
  */
 @Component
 public class ExceptionExecutor implements ApplicationContextAware {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
     /**
@@ -40,19 +45,25 @@ public class ExceptionExecutor implements ApplicationContextAware {
         getHandlers().putAll(collect);
     }
 
+    public void handle(BusinessException exception) {
+        ExceptionContext context = new ExceptionContext(exception);
+        handle(context);
+    }
 
     public void handle(ExceptionContext context) {
         List<ExceptionHandler> exceptionHandlers = getHandlers().get(context.getCode());
         if (CollectionUtils.isEmpty(exceptionHandlers)) {
-            return;
+            exceptionHandlers = getHandlers().get(ExceptionHandlerConstants.EXCEPTION_DEFAULT_HANDLER);
         }
         for (ExceptionHandler exceptionHandler : exceptionHandlers) {
             exceptionHandler.handle(context);
+            if (!context.getNeedContinue()) {
+                return;
+            }
         }
-
     }
 
-    public Map<String, List<ExceptionHandler>> getHandlers() {
+    private Map<String, List<ExceptionHandler>> getHandlers() {
         return HANDLERS;
     }
 }
