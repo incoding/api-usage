@@ -1,4 +1,4 @@
-package com.javaapi.test.spring.spring.feature.function.applicationListener;
+package com.javaapi.test.spring.spring.feature.function.event.buildin;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextStoppedEvent;
