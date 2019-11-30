@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import com.javaapi.test.buisness.dao.mybatis.User;
 import com.javaapi.test.test.javafeature.version5.generictype.generic.GenericExtends;
-import com.javaapi.test.buisness.skill.branch.eg.PeopleI;
+import com.javaapi.test.businessdesign.skill.branch.eg.PeopleI;
 
 public class TestGeneric4 {
 	/**

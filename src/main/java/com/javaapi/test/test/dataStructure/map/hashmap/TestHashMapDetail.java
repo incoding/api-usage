@@ -1,6 +1,6 @@
 package com.javaapi.test.test.dataStructure.map.hashmap;
 
-import com.javaapi.test.buisness.skill.bit.base.TestBit3;
+import com.javaapi.test.businessdesign.skill.bit.base.TestBit3;
 import org.junit.Test;
 
 /**
