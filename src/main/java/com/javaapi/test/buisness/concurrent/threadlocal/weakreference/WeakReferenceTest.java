@@ -26,4 +26,30 @@ public class WeakReferenceTest {
         System.out.println("Object has been collected.");
         System.out.println("person1 = " + weakReference.get());
     }
+
+    @Test
+    public void testEntry() {
+        Person key = new Person("key", 30);
+        Entry weakReference = new Entry(key, "value");
+        List<Person> list = Lists.newArrayList(100000);
+        while (weakReference.get() != null) {
+            list.add(new Person("kk", 30));
+        }
+        System.out.println("Object has been collected.");
+        System.out.println("person1 = " + weakReference.get());
+    }
+
+    @Test
+    public void testEntry2() {
+        Entry weakReference = new Entry(new Person("key", 30), "value");
+        List<Person> list = Lists.newArrayList(100000);
+        int i = 0;
+        while (weakReference.get() != null) {
+            list.add(new Person("kk", 30));
+            System.out.println("list = " + (i += 1));
+        }
+        System.out.println("Object has been collected.");
+        System.out.println("person1 = " + weakReference.get());
+    }
+
 }
