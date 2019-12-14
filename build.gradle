@@ -22,6 +22,9 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'net.ltgt.apt-idea'
 apply plugin: 'idea'
 
+
+
+
 sourceSets.main.resources { srcDirs = ["src/main/java","src/main/resources"]; include "**/*" }
 
 
@@ -42,6 +45,14 @@ ext {
     springversion='4.2.6.RELEASE'
 }
 
+
+task writeNewPom << {
+    pom {
+        project {
+
+        }
+    }.writeTo("pomFromGradle.xml")
+}
 
 
 repositories {
