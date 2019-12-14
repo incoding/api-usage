@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.concurrent.thread.Thread4Lock.synchronizeLock;
+package com.javaapi.test.buisness.concurrent.locksync.synchronizeLock;
 
 
 /**
@@ -12,7 +12,7 @@ package com.javaapi.test.buisness.concurrent.thread.Thread4Lock.synchronizeLock;
  * @see http://enetor.iteye.com/blog/986623
  */
 
-import com.javaapi.test.buisness.concurrent.thread.Thread4Lock.lock2.SynchronizeMethod;
+import com.javaapi.test.buisness.concurrent.locksync.synchronizeLock2.SynchronizeMethod;
 
 /**
  * 2 同步方法

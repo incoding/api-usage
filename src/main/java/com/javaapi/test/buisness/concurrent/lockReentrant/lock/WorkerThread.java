@@ -1,11 +1,11 @@
-package com.javaapi.test.buisness.concurrent.thread.Thread4Lock.lock;
+package com.javaapi.test.buisness.concurrent.lockReentrant.lock;
 
 //工作线程，调用TestServer.testRun
 public class WorkerThread implements Runnable {
 
-	private TestLock tester = null;
+	private TestReentrantLockReIn tester = null;
 
-	public WorkerThread(TestLock testLock) {
+	public WorkerThread(TestReentrantLockReIn testLock) {
 		this.tester = testLock;
 	}
 

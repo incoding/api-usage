@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.concurrent.thread.Thread4Lock.deadlock;
+package com.javaapi.test.buisness.concurrent.locksync.deadlock;
 
 import org.junit.Test;
 
@@ -23,27 +23,27 @@ import java.util.concurrent.TimeUnit;
  Found one Java-level deadlock:
  =============================
  "线程B":
- waiting to lock monitor 0x00007ff5174a4608 (object 0x00000007962b3698, a com.javaapi.test.concurrent.Thread.Thread4Lock.deadlock.ClassA),
+ waiting to lock monitor 0x00007ff5174a4608 (object 0x00000007962b3698, a com.javaapi.test.concurrent.Thread.locksync.deadlock.ClassA),
  which is held by "线程A"
  "线程A":
- waiting to lock monitor 0x00007ff51803b758 (object 0x00000007962b88c0, a com.javaapi.test.concurrent.Thread.Thread4Lock.deadlock.ClassB),
+ waiting to lock monitor 0x00007ff51803b758 (object 0x00000007962b88c0, a com.javaapi.test.concurrent.Thread.locksync.deadlock.ClassB),
  which is held by "线程B"
 
  Java stack information for the threads listed above:
  ===================================================
  "线程B":
- at com.javaapi.test.concurrent.Thread.Thread4Lock.deadlock.ClassA.a2(ClassA.java:20)
- - waiting to lock <0x00000007962b3698> (a com.javaapi.test.concurrent.Thread.Thread4Lock.deadlock.ClassA)
- at com.javaapi.test.concurrent.Thread.Thread4Lock.deadlock.ClassB.b1(ClassB.java:15)
- - locked <0x00000007962b88c0> (a com.javaapi.test.concurrent.Thread.Thread4Lock.deadlock.ClassB)
- at com.javaapi.test.concurrent.Thread.Thread4Lock.deadlock.Client$2.run(Client.java:24)
+ at com.javaapi.test.concurrent.Thread.locksync.deadlock.ClassA.a2(ClassA.java:20)
+ - waiting to lock <0x00000007962b3698> (a com.javaapi.test.concurrent.Thread.locksync.deadlock.ClassA)
+ at com.javaapi.test.concurrent.Thread.locksync.deadlock.ClassB.b1(ClassB.java:15)
+ - locked <0x00000007962b88c0> (a com.javaapi.test.concurrent.Thread.locksync.deadlock.ClassB)
+ at com.javaapi.test.concurrent.Thread.locksync.deadlock.Client$2.run(Client.java:24)
  at java.lang.Thread.run(Thread.java:745)
  "线程A":
- at com.javaapi.test.concurrent.Thread.Thread4Lock.deadlock.ClassB.b2(ClassB.java:19)
- - waiting to lock <0x00000007962b88c0> (a com.javaapi.test.concurrent.Thread.Thread4Lock.deadlock.ClassB)
- at com.javaapi.test.concurrent.Thread.Thread4Lock.deadlock.ClassA.a1(ClassA.java:16)
- - locked <0x00000007962b3698> (a com.javaapi.test.concurrent.Thread.Thread4Lock.deadlock.ClassA)
- at com.javaapi.test.concurrent.Thread.Thread4Lock.deadlock.Client$1.run(Client.java:18)
+ at com.javaapi.test.concurrent.Thread.locksync.deadlock.ClassB.b2(ClassB.java:19)
+ - waiting to lock <0x00000007962b88c0> (a com.javaapi.test.concurrent.Thread.locksync.deadlock.ClassB)
+ at com.javaapi.test.concurrent.Thread.locksync.deadlock.ClassA.a1(ClassA.java:16)
+ - locked <0x00000007962b3698> (a com.javaapi.test.concurrent.Thread.locksync.deadlock.ClassA)
+ at com.javaapi.test.concurrent.Thread.locksync.deadlock.Client$1.run(Client.java:18)
  at java.lang.Thread.run(Thread.java:745)
 
  Found 1 deadlock.

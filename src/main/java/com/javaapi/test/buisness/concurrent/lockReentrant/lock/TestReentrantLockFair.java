@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.concurrent.thread.Thread4Lock.lock;
+package com.javaapi.test.buisness.concurrent.lockReentrant.lock;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -10,7 +10,7 @@ import org.junit.Test;
  * JDK Lock接口只有几个实现而已
  * 
  */
-public class TestLock3 {
+public class TestReentrantLockFair {
 	/**
 	 * java.util.concurrent.lock 中的 Lock 框架是锁定的一个抽象，它允许把锁定的实现作为 Java
 	 * 类，而不是作为语言的特性来实现。这就为 Lock 的多种实现留下了空间，各种实现可能有不同的调度算法、性能特性或者锁定语义。

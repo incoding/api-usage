@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.concurrent.thread.Thread4Lock.synchronizeLock;
+package com.javaapi.test.buisness.concurrent.locksync.synchronizeLock;
 
 /**
  * 1、对于同步的方法或者代码块来说，必须获得对象锁才能够进入同步方法或者代码块进行操作；

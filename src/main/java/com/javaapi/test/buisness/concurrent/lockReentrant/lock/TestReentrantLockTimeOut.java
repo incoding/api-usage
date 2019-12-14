@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.concurrent.thread.Thread4Lock.lock;
+package com.javaapi.test.buisness.concurrent.lockReentrant.lock;
 
 import org.junit.Test;
 
@@ -8,7 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  *  使用带超时的锁避免死锁
  */
-public class TestLockTimeOut {
+public class TestReentrantLockTimeOut {
     @Test
     public void test() {
         final ReentrantLock lock = new ReentrantLock(); // 参数默认false，不公平锁

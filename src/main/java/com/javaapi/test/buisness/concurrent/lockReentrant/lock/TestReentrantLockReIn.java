@@ -1,26 +1,25 @@
-package com.javaapi.test.buisness.concurrent.thread.Thread4Lock.lock;
+package com.javaapi.test.buisness.concurrent.lockReentrant.lock;
 
 import java.util.Calendar;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @1 测试可重入
- * @2 测试公平，非公平性
  *
  */
-public class TestLock {
+public class TestReentrantLockReIn {
 	private ReentrantLock lock = null;
 	// 用于线程同步访问的共享数据
 	public int data = 100;
 
-	public TestLock() {
+	public TestReentrantLockReIn() {
 		// @2 创建一个自由竞争的可重入锁
 		lock = new ReentrantLock();
 	}
 
 	public static void main(String[] args) {
 
-		TestLock tester = new TestLock();
+		TestReentrantLockReIn tester = new TestReentrantLockReIn();
 
 		// 测试可重入，函数testReentry() 执行获取锁后，显示信息的功能
 		tester.testReentry();

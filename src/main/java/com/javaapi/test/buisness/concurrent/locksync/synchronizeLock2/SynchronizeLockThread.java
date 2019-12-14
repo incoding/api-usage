@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.concurrent.thread.Thread4Lock.lock2;
+package com.javaapi.test.buisness.concurrent.locksync.synchronizeLock2;
 
 import java.util.concurrent.locks.Lock;
 

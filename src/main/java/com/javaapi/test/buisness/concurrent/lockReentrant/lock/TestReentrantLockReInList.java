@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.concurrent.thread.Thread4Lock.lock;
+package com.javaapi.test.buisness.concurrent.lockReentrant.lock;
 
 import org.junit.Test;
 
@@ -9,7 +9,7 @@ import java.util.List;
  * 给list加锁,然后当前获得list锁得线程(因为当前线程获取了锁对象)还是可以将元素放入list中的
  * 
  */
-public class TestLockList {
+public class TestReentrantLockReInList {
 
 	@Test
 	public void test() {

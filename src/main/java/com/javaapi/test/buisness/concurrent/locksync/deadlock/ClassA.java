@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.concurrent.thread.Thread4Lock.deadlock;
+package com.javaapi.test.buisness.concurrent.locksync.deadlock;
 
 /**
  * Created by user on 15/11/2.
