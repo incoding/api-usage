@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.concurrent.block;
+package com.javaapi.test.buisness.concurrent.lock1block;
 
 import org.junit.Test;
 
