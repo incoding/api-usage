@@ -59,6 +59,23 @@ public class BasisClient {
         System.out.println("max = " + max);
     }
 
+    /**
+     * 另一种求最大值的方式
+     */
+    @Test
+    public void testMax2() {
+        int[] a = {1, 8, 2, 5, 7};
+        for (int i = 0; i < a.length - 1; i++) {
+            if (a[i] > a[i + 1]) {
+                int temp = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = temp;
+            }
+        }
+        System.out.println("max = " + a[a.length - 1]);
+    }
+
+
 
     private void swap(int[] a, int[] b) {
         int temp = a[0];

@@ -1,16 +1,15 @@
 package com.javaapi.test.util.math.algorithm.sort.merge.lession2;
 
+import com.javaapi.test.util.math.algorithm.sort.merge.lession1.MergeArrayDisplay;
 import org.junit.Test;
 
 import java.util.Arrays;
 
 /**
- * @see ArrayDisplay  部分我们合并部分数组并返回合并的数组
+ * @see MergeArrayDisplay  部分我们合并部分数组并返回合并的数组
  * 这节我们将合并后的数组替换到原数组当中
  */
-public class ArrayReplace {
-
-
+public class ReplaceArray {
 
     /**
      *实战 合并后放入原数组

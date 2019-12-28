@@ -1,4 +1,4 @@
-package com.javaapi.test.util.math.algorithm.sort.merge.lession2;
+package com.javaapi.test.util.math.algorithm.sort.merge.lession1;
 
 import org.junit.Test;
 
@@ -7,9 +7,9 @@ import java.util.Arrays;
 /**
  * Created by user on 2018/12/23
  */
-public class ArrayDisplay {
+public class MergeArrayDisplay {
     /**
-     * 数组是由一个大数组拆分成2个小数组
+     * 数组是可以是由一个大数组拆分成2个小数组
      * 所以我们不要拘泥于数组的表示方式
      */
     @Test
@@ -43,7 +43,7 @@ public class ArrayDisplay {
      */
     @Test
     public void testMergeTotal() {
-        int[] total = {1, 2, 5, 1, 8, 4, 90, 80, 10, 70};
+        int[] total = {1, 2, 4, 6, 8, 1, 3, 7, 10, 70};
         int low = 0;
         int high = total.length - 1;
         int mid = (low + high) / 2;
