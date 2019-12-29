@@ -1,5 +1,7 @@
 package com.javaapi.test.util.math.algorithm.sort.quick2;
 
+import java.util.Arrays;
+
 /**
  * refer
  * https://blog.csdn.net/yupi1057/article/details/81168902
@@ -15,6 +17,8 @@ public class Test09 {
 
     private static int partition(int[] arr, int left, int right) {
         int temp = arr[left];
+        System.out.println("数组" + Arrays.toString(Arrays.copyOfRange(arr, left, right + 1)) + " 基准值" + temp);
+
         while (right > left) {
             // 先判断基准数和后面的数依次比较
             while (temp <= arr[right] && left < right) {

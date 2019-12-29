@@ -1,6 +1,6 @@
-package com.javaapi.test.util.math.algorithm.sort.merge.lession3;
+package com.javaapi.test.util.math.algorithm.sort.merge.lesson3;
 
-import com.javaapi.test.util.math.algorithm.sort.merge.lession2.ReplaceArray;
+import com.javaapi.test.util.math.algorithm.sort.merge.lesson2.ReplaceArray;
 import org.junit.Test;
 
 import java.util.Arrays;

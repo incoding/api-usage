@@ -1,4 +1,4 @@
-package com.javaapi.test.util.math.algorithm.sort.merge.lession0;
+package com.javaapi.test.util.math.algorithm.sort.merge.lesson0;
 
 import org.junit.Test;
 
