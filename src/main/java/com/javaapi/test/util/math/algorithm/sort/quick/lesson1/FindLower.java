@@ -119,13 +119,14 @@ public class FindLower {
         }
         int i = low;
         int j = high;
-        int privot = a[(low + high) / 2];
+//        int privot = a[(low + high) / 2];
+        int privot = a[low];
         String tempArr = Arrays.toString(Arrays.copyOfRange(a, low, high + 1));
-        while (i < j) {
-            while (a[j] > privot) {
+        while (i <= j) {
+            while (a[j] > privot && i <= j) {
                 j--;
             }
-            while (a[i] < privot) {
+            while (a[i] < privot && i <= j) {
                 i++;
             }
             // 此时要处理遍历完整个数组位置的情况

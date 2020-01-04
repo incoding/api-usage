@@ -17,8 +17,9 @@ public class LinkedDataSupport {
 
     public static void print (Node h){
         while (null != h) {
-            System.out.print(h.getData() + " ");
+            System.out.println(h.getData() + " ");
             h = h.getNext();
         }
+        System.out.println("---------------");
     }
 }
