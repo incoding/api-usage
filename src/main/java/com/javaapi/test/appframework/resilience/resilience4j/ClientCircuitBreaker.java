@@ -31,7 +31,6 @@ public class ClientCircuitBreaker {
         String result = circuitBreaker
                 .executeSupplier(backendService::doSomething);
         System.out.println("result = " + result);
-
     }
 
     /**
@@ -93,4 +92,6 @@ public class ClientCircuitBreaker {
                 .circuitBreaker("name");
         return circuitBreaker;
     }
+
+
 }
