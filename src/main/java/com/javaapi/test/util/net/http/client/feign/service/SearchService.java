@@ -7,5 +7,7 @@ import feign.RequestLine;
  */
 public interface SearchService {
     @RequestLine("GET /")
-    public String search();
+
+    public String getSearch();
+
 }
