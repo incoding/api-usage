@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.annotation.Resource;
 
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.when;
 
 /**
  * 参考 https://blog.csdn.net/z199172177/article/details/79731952
@@ -56,9 +57,43 @@ public class ClientSpy {
         MockitoAnnotations.initMocks(this);
     }
 
+    /**
+     * spy 默认行为是会调用真实方法,但是返回是mock数据
+     */
     @Test
-    public void test() {
+    public void testSpy() {
+        when(iWeather.getWeather("AMM")).thenReturn("spy_city");
+        String code = this.service.getAirlineCode("HKG", "AMM", this.brand, this.cInfo, true);
+        System.out.println("code = " + code);
+    }
+
+    /**
+     * spy 通过doreturn 方式不会调用真实方式,  并且可以返回mock数据
+     */
+    @Test
+    public void testDoReturnSpy() {
         doReturn("spy_city").when(iWeather).getWeather("AMM");
+        String code = this.service.getAirlineCode("HKG", "AMM", this.brand, this.cInfo, true);
+        System.out.println("code = " + code);
+    }
+
+
+    /**
+     * spy 通过doreturn 方式不会调用真实方式,  并且可以返回mock数据
+     */
+    @Test
+    public void testSpyAnyString() {
+        doReturn("spy_city").when(iWeather).getWeather(Matchers.anyString());
+        String code = this.service.getAirlineCode("HKG", "AMM", this.brand, this.cInfo, true);
+        System.out.println("code = " + code);
+    }
+
+    /**
+     * 这个是指定调用真实实现
+     */
+    @Test
+    public void testDoCallRealMethod() {
+        Mockito.doCallRealMethod().when(iWeather).getWeather("AMM");
         String code = this.service.getAirlineCode("HKG", "AMM", this.brand, this.cInfo, true);
         System.out.println("code = " + code);
     }

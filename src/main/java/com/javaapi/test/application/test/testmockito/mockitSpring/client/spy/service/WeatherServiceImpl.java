@@ -10,6 +10,7 @@ public class WeatherServiceImpl implements IWeather {
 
     @Override
     public String getWeather(String code) {
+        System.out.println("---call getWeather---");
         return "_weather_" + code;
     }
 
