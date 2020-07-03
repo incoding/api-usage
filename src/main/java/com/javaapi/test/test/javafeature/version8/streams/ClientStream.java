@@ -64,6 +64,12 @@ public class ClientStream {
         };
     }
 
+    @Test
+    public void testOptional() {
+        List<String> list = null;
+        List<String> collect = Optional.ofNullable(list).orElse(Lists.newArrayList()).stream().collect(Collectors.toList());
+        System.out.println("collect = " + collect);
+    }
 
     @Test
     public void testStreamOfNull(){
