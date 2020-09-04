@@ -36,6 +36,16 @@ public class TestAntPathMatcher {
     }
 
     @Test
+    public void testPatternMatchUtils2() throws Exception {
+        String mappedName = "com.ly.flight.intl.i*trade*.dal.mapper";
+        String methodName = "com.ly.flight.intl.ipolicytrade.dal.mapper";
+//        String methodName = "com.ly.flight.intl.itradecore.dal.mapper";
+        boolean simpleMatch = PatternMatchUtils.simpleMatch(mappedName,
+                methodName);
+        System.out.println(simpleMatch);
+    }
+
+    @Test
     public void test() throws Exception {
         String price = "750.00HBFX160";
         String s = "*HBFX*";
