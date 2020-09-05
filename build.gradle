@@ -162,7 +162,7 @@ exclude(module: 'netty')
     //unirest http client
     compile group: 'com.konghq', name: 'unirest-java', version: '3.7.02'
 
-
+    compile 'org.apache.rocketmq:rocketmq-client:4.7.1'
 
 
 

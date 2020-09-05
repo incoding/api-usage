@@ -1,4 +1,4 @@
-package com.javaapi.test.application.jms.jmssample1.primitive.topicSub;
+package com.javaapi.test.application.jms.activemq.primitive.topicSub;
 
 import java.util.concurrent.TimeUnit;
 

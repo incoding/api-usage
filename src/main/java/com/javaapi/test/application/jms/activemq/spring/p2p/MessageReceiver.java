@@ -1,4 +1,4 @@
-package com.javaapi.test.application.jms.jmssample1.spring.p2p;
+package com.javaapi.test.application.jms.activemq.spring.p2p;
 
 import javax.jms.JMSException;
 import javax.jms.Message;

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd ">
+ 
+ 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>classpath:com/javaapi/test/jms/jmssample1/spring/p2p/application.properties</value>
+        </property>
+    </bean>
+ 
+   <!-- Activemq connection factory -->
+  	<bean id="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <constructor-arg index="0" value="${jms.broker.url}"/>
+    </bean>
+    
+     <!-- ConnectionFactory Definition -->
+    <bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+        <constructor-arg ref="amqConnectionFactory"/>
+    </bean>
+    
+       <!--  Default Destination Queue Definition-->
+    <bean id="defaultDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0" value="${jms.queue.name}"/>
+    </bean>
+    
+     <!-- JmsTemplate Definition -->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="defaultDestination" ref="defaultDestination"/>
+<!--         <property name="deliveryPersistent" value="true"/> -->
+    </bean>
+    
+      <!-- Message Sender Definition -->
+    <bean id="messageSender" class="com.javaapi.test.application.jms.activemq.spring.p2p.MessageSender">
+        <constructor-arg index="0" ref="jmsTemplate"/>
+    </bean>
+</beans>

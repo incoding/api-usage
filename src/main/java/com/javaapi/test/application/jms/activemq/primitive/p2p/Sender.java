@@ -1,4 +1,4 @@
-package com.javaapi.test.application.jms.jmssample1.primitive.p2p;
+package com.javaapi.test.application.jms.activemq.primitive.p2p;
 
 
 import javax.jms.Connection;
