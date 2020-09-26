@@ -1,4 +1,4 @@
-package com.javaapi.test.application.jms.rocketmq.primitive;
+package com.javaapi.test.application.jms.rocketmq.primitive.producer;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendCallback;

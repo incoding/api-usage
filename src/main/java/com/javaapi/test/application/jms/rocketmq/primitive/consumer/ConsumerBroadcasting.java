@@ -1,17 +1,18 @@
-package com.javaapi.test.application.jms.rocketmq.primitive;
+package com.javaapi.test.application.jms.rocketmq.primitive.consumer;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.common.message.MessageExt;
+import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 
 import java.util.List;
 
 /**
  * Created by user on 2020/9/5.
  */
-public class ConsumerClustering {
+public class ConsumerBroadcasting {
     public static void main(String[] args) throws Exception {
         // 指定消费组名为my-consumer
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("my-consumer");
@@ -19,6 +20,7 @@ public class ConsumerClustering {
         consumer.setNamesrvAddr("127.0.0.1:9876");
         // 订阅topic：myTopic001 下的全部消息（因为是*，*指定的是tag标签，代表全部消息，不进行任何过滤）
         consumer.subscribe("myTopic001", "*");
+        consumer.setMessageModel(MessageModel.BROADCASTING);
         // 注册监听器，进行消息消息。
         consumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override

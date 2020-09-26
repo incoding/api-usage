@@ -1,4 +1,4 @@
-package com.javaapi.test.application.jms.rocketmq.primitive.tag;
+package com.javaapi.test.application.jms.rocketmq.primitive.features.tag;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
@@ -26,7 +26,7 @@ public class ConsumerClusteringTagsKeys {
                 for (MessageExt msg : msgs) {
                     String str = new String(msg.getBody());
                     // 输出消息内容
-                    System.out.println(str);
+                    System.out.println("消息内容" + str);
                 }
                 // 默认情况下，这条消息只会被一个consumer消费，这叫点对点消费模式。也就是集群模式。
                 // ack确认

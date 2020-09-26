@@ -1,13 +1,15 @@
-package com.javaapi.test.application.jms.rocketmq.primitive.tag;
+package com.javaapi.test.application.jms.rocketmq.primitive.producer;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 
 /**
- * Created by user on 2020/9/5.
+ * 参考
+ * refer
+ * https://mp.weixin.qq.com/s?__biz=MzI4Njc5NjM1NQ==&mid=2247493598&idx=1&sn=88bf0fcbfa5207f79399a7cb0b1b208f&chksm=ebd5d8f2dca251e4ca32dd910b9b3aaff641b40a6b1041df41881eea0a2526e1ea1ad1d9c765&scene=21#wechat_redirect
  */
-public class ProducerTagsKeys {
+public class Producer {
     public static void main(String[] args) throws Exception {
         // 指定生产组名为my-producer
         DefaultMQProducer producer = new DefaultMQProducer("my-producer");
@@ -15,8 +17,8 @@ public class ProducerTagsKeys {
         producer.setNamesrvAddr("127.0.0.1:9876");
         // 启动Producer
         producer.start();
-        // 创建消息对象，topic为：myTopic001，消息内容为：hello world，且tags为：test-tags，keys为test-keys
-        Message msg = new Message("myTopic001", "test-tags", "test-keys", "hello world".getBytes());
+        // 创建消息对象，topic为：myTopic001，消息内容为：hello world
+        Message msg = new Message("myTopic001", "hello world".getBytes());
         // 发送消息到mq，同步的
         SendResult result = producer.send(msg);
         System.out.println("发送消息成功！result is : " + result);
