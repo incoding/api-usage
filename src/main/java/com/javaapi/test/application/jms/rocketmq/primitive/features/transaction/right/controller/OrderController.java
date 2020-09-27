@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by user on 2020/9/22.
+ * 测试RocketMq 事务
  */
 @RestController
 public class OrderController {
