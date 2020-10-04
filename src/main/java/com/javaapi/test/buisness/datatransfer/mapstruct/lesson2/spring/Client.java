@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.Date;
 
 /**
- *  示范使用其他映射
+ *  示范使用其他映射辅助当前映射
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("applicationContext.xml")

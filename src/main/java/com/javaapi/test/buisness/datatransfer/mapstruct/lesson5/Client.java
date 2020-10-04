@@ -1,6 +1,7 @@
 package com.javaapi.test.buisness.datatransfer.mapstruct.lesson5;
 
 import org.junit.Test;
+import org.mapstruct.factory.Mappers;
 
 import java.util.Date;
 
