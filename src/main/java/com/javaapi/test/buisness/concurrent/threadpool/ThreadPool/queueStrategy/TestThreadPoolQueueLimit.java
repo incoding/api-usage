@@ -16,7 +16,7 @@ public class TestThreadPoolQueueLimit extends ThreadPoolTest{
     }
 
     /**
-     *  排队策略: 直接提交
+     *  排队策略: 直接提交  利用 SynchronousQueue
      *  拒绝策略:默认
      * {activeCount=40, queueSize=0, corePoolSize=0, maximumPoolSize=2147483647} corePoolSize is full ||
      */
@@ -28,7 +28,7 @@ public class TestThreadPoolQueueLimit extends ThreadPoolTest{
     }
 
     /**
-     *  排队策略: 无界队列
+     *  排队策略: 无界队列  利用 LinkedBlockingQueue
      *  拒绝策略:默认
      */
     @Test
@@ -39,7 +39,7 @@ public class TestThreadPoolQueueLimit extends ThreadPoolTest{
     }
 
     /**
-     *  排队策略: 有界队列
+     *  排队策略: 有界队列 利用 ArrayBlockingQueue 或 LinkedBlockingQueue
      *  拒绝策略:默认
      */
     @Test

@@ -63,7 +63,6 @@ public class TestThreadPoolRejectHandler extends ThreadPoolTest {
      *  该例子为 如果队里满了(线程池不够了),则阻塞
      *  CallerRunsPolicy 主线程 调用runnable得run(当做普通方法调用,也就是会令主线程阻塞)
      * 这个例子的参考地址 http://www.importnew.com/10790.html
-     * Thread 基础知识 : http://zhidao.baidu.com/link?url=MZx4vIzWkQtkwQ4F1Jc7tQpk23Qx6dNgLplXqoNazV4wK6j4yy1oDiIcva7yUBfXkZtILS-xmPNf2Hlcl7VUZK
      * 另外的参考 ,1 自己实现了阻塞,没有使用queue的put操作2 但是比这个例子少了个对线程池 isShutDown的判断,所以作者发现有问题  http://my.oschina.net/flashsword/blog/114527   事实证明，除了JDK的CallerRunsPolicy方案，其他的方案都存在一个隐患：
 
      *
