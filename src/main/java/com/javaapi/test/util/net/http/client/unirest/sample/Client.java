@@ -8,6 +8,7 @@ import jodd.util.PropertiesUtil;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.io.File;
@@ -57,9 +58,14 @@ public class Client {
             threadExecutor.submit(() -> {
                 try {
                     String resultStr = loadUrl(param);
+                    append(param + "___" + resultStr + "\n", writeFileBak);
                     JSONObject jsonObject = JSON.parseObject(resultStr);
                     List<String> objects = Lists.newArrayList();
+
                     JSONObject data = jsonObject.getJSONObject("data");
+                    if (data == null) {
+                        return;
+                    }
                     String app_pojo_enum_str = data.getString(app_pojo_enum);
                     String app_pojo_text_str = data.getString(app_pojo_text);
                     String app_pojo_self_str = data.getString(app_pojo_self);
@@ -67,11 +73,10 @@ public class Client {
                     objects.add(param);
                     objects.add(app_pojo_enum_str);
                     objects.add(app_pojo_text_str);
-                    objects.add(app_pojo_self_str);
-                    objects.add(app_pojo_other_str);
+                    objects.add(String.valueOf(app_pojo_self_str));
+                    objects.add(String.valueOf(app_pojo_other_str));
                     String join = Joiner.on("___").join(objects);
                     append(join + "\n", writeFile);
-                    append(param + "___" + resultStr + "\n", writeFileBak);
                 } catch (Exception e) {
                     e.printStackTrace();
                     System.out.println("param exception= " + param);
@@ -87,7 +92,7 @@ public class Client {
     private String getOther(JSONObject data) {
 
         String string = data.getString(app_pojo_other);
-        if ("null".equals(string)) {
+        if (StringUtils.isBlank(string)) {
             return string;
         }
         return String.valueOf(new BigDecimal(string).intValue());
