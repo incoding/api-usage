@@ -16,9 +16,9 @@ public class Client2CatchReturn {
      */
     @Test
     public void testCatchReturnFinally() {
-        String response = null;
+        String response = "responseStr";
         String s = invokeCatchReturn(response);
-        System.out.println("s = " + s);
+        System.out.println("result = " + s);
     }
 
     /**
@@ -28,9 +28,9 @@ public class Client2CatchReturn {
      */
     @Test
     public void testCatchReturnFinallyReturn() {
-        String response = null;
+        String response = "responseStr";
         String s = invokeCatchReturnFinallyReturn(response);
-        System.out.println("s = " + s);
+        System.out.println("result = " + s);
     }
 
 

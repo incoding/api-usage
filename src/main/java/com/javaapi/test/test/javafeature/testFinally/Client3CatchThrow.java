@@ -10,6 +10,7 @@ public class Client3CatchThrow {
 
     /**
      * 测试 catch throw finally 组合 case1  . try 发生异常
+     * finally 可以获取到catch阶段处理的变量值
      */
     @Test
     public void testCatchThrowFinallyCase1() {
