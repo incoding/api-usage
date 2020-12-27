@@ -44,11 +44,11 @@ public class Features {
     }
 
     public void addFeature(int feature) {
-        features |= feature;
+        features = features | feature;
     }
 
     public void removeFeature(int feature) {
-        features &= ~feature;
+        features = features & ~feature;
     }
 
     public int getFeatures() {

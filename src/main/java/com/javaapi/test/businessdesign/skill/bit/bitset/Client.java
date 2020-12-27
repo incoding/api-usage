@@ -9,4 +9,5 @@ package com.javaapi.test.businessdesign.skill.bit.bitset;
  https://blog.csdn.net/yaoweijq/article/details/5982265
  */
 public class Client {
+
 }

@@ -7,7 +7,7 @@ import org.junit.Test;
  * http://blog.csdn.net/oqqYeYi/article/details/39831029   (好)
  * 十进制转二进制
  */
-public class TestBit3 {
+public class TestDecimalToBinary {
     @Test
     public void test() {
         Integer data = 8;

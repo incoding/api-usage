@@ -3,7 +3,7 @@ package com.javaapi.test.businessdesign.skill.bit.base;
 import org.junit.Test;
 
 
-public class TestBit2 {
+public class TestXor {
     /**
      * 异或 相同为真，不同为假
      */
