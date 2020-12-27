@@ -1,12 +1,12 @@
 package com.javaapi.test.test.dataStructure.map.hashmap;
 
-import com.javaapi.test.businessdesign.skill.bit.base.TestBit3;
+import com.javaapi.test.businessdesign.skill.bit.base.TestDecimalToBinary;
 import org.junit.Test;
 
 /**
  *   java 中HashMap是数组加链表实现的
  *   @see  com.javaapi.test.test.dataStructure.TestHash
- *   @see TestBit3
+ *   @see TestDecimalToBinary
  */
 public class TestHashMapDetail {
 
@@ -80,7 +80,7 @@ public class TestHashMapDetail {
      * 目的是将我们put进来的元素的key映射到HashMap底层数组对应的hash桶中，
      * 这里采用与运算比模运算的开销小得多，
      * 由于indexFor函数经常要使用，所以为了效率HashMap要求底层数组的length总是2的幂，这样就能用与运算代替模运算了。这才是h & (length-1)的玄机。
-     * @see TestBit3
+     * @see TestDecimalToBinary
      */
     @Test
     public void testHash(){
