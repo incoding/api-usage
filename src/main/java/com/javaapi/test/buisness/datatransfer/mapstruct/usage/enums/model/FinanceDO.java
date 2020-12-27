@@ -1,6 +1,6 @@
 package com.javaapi.test.buisness.datatransfer.mapstruct.usage.enums.model;
 
-import com.javaapi.test.buisness.datatransfer.mapstruct.usage.enums.OperateTypeEnum;
+import com.javaapi.test.buisness.datatransfer.mapstruct.usage.enums.enums.OperateTypeEnum;
 import lombok.Data;
 
 import java.math.BigDecimal;

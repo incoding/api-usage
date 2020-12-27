@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.datatransfer.mapstruct.usage.enums;
+package com.javaapi.test.buisness.datatransfer.mapstruct.usage.enums.enums;
 
 
 public enum OperateTypeEnum {
