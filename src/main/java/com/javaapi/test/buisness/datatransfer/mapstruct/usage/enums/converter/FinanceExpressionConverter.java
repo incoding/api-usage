@@ -21,7 +21,7 @@ public interface FinanceExpressionConverter {
      * @param vo
      * @return
      */
-    @Mapping(target = "operateType", expression = "java(com.javaapi.test.buisness.datatransfer.mapstruct.usage.enums.OperateTypeEnum.getEnumByCode(vo.getOperateType()))")
+    @Mapping(target = "operateType", expression = "java(com.javaapi.test.buisness.datatransfer.mapstruct.usage.enums.enums.OperateTypeEnum.getEnumByCode(vo.getOperateType()))")
     FinanceDO vo2Do(FinanceVO vo);
 
     @Mapping(target = "operateType", expression = "java(vo.getOperateType().getCode())")

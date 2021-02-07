@@ -165,6 +165,8 @@ exclude(module: 'netty')
     compile 'org.apache.rocketmq:rocketmq-client:4.7.1'
     compile group: 'org.springframework.statemachine', name: 'spring-statemachine-core', version: '2.2.1.RELEASE'
 
+    compile group: 'org.javers', name: 'javers-core', version: '5.14.0'
+
 
 
 

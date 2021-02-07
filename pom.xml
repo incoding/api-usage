@@ -842,6 +842,11 @@
             <version>2.2.1.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.javers</groupId>
+            <artifactId>javers-core</artifactId>
+            <version>5.14.0</version>
+        </dependency>
 
     </dependencies>
 
