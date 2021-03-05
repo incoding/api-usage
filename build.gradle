@@ -153,10 +153,14 @@ exclude(module: 'netty')
     // ttl
     compile group: 'com.alibaba', name: 'transmittable-thread-local', version: '2.11.0'
 //    resilience4j
-    compile group: 'io.github.resilience4j', name: 'resilience4j-retry', version: '1.1.0'
-    compile group: 'io.github.resilience4j', name: 'resilience4j-circuitbreaker', version: '1.1.0'
-    compile group: 'io.github.resilience4j', name: 'resilience4j-ratelimiter', version: '1.1.0'
-    compile group: 'io.github.resilience4j', name: 'resilience4j-bulkhead', version: '1.1.0'
+//    compile group: 'io.github.resilience4j', name: 'resilience4j-retry', version: '1.1.0'
+//    compile group: 'io.github.resilience4j', name: 'resilience4j-circuitbreaker', version: '1.1.0'
+//    compile group: 'io.github.resilience4j', name: 'resilience4j-ratelimiter', version: '1.1.0'
+//    compile group: 'io.github.resilience4j', name: 'resilience4j-bulkhead', version: '1.1.0'
+
+    compile group: 'io.github.resilience4j', name: 'resilience4j-all', version: '1.6.1'
+
+
 // guava-retry
     compile group: 'com.github.rholder', name: 'guava-retrying', version: '2.0.0'
     //unirest http client
