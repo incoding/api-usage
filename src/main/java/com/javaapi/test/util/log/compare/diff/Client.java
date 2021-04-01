@@ -1,6 +1,6 @@
-package com.javaapi.test.util.validate.compare.diff;
+package com.javaapi.test.util.log.compare.diff;
 
-import com.javaapi.test.util.validate.compare.diff.pojo.ComparePojo;
+import com.javaapi.test.util.log.compare.diff.pojo.ComparePojo;
 import org.junit.Test;
 
 /**

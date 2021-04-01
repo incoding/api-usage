@@ -1,6 +1,6 @@
-package com.javaapi.test.util.validate.compare.diff.pojo;
+package com.javaapi.test.util.log.compare.diff.pojo;
 
-import com.javaapi.test.util.validate.compare.diff.annotation.LogCompare;
+import com.javaapi.test.util.log.compare.diff.annotation.LogCompare;
 import lombok.Data;
 
 /**

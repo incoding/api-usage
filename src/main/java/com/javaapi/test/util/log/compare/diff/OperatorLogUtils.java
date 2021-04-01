@@ -1,8 +1,8 @@
-package com.javaapi.test.util.validate.compare.diff;
+package com.javaapi.test.util.log.compare.diff;
 
 
 import com.alibaba.fastjson.JSON;
-import com.javaapi.test.util.validate.compare.diff.annotation.LogCompare;
+import com.javaapi.test.util.log.compare.diff.annotation.LogCompare;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

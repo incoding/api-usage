@@ -1,4 +1,4 @@
-package com.javaapi.test.util.validate.compare.diff.annotation;
+package com.javaapi.test.util.log.compare.diff.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
