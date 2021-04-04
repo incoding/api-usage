@@ -8,7 +8,7 @@ import org.junit.Test;
  */
 public class Client {
     @Test
-    public void test() throws Exception {
+    public void teDst() throws Exception {
         String message = "敏感词汇，重庆，<script> 敏感2 :)";
         Request request = new Request();
         request.setRequestStr(message);

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FilterChain implements Filter {
-    List<Filter> filters = new ArrayList<Filter>();
+    List<Filter> filters = new ArrayList<>();
     int index = 0;
 
     public FilterChain addFilter(Filter f) {
