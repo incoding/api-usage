@@ -19,30 +19,32 @@ import java.util.Date;
  */
 public class DateTranferJoda {
     /**
-     date 转 datetime
+     * date 转 datetime
      */
     @Test
-    public void testDateToDateTime(){
+    public void testDateToDateTime() {
         Date date = new Date();
         DateTime dateTime = new DateTime(date);
         System.out.println("dateTime = " + dateTime);
     }
+
     /**
-     calendar 转 datetime
+     * calendar 转 datetime
      */
     @Test
-    public void testCalendarToDateTime(){
+    public void testCalendarToDateTime() {
         Calendar instance = Calendar.getInstance();
         DateTime date = new DateTime(instance);
         System.out.println("date = " + date);
     }
 
     @Test
-    public void testStringToJoda(){
+    public void testStringToJoda() {
         DateTimeFormatter format = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
 //时间解析
         DateTime dateTime = DateTime.parse("2012-12-21 23:22:45", format);
-
         System.out.println("dateTime = " + dateTime);
+        System.out.println("----");
+        System.out.println("format.print(new DateTime()) = " + format.print(new DateTime()));
     }
 }
