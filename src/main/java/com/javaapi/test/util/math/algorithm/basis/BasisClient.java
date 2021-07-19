@@ -61,6 +61,7 @@ public class BasisClient {
 
     /**
      * 另一种求最大值的方式
+     * 交换方式求最大值
      */
     @Test
     public void testMax2() {
