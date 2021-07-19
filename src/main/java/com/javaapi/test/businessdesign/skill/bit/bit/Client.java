@@ -14,6 +14,7 @@ public class Client {
     public void testFeature0(){
         Features features=new Features();
         System.out.println("原始特性==>"+Integer.toBinaryString(features.getFeatures()));
+        System.out.println("随便传一个数可以嘛==>" + features.hasFeature(0));
         System.out.println("有特性0么==>"+features.hasFeature(Features.feature0));
         features.removeFeature(Features.feature0);
         System.out.println("移除特性0==>"+Integer.toBinaryString(features.getFeatures()));
