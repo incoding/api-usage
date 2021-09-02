@@ -6,7 +6,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * Created by user on 2021/9/1.
  */
-public class Main {
+public class MainAbc {
 
     private volatile boolean init = true;
 
@@ -20,7 +20,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        new Main().invoke();
+        new MainAbc().invoke();
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
