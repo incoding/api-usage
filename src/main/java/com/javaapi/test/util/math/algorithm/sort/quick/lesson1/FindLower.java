@@ -39,6 +39,9 @@ public class FindLower {
         System.out.println("i = " + i);
     }
 
+    /**
+     * 从右向左查找比某个值小，从左向右查找比某个值大
+     */
     @Test
     public void testFindLowerHighter() {
         int[] a = {9, 2, 3, 8, 6, 5, 7, 1, 4, 0, 11};
@@ -61,6 +64,8 @@ public class FindLower {
     @Test
     public void testFindLowerHighterAndReplace() {
         int[] a = {9, 2, 3, 8, 6, 5, 7, 1, 4, 0, 11};
+        System.out.println("初始" + Arrays.toString(a));
+
         int i = 0;
         int j = a.length - 1;
         int privot = 5;
@@ -79,6 +84,8 @@ public class FindLower {
     /**
      * 从2边同时缩进
      * 同时发现比某值大并且比某值小,然后调换位置
+     *
+     * 注意 i 和j 范围,  就是左界限一直小小于等于右侧界限
      */
     @Test
     public void testFindLowerHighterAndReplaceMultipleTimes() {
@@ -86,20 +93,25 @@ public class FindLower {
         int i = 0;
         int j = a.length - 1;
         int privot = 9;
-        while (i < j) {
-            while (a[i] < privot) {
+        while (i <= j) {
+            while (a[i] < privot && i <= j) {
                 i++;
             }
-            while (a[j] > privot) {
+            while (a[j] > privot && i <= j) {
                 j--;
             }
-            int temp = a[i];
-            a[i] = a[j];
-            a[j] = temp;
-            i++;
-            j--;
+            if (i < j) {
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+                System.out.println("i = " + i + " j=" + j + " 结果为" + Arrays.toString(a));
+
+                i++;
+                j--;
+            }
         }
-        System.out.println("结果为" + Arrays.toString(a));
+        System.out.println("i = " + i + " j=" + j + " 结果为" + Arrays.toString(a));
+
     }
 
     /**
@@ -108,7 +120,9 @@ public class FindLower {
      */
     @Test
     public void testQuickSort() {
-        int[] a = {9, 2, 3, 8, 6, 5, 7, 1, 4, 0};
+
+        int[] a = {9, 2, 3, 8, 6, 5, 7, 1, 4, 0, 11};
+
         quickSort(a, 0, a.length - 1);
         System.out.println("结果" + Arrays.toString(a));
     }
@@ -140,6 +154,8 @@ public class FindLower {
             } else if (i == j) {
                 //情况二 i ==j的时候,无需交换,但是此时为了接下来分配子数组不产生冲突,需要将i+1
                 i++;
+                System.out.println("-----数组" + tempArr + "low=" + low + "high" + high + " 基准值" + privot + " 交换后" + Arrays.toString(Arrays.copyOfRange(a, low, high + 1)));
+
             }
         }
         System.out.println("数组" + tempArr + "low=" + low + "high" + high + " 基准值" + privot + " 交换后" + Arrays.toString(Arrays.copyOfRange(a, low, high + 1)));
