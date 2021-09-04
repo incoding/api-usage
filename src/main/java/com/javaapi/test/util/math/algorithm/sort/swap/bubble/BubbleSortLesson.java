@@ -1,4 +1,4 @@
-package com.javaapi.test.util.math.algorithm.sort.bubble;
+package com.javaapi.test.util.math.algorithm.sort.swap.bubble;
 
 import org.junit.Test;
 

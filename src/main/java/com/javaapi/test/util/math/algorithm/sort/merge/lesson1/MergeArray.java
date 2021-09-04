@@ -27,7 +27,11 @@ public class MergeArray {
      * <p>
      * <p>
      * <p>
+     * 注意:这种方式虽然能合并，但是合并后的并不是有序的。
+     *
      * 如果2个数组都有序,并且合并后也是有顺序的应该怎么办?
+     *
+
      */
     @Test
     public void testMerge() {
@@ -63,8 +67,30 @@ public class MergeArray {
         System.out.println("新数组为" + Arrays.toString(c));
     }
 
+    @Test
+    public void testScanArr() {
+        int[] a = {1, 2, 5, 6, 8};
+        int[] b = {1, 3, 8, 9, 10};
+        int[] temp = new int[a.length + b.length];
+        int tempIndex = 0;
+        int aIndex = 0;
+        int bIndex = 0;
+        while (aIndex < a.length && bIndex < b.length) {
+            if (a[aIndex] > b[bIndex]) {
+                temp[tempIndex++] = a[aIndex++];
+            } else {
+                temp[tempIndex++] = b[bIndex++];
+            }
+        }
+        System.out.println("新数组为" + Arrays.toString(temp));
+
+
+    }
+
 
     /**
+     * 重点 ！！！
+     *
      * 2个有序数组合a,b(从小到大)并为一个有序数组
      * 1 每次从a数组中选出最小值,与b数组中的最小值比较(因为数组是有序的,所以只要选择最左侧的就是最小值)
      * 2 a与b比较的较小者放入新数组.

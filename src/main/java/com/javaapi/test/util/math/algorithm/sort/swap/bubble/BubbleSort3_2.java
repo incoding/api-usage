@@ -1,4 +1,4 @@
-package com.javaapi.test.util.math.algorithm.sort.bubble;
+package com.javaapi.test.util.math.algorithm.sort.swap.bubble;
 
 /**
  * 使@{@link BubbleSort} 逻辑清晰
