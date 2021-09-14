@@ -54,8 +54,9 @@ public class BestTimeToBuyAndSellStockIi {
         Solution solution = new BestTimeToBuyAndSellStockIi().new Solution();
         int i = solution.maxProfit(new int[]{7, 1, 5, 3, 6, 4});
         System.out.println("i = " + i);
-        // dp[i] 是第i天的价格
-        // dp[i] = Math.max(dp[i-1]+prices[i] ,-prices[i]);
+        // dp[i] 是第i天
+        // dp[i][0] 是第i天没有股票的收益
+        // dp[i][1] 是第i天持有股票的收益
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
