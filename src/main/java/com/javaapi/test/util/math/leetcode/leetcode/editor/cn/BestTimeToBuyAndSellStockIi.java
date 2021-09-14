@@ -1,7 +1,5 @@
 package com.javaapi.test.util.math.leetcode.leetcode.editor.cn;
 
-import java.util.Arrays;
-
 /**
  * * //给定一个数组 prices ，其中 prices[i] 是一支给定股票第 i 天的价格。
  * //
@@ -62,16 +60,16 @@ public class BestTimeToBuyAndSellStockIi {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int maxProfit(int[] prices) {
-//            int length = prices.length;
-//            int dp[] = new int[length];
-//            dp[0] = 0;
-//            dp[1] = Math.max(prices[1] - prices[0], -prices[1]);
-//            for (int i = 2; i < length; i++) {
-//                dp[i] = Math.max(Math.max(dp[i - 1] + prices[i], dp[i - 1] - prices[i]), dp[i - 1]);
-//                System.out.println("i = " + Arrays.toString(dp));
-//            }
-//            return dp[length - 1];
-            return 0;
+            int length = prices.length;
+            int[][] dp = new int[length][2];
+            dp[0][0] = 0;
+            dp[0][1] = -prices[0];
+            for (int i = 1; i < length; i++) {
+                dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+                dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
+            }
+
+            return dp[length - 1][0];
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
