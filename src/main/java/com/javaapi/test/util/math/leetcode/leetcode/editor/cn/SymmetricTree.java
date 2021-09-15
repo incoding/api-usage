@@ -1,5 +1,7 @@
 package com.javaapi.test.util.math.leetcode.leetcode.editor.cn;
 
+import java.util.LinkedList;
+
 /**
  * * //给定一个二叉树，检查它是否是镜像对称的。
  * //
@@ -59,17 +61,29 @@ public class SymmetricTree {
      */
     class Solution {
         public boolean isSymmetric(TreeNode root) {
-            return helper(root.left, root.right);
+            return helper(root, root);
         }
 
         private boolean helper(TreeNode left, TreeNode right) {
-            if (left == null && right == null) {
-                return true;
+            LinkedList<TreeNode> queue = new LinkedList<>();
+            queue.offer(left);
+            queue.offer(right);
+            while (!queue.isEmpty()) {
+                TreeNode u = queue.poll();
+                TreeNode v = queue.poll();
+                if (u == null && v == null) {
+                    continue;
+                }
+                if (u == null || v == null || u.val != v.val) {
+                    return false;
+                }
+                queue.offer(u.left);
+                queue.offer(v.right);
+
+                queue.offer(u.right);
+                queue.offer(v.left);
             }
-            if (left == null || right == null) {
-                return false;
-            }
-            return left.val == right.val && helper(left.left, right.right) && helper(left.right, right.left);
+            return true;
         }
     }
 
