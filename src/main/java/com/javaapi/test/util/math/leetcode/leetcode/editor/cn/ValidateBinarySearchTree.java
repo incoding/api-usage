@@ -1,5 +1,7 @@
 package com.javaapi.test.util.math.leetcode.leetcode.editor.cn;
 
+import java.util.Stack;
+
 /**
  * * //给你一个二叉树的根节点 root ，判断其是否是一个有效的二叉搜索树。
  * //
@@ -65,6 +67,21 @@ public class ValidateBinarySearchTree {
      */
     class Solution {
         public boolean isValidBST(TreeNode root) {
+            Stack<TreeNode> stack = new Stack<>();
+            double inOrderVal = -Double.MAX_VALUE;
+            while (root != null || !stack.isEmpty()) {
+                while (root != null) {
+                    stack.push(root);
+                    root = root.left;
+                }
+                root = stack.pop();
+
+                if (root.val <= inOrderVal) {
+                    return false;
+                }
+                inOrderVal = root.val;
+                root = root.right;
+            }
             return true;
         }
 
