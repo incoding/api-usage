@@ -25,7 +25,8 @@ public class Client {
     }
 
     /**
-     * signal 唤醒其他线程,但是前提是当前线程要获取到锁
+     * 1 signal 唤醒其他线程,但是前提是当前线程要获取到锁
+     * 2 调用完signal 后，并且调用signal的线程释放掉锁之后，其他被signal锁的线程才能获取到锁
      */
     @Test
     public void testSignal() {
