@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.concurrent.control.controlsample;
+package com.javaapi.test.util.math.controlsample;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
