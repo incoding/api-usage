@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-class FooBar {
+class FooBarCondition {
     private Lock lock = new ReentrantLock();
     private Condition fooCondition = lock.newCondition();
     private Condition barCondition = lock.newCondition();
@@ -12,7 +12,7 @@ class FooBar {
     private int n;
 
     public static void main(String[] args) {
-        FooBar fooBar = new FooBar(10);
+        FooBarCondition fooBar = new FooBarCondition(10);
 
         new Thread(() -> {
             try {
@@ -42,7 +42,7 @@ class FooBar {
         }
     }
 
-    public FooBar(int n) {
+    public FooBarCondition(int n) {
         this.n = n;
     }
 
