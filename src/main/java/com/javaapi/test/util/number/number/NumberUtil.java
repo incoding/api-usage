@@ -1,4 +1,4 @@
-package com.javaapi.test.util.math.number;
+package com.javaapi.test.util.number.number;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;

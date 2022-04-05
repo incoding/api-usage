@@ -1,4 +1,4 @@
-package com.javaapi.test.util.math.format;
+package com.javaapi.test.util.number.format;
 
 import java.math.BigDecimal;
 import java.math.MathContext;

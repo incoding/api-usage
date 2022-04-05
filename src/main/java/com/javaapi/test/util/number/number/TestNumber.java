@@ -1,4 +1,4 @@
-package com.javaapi.test.util.math.number;
+package com.javaapi.test.util.number.number;
 
 import org.apache.commons.lang.math.NumberUtils;
 import org.junit.Test;

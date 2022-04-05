@@ -1,4 +1,4 @@
-package com.javaapi.test.util.math;
+package com.javaapi.test.util.number;
 
 import java.math.BigDecimal;
 
