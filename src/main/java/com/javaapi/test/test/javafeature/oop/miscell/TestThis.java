@@ -1,4 +1,4 @@
-package com.javaapi.test.test.miscell;
+package com.javaapi.test.test.javafeature.oop.miscell;
 
 import org.junit.Test;
 
