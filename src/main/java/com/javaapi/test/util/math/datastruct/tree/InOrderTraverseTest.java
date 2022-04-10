@@ -4,12 +4,30 @@ import org.junit.Test;
 
 import java.util.LinkedList;
 
+/**
+ * 参考 https://www.cnblogs.com/toone/p/8529264.html
+ */
 public class InOrderTraverseTest {
 
 
     @Test
     public void testInTravelsal() {
 
+    }
+
+    /**
+     * 二叉树
+     * 中序遍历
+     * 递归实现
+     *
+     * @param root
+     */
+    public void inOrderTraverse1(TreeNode root) {
+        if (root != null) {
+            inOrderTraverse1(root.left);
+            System.out.print(root.val + "  ");
+            inOrderTraverse1(root.right);
+        }
     }
 
 

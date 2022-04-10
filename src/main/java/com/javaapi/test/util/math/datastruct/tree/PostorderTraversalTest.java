@@ -4,7 +4,29 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * 参考 https://www.cnblogs.com/toone/p/8529264.html
+ */
 public class PostorderTraversalTest {
+
+
+    /**
+     * 二叉树
+     * 后序遍历
+     * 递归实现
+     *
+     * @param root
+     * @return
+     */
+    public void postOrderTraverse1(TreeNode root) {
+        if (root != null) {
+            postOrderTraverse1(root.left);
+            postOrderTraverse1(root.right);
+            System.out.print(root.val + "  ");
+        }
+    }
+
+
     public class Solution {
 
         /**

@@ -1,4 +1,4 @@
-package com.javaapi.test.test.dataStructure.testInner;
+package com.javaapi.test.test.dataStructure;
 
 import java.util.ArrayList;
 import java.util.List;

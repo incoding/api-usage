@@ -4,11 +4,27 @@ import org.junit.Test;
 
 import java.util.LinkedList;
 
+/**
+ * 参考 https://www.cnblogs.com/toone/p/8529264.html
+ */
 public class PreTraverseTest {
 
     @Test
     public void testPreTravelsal() {
 
+    }
+
+    /**
+     * 二叉树
+     * 前序遍历
+     * 递归实现
+     */
+    public void preOrderTraverse1(TreeNode root) {
+        if (root != null) {
+            System.out.print(root.val + "  ");
+            preOrderTraverse1(root.left);
+            preOrderTraverse1(root.right);
+        }
     }
 
     /**
