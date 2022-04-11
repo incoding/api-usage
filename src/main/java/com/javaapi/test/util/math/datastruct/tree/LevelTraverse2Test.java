@@ -1,15 +1,15 @@
-package com.javaapi.test.util.math.struct.bitree.printlevel;
+package com.javaapi.test.util.math.datastruct.tree;
 
 import org.junit.Test;
 
 import java.util.LinkedList;
 
-public class Client {
+public class LevelTraverse2Test {
 
     @Test
-    public void test(){
+    public void test() {
         // N层 ， N+1层也知道
-        Client client = new Client();
+        LevelTraverse2Test client = new LevelTraverse2Test();
         Btree btree = client.initTree();
         client.printLevel(btree);
     }
@@ -59,7 +59,7 @@ public class Client {
             {
                 queue.offer(current.getLeft());
             }
-            if(current.getRight() != null)//如果当前节点的右节点不为空，把右节点入队
+            if (current.getRight() != null)//如果当前节点的右节点不为空，把右节点入队
             {
                 queue.offer(current.getRight());
             }
@@ -68,5 +68,73 @@ public class Client {
     }
 
 
+    public static class Btree {
 
+        /**
+         * 层级
+         */
+        private Integer level;
+
+        /**
+         * 具体的值
+         */
+        private Integer value;
+
+        /**
+         * 左节点
+         */
+        private Btree left;
+
+        /**
+         * 右节点
+         */
+        private Btree right;
+
+        public Btree() {
+        }
+
+        public Btree(Btree left, Btree right) {
+            this.left = left;
+            this.right = right;
+        }
+
+        public Btree(Integer level, Integer value, Btree left, Btree right) {
+            this.level = level;
+            this.value = value;
+            this.left = left;
+            this.right = right;
+        }
+
+        public Btree getLeft() {
+            return left;
+        }
+
+        public void setLeft(Btree left) {
+            this.left = left;
+        }
+
+        public Btree getRight() {
+            return right;
+        }
+
+        public void setRight(Btree right) {
+            this.right = right;
+        }
+
+        public Integer getLevel() {
+            return level;
+        }
+
+        public void setLevel(Integer level) {
+            this.level = level;
+        }
+
+        public Integer getValue() {
+            return value;
+        }
+
+        public void setValue(Integer value) {
+            this.value = value;
+        }
+    }
 }

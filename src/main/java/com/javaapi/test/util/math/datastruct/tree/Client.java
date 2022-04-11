@@ -1,15 +1,40 @@
 package com.javaapi.test.util.math.datastruct.tree;
 
+import org.junit.Test;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
-
-/**
- * Created by user on 2021/9/16.
- *
- */
 public class Client {
+    @Test
+    public void test() {
+        TreeNode treeNode = new TreeNode(1, new TreeNode(2, null, null), new TreeNode(3, null, null));
+        System.out.println("before = " + treeNode.left.val + " " + treeNode.right.val);
+        revert(treeNode.left, treeNode.right);
+        System.out.println("after = " + treeNode.left.val + " " + treeNode.right.val);
+    }
+
+    /**
+     * 正确
+     */
+    @Test
+    public void test2() {
+        TreeNode treeNode = new TreeNode(1, new TreeNode(2, null, null), new TreeNode(3, null, null));
+        System.out.println("before2 = " + treeNode.left.val + " " + treeNode.right.val);
+        revert2(treeNode);
+        System.out.println("after2 = " + treeNode.left.val + " " + treeNode.right.val);
+    }
+
+
+    public void revert(TreeNode left, TreeNode right) {
+        TreeNode node = left;
+        left = right;
+        right = node;
+    }
+
+    public void revert2(TreeNode root) {
+        TreeNode node = root.left;
+        root.left = root.right;
+        root.right = node;
+    }
+
     public class TreeNode {
         int val;
         TreeNode left;
@@ -28,29 +53,4 @@ public class Client {
             this.right = right;
         }
     }
-
-    public static void main(String[] args) {
-
-    }
-
-    public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> ans = new LinkedList<Integer>();
-
-        //辅助栈
-        Stack<TreeNode> stack = new Stack<TreeNode>();
-
-        TreeNode node = root;//栈顶元素
-        while (node != null || !stack.empty()) {//循环终止条件！！！！！！
-            while (node != null) {
-                stack.push(node);
-                node = node.left;
-            }
-            node = stack.pop();//取出栈顶元素
-            ans.add(node.val);
-            node = node.right;
-        }
-
-        return ans;
-    }
-
 }
