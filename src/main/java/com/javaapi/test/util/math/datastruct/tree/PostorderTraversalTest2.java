@@ -1,10 +1,8 @@
 package com.javaapi.test.util.math.datastruct.tree;
 
-import com.google.common.collect.Lists;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
