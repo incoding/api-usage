@@ -10,7 +10,9 @@ import java.util.Stack;
 /**
  * 参考 https://www.cnblogs.com/toone/p/8529264.html
  * <p>
- * 后续遍历要考虑2种场景,一种是右节点是null,另一种是右节点已经被访问过了
+ * 后续遍历要考虑2种场景,
+ * 一种是右节点是null,
+ * 另一种是右节点已经被访问过了
  */
 public class PostorderTraversalTest2 {
 
