@@ -7,7 +7,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
- * for arraylist
+ * 底层链表实现
  */
 public class TestLinkedBlockingQueue {
 

@@ -7,6 +7,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * for arraylist
+ * 底层是数组实现
  */
 public class TestArrayBlockingQueue {
 
