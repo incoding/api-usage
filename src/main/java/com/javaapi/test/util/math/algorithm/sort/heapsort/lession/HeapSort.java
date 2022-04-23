@@ -91,8 +91,8 @@ public class HeapSort {
 
     @Test
     public void test(){
-//        int[] params = {9,2,7,4,6,5,3,8,1};
-        int[] params = {5,2};
+        int[] params = {9, 2, 7, 4, 6, 5, 3, 8, 1};
+//        int[] params = {5,2};
         //调用需要测试的函数
         int[] array = sortHeap(params);
         //打印结果
