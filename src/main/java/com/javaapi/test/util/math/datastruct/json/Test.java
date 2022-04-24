@@ -1,16 +1,13 @@
-package com.javaapi.test.util;
+package com.javaapi.test.util.math.datastruct.json;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.StringJoiner;
 
 public class Test {
 
