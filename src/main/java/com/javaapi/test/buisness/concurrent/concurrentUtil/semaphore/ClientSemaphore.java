@@ -5,6 +5,13 @@ import org.junit.Test;
 import java.util.concurrent.Semaphore;
 
 public class ClientSemaphore {
+
+    /**
+     * release 是增加令牌permits
+     * accquire 是提取令牌 permits
+     *
+     * @throws InterruptedException
+     */
     @Test
     public void test() throws InterruptedException {
         Semaphore semaphore = new Semaphore(0);
