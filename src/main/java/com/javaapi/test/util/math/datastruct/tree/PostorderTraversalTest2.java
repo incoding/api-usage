@@ -1,5 +1,6 @@
 package com.javaapi.test.util.math.datastruct.tree;
 
+import com.google.common.collect.Lists;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -25,6 +26,16 @@ public class PostorderTraversalTest2 {
         Assert.assertArrayEquals(integers.toArray(new Integer[integers.size()]), new Integer[]{1, 3, 2, 5, 7, 6, 4});
     }
 
+    @Test
+    public void test2() {
+        Solution solution = new Solution();
+        TreeNode init = solution.init();
+        PostorderTraversalTest2 postorderTraversalTest2 = new PostorderTraversalTest2();
+        List<Integer> integers = postorderTraversalTest2.postorderTraversal2(init);
+        System.out.println("integers = " + integers);
+        Assert.assertArrayEquals(integers.toArray(new Integer[integers.size()]), new Integer[]{1, 3, 2, 5, 7, 6, 4});
+    }
+
 
     /**
      * 二叉树
@@ -40,6 +51,30 @@ public class PostorderTraversalTest2 {
             postOrderTraverse1(root.right);
             System.out.print(root.val + "  ");
         }
+    }
+
+    public List<Integer> postorderTraversal2(TreeNode root) {
+        TreeNode pre = null;
+        List<Integer> result = Lists.newArrayList();
+        Stack<TreeNode> stack = new Stack<>();
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            if (root.right == null || root.right == pre) {
+                result.add(root.val);
+                pre = root;
+                root = null;
+            } else {
+                stack.push(root);
+                root = root.right;
+            }
+        }
+        return result;
+
+
     }
 
 
