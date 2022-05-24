@@ -3,7 +3,7 @@ package com.javaapi.test.util.math.datastruct.link;
 import org.junit.Test;
 
 /**
- * 反转部分链表
+ * 反转指定范围链表
  * 1->2->3->4->5
  * 开始 2 结束 4
  * <p>
@@ -35,7 +35,7 @@ public class TestLinked {
         ListNode node1 = new ListNode(1, node2);
 
         TestLinked testLinked = new TestLinked();
-        ListNode reverse = testLinked.reverse(node1, 5, 5);
+        ListNode reverse = testLinked.reverse(node1, 1, 5);
         testLinked.print(reverse);
     }
 
