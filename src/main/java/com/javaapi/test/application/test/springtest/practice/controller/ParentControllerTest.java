@@ -25,6 +25,9 @@ public abstract class ParentControllerTest extends TestCase {
 
     @Before
     public void setUp() throws Exception {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).
+                // 可以添加过滤器
+//                addFilters()
+                build();
     }
 }
