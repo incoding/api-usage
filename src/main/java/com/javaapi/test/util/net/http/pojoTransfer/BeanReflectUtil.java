@@ -1,34 +1,15 @@
 package com.javaapi.test.util.net.http.pojoTransfer;
 
-import com.javaapi.test.util.opensource.apache.commons.beanutils.pojo.StrangePojo;
-import org.junit.Test;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by user on 18/3/26
- */
-public class ClientReflect {
-
-    /**
-     * 这种方式 大D可以正常显示
-     * 单个字符的字段  大D正常显示
-     */
-    @Test
-    public void describeStrange(){
-        StrangePojo strangePojo = new StrangePojo();
-        strangePojo.setD("da D");
-//        strangePojo.setDd("daxiao Dd");
-        strangePojo.setDD("da DD");
-//        strangePojo.setd("xiao d");
-        describe(strangePojo);
-
+public class BeanReflectUtil {
+    public BeanReflectUtil() {
     }
 
-    private void describe(Object student) {
+    void describe(Object student) {
         try {
             Map<String, Object> describe = objectToMap(student);
             System.out.println("describe = " + describe);
@@ -36,6 +17,7 @@ public class ClientReflect {
             e.printStackTrace();
         }
     }
+
     public static Object mapToObject(Map<String, Object> map, Class<?> beanClass) throws Exception {
         if (map == null) {
             return null;
@@ -46,7 +28,7 @@ public class ClientReflect {
         Field[] fields = obj.getClass().getDeclaredFields();
         for (Field field : fields) {
             int mod = field.getModifiers();
-            if(Modifier.isStatic(mod) || Modifier.isFinal(mod)){
+            if (Modifier.isStatic(mod) || Modifier.isFinal(mod)) {
                 continue;
             }
 
@@ -58,7 +40,7 @@ public class ClientReflect {
     }
 
     public static Map<String, Object> objectToMap(Object obj) throws Exception {
-        if(obj == null){
+        if (obj == null) {
             return null;
         }
 

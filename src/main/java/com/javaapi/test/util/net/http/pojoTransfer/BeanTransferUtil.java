@@ -1,19 +1,11 @@
 package com.javaapi.test.util.net.http.pojoTransfer;
 
-import org.junit.Test;
+import org.apache.commons.beanutils.BeanMap;
+import org.apache.commons.beanutils.BeanUtils;
 
 import java.util.Map;
 
-/**
- * map To Object
- * @see com.javaapi.test.util.opensource.apache.commons.beanutils.ClientDescribe
- */
-public class ClientBeanutils {
-    @Test
-    public void test(){
-
-    }
-
+public class BeanTransferUtil {
     public static Object mapToObject(Map<String, Object> map, Class<?> beanClass) throws Exception {
         if (map == null) {
             return null;
@@ -21,7 +13,7 @@ public class ClientBeanutils {
 
         Object obj = beanClass.newInstance();
 
-        org.apache.commons.beanutils.BeanUtils.populate(obj, map);
+        BeanUtils.populate(obj, map);
 
         return obj;
     }
@@ -31,6 +23,6 @@ public class ClientBeanutils {
             return null;
         }
 
-        return new org.apache.commons.beanutils.BeanMap(obj);
+        return new BeanMap(obj);
     }
 }

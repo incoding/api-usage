@@ -1,8 +1,5 @@
 package com.javaapi.test.util.net.http.pojoTransfer;
 
-import com.javaapi.test.util.opensource.apache.commons.beanutils.pojo.StrangePojo;
-import org.junit.Test;
-
 import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
@@ -10,31 +7,11 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * refer https://www.cnblogs.com/dreammyle/p/5610906.html
- * Created by user on 18/3/26
- */
-public class ClientIntrospector {
-    @Test
-    public void test(){
-
+public class BeanIntrospectorUtil {
+    public BeanIntrospectorUtil() {
     }
 
-    /**
-     * 单个字符的字段  大D会被描述为小d
-     */
-    @Test
-    public void describeStrange(){
-        StrangePojo strangePojo = new StrangePojo();
-        strangePojo.setD("da D");
-//        strangePojo.setDd("daxiao Dd");
-        strangePojo.setDD("da DD");
-//        strangePojo.setd("xiao d");
-        describe(strangePojo);
-
-    }
-
-    private void describe(Object student) {
+    void describe(Object student) {
         try {
             Map<String, Object> describe = objectToMap(student);
             System.out.println("describe = " + describe);
@@ -77,7 +54,7 @@ public class ClientIntrospector {
                 continue;
             }
             Method getter = property.getReadMethod();
-            Object value = getter!=null ? getter.invoke(obj) : null;
+            Object value = getter != null ? getter.invoke(obj) : null;
             map.put(key, value);
         }
 
