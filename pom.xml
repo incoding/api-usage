@@ -7,7 +7,7 @@
     <properties>
         <!--<dep.jackson-databind.version>2.4.4</dep.jackson-databind.version>-->
         <dep.jackson-databind.version>2.8.11</dep.jackson-databind.version>
-        <spring.version>4.2.6.RELEASE</spring.version>
+        <spring.version>4.3.30.RELEASE</spring.version>
         <junit.version>4.11</junit.version>
         <java.version>1.8</java.version>
         <plugin.clean.version>2.6.1</plugin.clean.version>
@@ -144,12 +144,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
-            <scope>compile</scope>
         </dependency>
         <!-- dbutil-->
         <dependency>

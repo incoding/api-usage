@@ -37,9 +37,9 @@ public class TestAntPathMatcher {
 
     @Test
     public void testPatternMatchUtils2() throws Exception {
-        String mappedName = "com.ly.flight.intl.i*trade*.dal.mapper";
-        String methodName = "com.ly.flight.intl.ipolicytrade.dal.mapper";
-//        String methodName = "com.ly.flight.intl.itradecore.dal.mapper";
+        String mappedName = "xxxx.i*trade*.dal.mapper";
+        String methodName = "xxxx.iptrade.dal.mapper";
+//        String methodName = "xxxx.itc.dal.mapper";
         boolean simpleMatch = PatternMatchUtils.simpleMatch(mappedName,
                 methodName);
         System.out.println(simpleMatch);

@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.TestUpDownLoad;
+package com.javaapi.test.springmvc.upload.TestUpDownLoad;
 
 public class Test {
     @org.junit.Test
