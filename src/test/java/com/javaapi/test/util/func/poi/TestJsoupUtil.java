@@ -11,17 +11,17 @@ import org.junit.Test;
 
 import com.javaapi.test.buisness.data.json.fastjson.util.JsonUtil;
 
-public class JsoupUtil{
-	@Test
-	public void testGetAddress() throws Exception {
-		String address = getAddress("http://baike.baidu.com/search?word=吉林师范大学博达学院");
-		System.out.println(address);
-	}
+public class TestJsoupUtil {
+    @Test
+    public void testGetAddress() throws Exception {
+        String address = getAddress("http://baike.baidu.com/search?word=吉林师范大学博达学院");
+        System.out.println(address);
+    }
 
-	public static String getAddress(String string) throws Exception {
-		Document document = Jsoup.connect(string).get();
-		Elements elementsByClass = document.getElementsByClass("result-title");
-		String attr = elementsByClass.get(0).attr("href");
+    public static String getAddress(String string) throws Exception {
+        Document document = Jsoup.connect(string).get();
+        Elements elementsByClass = document.getElementsByClass("result-title");
+        String attr = elementsByClass.get(0).attr("href");
 		String readHref = readHref(attr);
 		return readHref;
 	}

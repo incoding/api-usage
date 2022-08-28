@@ -18,18 +18,17 @@ import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.junit.Test;
 
-import com.javaapi.test.util.func.poi.TestPoi;
 
-public class PoiCreate {
-	
-	@Test
-	public void create() {// 创建Excel的工作书册 Workbook,对应到一个excel文档  
-		Random rd = new Random();
-		int nextInt = rd.nextInt(1000);
-		String filePath = TestPoi.class.getResource("").getPath()+nextInt+".xls";
-String string = "/home/kk/git/apiTest/src/main/java/com/javaapi/test/test/testUtil/poi/poiUtil/";
-filePath= string +nextInt+".xls";
-	    HSSFWorkbook wb = new HSSFWorkbook();  
+public class TestPoiCreate {
+
+    @Test
+    public void create() {// 创建Excel的工作书册 Workbook,对应到一个excel文档
+        Random rd = new Random();
+        int nextInt = rd.nextInt(1000);
+        String filePath = TestPoiCreate.class.getResource("").getPath() + nextInt + ".xls";
+        String string = "/home/kk/git/apiTest/src/main/java/com/javaapi/test/test/testUtil/poi/poiUtil/";
+        filePath = string + nextInt + ".xls";
+        HSSFWorkbook wb = new HSSFWorkbook();
 	    
 	    // 创建Excel的工作sheet,对应到一个excel文档的tab  
 	    HSSFSheet sheet = wb.createSheet("sheet1");  

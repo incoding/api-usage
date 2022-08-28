@@ -74,18 +74,18 @@ public class TestPoiRead {
 	}
 
 	private static void dealAddress(String cellStringValue) throws Exception {
-		String url = getBaiKeUrl(cellStringValue);
-		String address = JsoupUtil.getAddress(url);
-		String shi = AddressUtil.getShi(address);
-		if(shi == null) {
-		shi = JsoupUtil.parseFromMap(cellStringValue);
-		}
-		if("北京市".equals(shi)) {
-			shi=null;
-		}
-		dealMap.put(cellStringValue, shi);
-		System.out.println(cellStringValue+"&&=>"+shi);
-	}
+        String url = getBaiKeUrl(cellStringValue);
+        String address = TestJsoupUtil.getAddress(url);
+        String shi = TestAddressUtil.getShi(address);
+        if (shi == null) {
+            shi = TestJsoupUtil.parseFromMap(cellStringValue);
+        }
+        if ("北京市".equals(shi)) {
+            shi = null;
+        }
+        dealMap.put(cellStringValue, shi);
+        System.out.println(cellStringValue + "&&=>" + shi);
+    }
 
 	private static String getBaiKeUrl(String cellStringValue) {
 		String baike = "http://baike.baidu.com/search?word="+cellStringValue;

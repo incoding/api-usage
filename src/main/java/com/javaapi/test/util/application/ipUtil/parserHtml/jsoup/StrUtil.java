@@ -5,7 +5,6 @@ import com.steadystate.css.parser.SACParserCSS3;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.css.sac.InputSource;
@@ -70,37 +69,4 @@ public class StrUtil {
     }
 
 
-
-    @Test
-    public void testRemove() {
-        String nihao = "<p>哈哈哈哈</p><a>aa</a>";
-        String s = removeIlleaglString(nihao);
-        System.out.println("s = " + s);
-    }
-
-    @Test
-    public void testRemove2() {
-        String nihao = "<p>哈哈哈哈<a>aa</a>";
-        String s = removeIlleaglString(nihao);
-        System.out.println("s = " + s);
-    }
-
-    @Test
-    public void testRemoveTag() {
-        String nihao = "<style> aaaaaaa </style><div>bbbbbbb</div>";
-        String s = removeIlleaglString(nihao);
-        System.out.println("s = " + s);
-    }
-    @Test
-    public void testRemoveAttr() {
-        String nihao = "<style> aaaaaaa </style><div width='12' >bbbbbb</div>";
-        String s = removeIlleaglString(nihao);
-        System.out.println("s = " + s);
-    }
-    @Test
-    public void testRemoveCssInStyle() {
-        String nihao = "<div style=\"width:12;background:url('http://www.baidu.com')\" >nihoassss</div><div>22222</div>";
-        String s = removeIlleaglString(nihao);
-        System.out.println("s = " + s);
-    }
 }
