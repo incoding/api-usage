@@ -29,9 +29,6 @@ public class InOrderTraverse2Test {
         }
     }
 
-    public static void main(String[] args) {
-
-    }
 
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> ans = new LinkedList<Integer>();

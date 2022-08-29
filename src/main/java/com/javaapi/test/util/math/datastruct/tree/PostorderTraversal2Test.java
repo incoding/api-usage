@@ -15,7 +15,7 @@ import java.util.Stack;
  * 一种是右节点是null,
  * 另一种是右节点已经被访问过了
  */
-public class PostorderTraversalTest2 {
+public class PostorderTraversal2Test {
 
     @Test
     public void test() {
@@ -30,8 +30,8 @@ public class PostorderTraversalTest2 {
     public void test2() {
         Solution solution = new Solution();
         TreeNode init = solution.init();
-        PostorderTraversalTest2 postorderTraversalTest2 = new PostorderTraversalTest2();
-        List<Integer> integers = postorderTraversalTest2.postorderTraversal2(init);
+        PostorderTraversal2Test postorderTraversal2Test = new PostorderTraversal2Test();
+        List<Integer> integers = postorderTraversal2Test.postorderTraversal2(init);
         System.out.println("integers = " + integers);
         Assert.assertArrayEquals(integers.toArray(new Integer[integers.size()]), new Integer[]{1, 3, 2, 5, 7, 6, 4});
     }
