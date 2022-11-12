@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.pattern.ext.pipeline;
+package com.javaapi.test.spring.spring.pattern.pipelinev3;
 
 import lombok.Data;
 
