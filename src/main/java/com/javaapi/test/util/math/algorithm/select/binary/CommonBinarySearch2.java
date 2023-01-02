@@ -9,7 +9,7 @@ public class CommonBinarySearch2 {
         int left = 0, right = arr.length - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
-            if (mid < left || mid > mid) {
+            if (mid < left || mid > right) {
                 return -1;
             }
             if (arr[mid] < num) {
