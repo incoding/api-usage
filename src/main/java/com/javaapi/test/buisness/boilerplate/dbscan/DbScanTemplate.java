@@ -1,6 +1,8 @@
 package com.javaapi.test.buisness.boilerplate.dbscan;
 
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -8,6 +10,7 @@ import java.util.function.Function;
 /**
  * Created by user on 2020/10/7.
  */
+@Slf4j
 public class DbScanTemplate<T, U> {
 
     private Function<U, List<T>> dbQueryListFunction;
@@ -29,19 +32,21 @@ public class DbScanTemplate<T, U> {
 
     public void dbScanByParam(U dbQuery) {
         //TODO
-        System.out.println("start");
-        int pageAlready = 0;
+        log.info("start");
+        int pageIndex = 0;
         while (true) {
             List<T> result = this.dbQueryListFunction.apply(dbQuery);
             if (result == null || result.isEmpty()) {
                 break;
             }
-            pageAlready += 1;
-            this.handleMethod.accept(pageAlready, result);
-            this.setId.accept(dbQuery, this.getId.apply(result.get(result.size() - 1)));
+            pageIndex += 1;
+            this.handleMethod.accept(pageIndex, result);
+            int lastItem = result.size() - 1;
+            // 设置为最新id,用于下次滚动
+            this.setId.accept(dbQuery, this.getId.apply(result.get(lastItem)));
         }
         //TODO
-        System.out.println("done");
+        log.info("done");
     }
 
 }

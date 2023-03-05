@@ -26,6 +26,9 @@ public class Client {
         new DbScanTemplateNative().dbScan(queryDb, getId, handleMethod);
     }
 
+    /**
+     * 按id滚动查询
+     */
     @Test
     public void testParam() {
         Function<DbIdQuery, List<DbDomain>> dbQueryListFunction = dbDao::queryDb;
@@ -38,16 +41,19 @@ public class Client {
         new DbScanTemplate(dbQueryListFunction, handleMethod, getId, setId).dbScanByParam(dbQuery);
     }
 
+    /**
+     * 分页查询
+     */
     @Test
     public void testParam2() {
         Function<DbPageQuery, List<DbDomain>> dbQueryListFunction = dbDao::queryDb;
-        Function<DbPageQuery, Integer> getId = DbPageQuery::getPageNo;
-        BiConsumer<DbPageQuery, Integer> setId = DbPageQuery::setPageNo;
+        Function<DbPageQuery, Integer> getPageNo = DbPageQuery::getPageNo;
+        BiConsumer<DbPageQuery, Integer> setPageNo = DbPageQuery::setPageNo;
         BiConsumer<Integer, List<DbDomain>> handleMethod = (pageIndex, result) -> bizService.doSomeThing(pageIndex, result);
         DbPageQuery dbQuery = new DbPageQuery();
         dbQuery.setPageNo(1);
         dbQuery.setPageSize(5000);
-        new DbScanTemplatePage(dbQueryListFunction, handleMethod, getId, setId).dbScanByParam(dbQuery);
+        new DbScanTemplatePage(dbQueryListFunction, handleMethod, getPageNo, setPageNo).dbScanByParam(dbQuery);
     }
 
 

@@ -38,7 +38,8 @@ public class DbScanTemplatePage<T, U> {
             }
             pageAlready += 1;
             this.handleMethod.accept(pageAlready, result);
-            this.setPageNoFunc.accept(dbQuery, this.getPageNoFunc.apply(dbQuery) + 1);
+            int pageNo = this.getPageNoFunc.apply(dbQuery) + 1;
+            this.setPageNoFunc.accept(dbQuery, pageNo);
         }
         //TODO
         System.out.println("done");
