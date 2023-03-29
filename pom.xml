@@ -6,7 +6,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <properties>
         <!--<dep.jackson-databind.version>2.4.4</dep.jackson-databind.version>-->
-        <dep.jackson-databind.version>2.8.11</dep.jackson-databind.version>
+        <dep.jackson-databind.version>2.12.7.1</dep.jackson-databind.version>
         <spring.version>1.5.22.RELEASE</spring.version>
         <junit.version>4.12</junit.version>
         <java.version>1.8</java.version>
