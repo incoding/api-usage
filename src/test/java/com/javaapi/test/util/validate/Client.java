@@ -1,4 +1,4 @@
-package com.javaapi.test.util.log;
+package com.javaapi.test.util.validate;
 
 import org.apache.commons.validator.routines.EmailValidator;
 import org.junit.Test;
