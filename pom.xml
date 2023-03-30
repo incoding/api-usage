@@ -63,9 +63,6 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
-                    <excludes>
-                        <exclude>com.javaapi.test.buisness.dao/**</exclude>
-                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
