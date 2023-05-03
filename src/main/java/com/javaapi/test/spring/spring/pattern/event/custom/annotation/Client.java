@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.event.ApplicationEventMulticaster;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -18,11 +19,28 @@ import java.util.concurrent.TimeUnit;
 public class Client {
 
     @Autowired
-    ApplicationContext applicationContext;
+    private ApplicationContext applicationContext;
+
+
+    @Autowired
+    private ApplicationEventMulticaster applicationEventMulticaster;
+
 
     @Test
     public void test() {
+        System.out.println("push thread " + Thread.currentThread().getName());
         applicationContext.publishEvent(new CustomEvent(this, "custom data"));
+        try {
+            TimeUnit.SECONDS.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testMulticaster() {
+        System.out.println("push thread=" + Thread.currentThread().getName());
+        applicationEventMulticaster.multicastEvent(new CustomEvent(this, "custom data"));
         try {
             TimeUnit.SECONDS.sleep(10);
         } catch (InterruptedException e) {

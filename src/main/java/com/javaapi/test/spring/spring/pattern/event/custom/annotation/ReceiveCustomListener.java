@@ -16,7 +16,7 @@ public class ReceiveCustomListener {
 
     @EventListener
     public void listenter(CustomEvent event) {
-        System.out.println("ReceiveCustomListener annotation event = " + event.getData());
+        System.out.println("ReceiveCustomListener annotation event = " + event.getData() + "thread=" + Thread.currentThread().getName());
     }
 
     @EventListener(condition = "#event.data == 'nihao'")
