@@ -1,4 +1,4 @@
-package com.javaapi.test.application.jms;
+//package com.javaapi.test.application.jms;
 
 //public class MessageReciever implements MessageListener {
 //  public void onMessage(Message message) {

@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.dao.mybatis.springInterface.optimisticLock;
+package com.javaapi.test.buisness.dao.mybatis.usage.optimisticLock;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
