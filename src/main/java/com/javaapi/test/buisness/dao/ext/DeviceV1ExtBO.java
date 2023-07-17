@@ -70,17 +70,20 @@ public class DeviceV1ExtBO {
      * @return
      */
     public boolean put(String key, String value) {
-        DeviceExtKeyEnum extKeyEnum = DeviceExtKeyEnum.of(key);
-        if (extKeyEnum == null) {
-            return false;
-        }
-        DeviceV1Ext valueObj = new DeviceV1Ext(deviceCode, key, value);
-        extMap.put(key, valueObj);
-        BiConsumer<DeviceV1ExtBO, DeviceV1Ext> biConsumer = extKeyEnum.getBiConsumer();
-        if (biConsumer != null) {
-            biConsumer.accept(this, valueObj);
-        }
+        syncObjAndMap(key, new DeviceV1Ext(deviceCode, key, value));
         return true;
+    }
+
+    private void syncObjAndMap(String key, DeviceV1Ext valueObj) {
+        extMap.put(key, valueObj);
+        DeviceExtKeyEnum extKeyEnum = DeviceExtKeyEnum.of(key);
+        if (extKeyEnum != null) {
+            BiConsumer<DeviceV1ExtBO, DeviceV1Ext> consumer = extKeyEnum.getBiConsumer();
+            if (consumer != null) {
+                // 为了可以感知异常,不要改成函数式
+                consumer.accept(this, valueObj);
+            }
+        }
     }
 
 
@@ -95,7 +98,7 @@ public class DeviceV1ExtBO {
         if (extMap.containsKey(key)) {
             return extMap.get(key);
         } else {
-            extMap.put(key, defaultExt);
+            syncObjAndMap(key, defaultExt);
             return defaultExt;
         }
     }
