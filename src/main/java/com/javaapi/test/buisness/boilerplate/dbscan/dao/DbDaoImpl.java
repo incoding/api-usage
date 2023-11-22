@@ -12,7 +12,7 @@ public class DbDaoImpl implements DbDao {
 
     @Override
     public List<DbDomain> queryDb(DbPageQuery dbQuery) {
-        if (dbQuery.getPageNo() == 10) {
+        if (dbQuery.getPageNo() >= 10) {
             return Lists.newArrayList();
         }
         System.out.println("dbQuery = " + JSON.toJSONString(dbQuery));
