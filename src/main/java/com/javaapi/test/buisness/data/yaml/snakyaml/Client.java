@@ -1,6 +1,8 @@
 package com.javaapi.test.buisness.data.yaml.snakyaml;
 
+import com.alibaba.fastjson.JSON;
 import com.javaapi.test.buisness.data.yaml.Person;
+import com.javaapi.test.buisness.joint.outter.Result;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.yaml.snakeyaml.Yaml;
@@ -18,6 +20,8 @@ public class Client {
         System.out.println("load = " + person);
         String s = person.getIotOpenResopnse().get("099975");
         System.out.println("s = " + s);
+        Result result = JSON.parseObject(s, Result.class);
+        System.out.println("result = " + result);
 
     }
 }
