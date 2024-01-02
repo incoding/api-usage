@@ -1,5 +1,6 @@
-package com.javaapi.test.buisness.data.yaml;
+package com.javaapi.test.buisness.data.yaml.jyaml;
 
+import com.javaapi.test.buisness.data.yaml.Person;
 import org.ho.yaml.Yaml;
 import org.junit.Test;
 
