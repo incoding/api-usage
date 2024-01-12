@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.dao.mybatis;
+package com.javaapi.test.buisness.dao.mybatis.features.typehandler;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;

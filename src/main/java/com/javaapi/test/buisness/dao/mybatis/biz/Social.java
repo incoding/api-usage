@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.dao.mybatis;
+package com.javaapi.test.buisness.dao.mybatis.biz;
 
 public class Social {
     public String id;

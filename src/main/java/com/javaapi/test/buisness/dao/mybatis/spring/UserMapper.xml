@@ -7,7 +7,7 @@
   <resultMap type="com.javaapi.test.buisness.dao.mybatis.User" id="userId">
   	<result property="id" column="id"/>
   	<!--     相当于查找一个对象 -->
-  	<result property="testTypeHandler" column="val" javaType="com.javaapi.test.buisness.dao.mybatis.UserInfo" jdbcType="VARCHAR"/>
+  	<result property="testTypeHandler" column="val" javaType="com.javaapi.test.buisness.dao.mybatis.features.typehandler.UserInfo" jdbcType="VARCHAR"/>
   </resultMap>
     <select id="getUser" resultType="com.javaapi.test.buisness.dao.mybatis.User">
         select * from users  

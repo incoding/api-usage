@@ -13,8 +13,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.javaapi.test.buisness.dao.domain.page2.DataPage;
-import com.javaapi.test.buisness.dao.mybatis.Social;
-import com.javaapi.test.buisness.dao.mybatis.UserInfo;
+import com.javaapi.test.buisness.dao.mybatis.biz.Social;
+import com.javaapi.test.buisness.dao.mybatis.features.typehandler.UserInfo;
 import com.javaapi.test.buisness.dao.mybatis.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)

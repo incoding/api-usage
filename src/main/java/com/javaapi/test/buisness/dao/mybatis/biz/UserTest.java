@@ -9,8 +9,6 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.javaapi.test.buisness.dao.mybatis.Social;
-
 public class UserTest {
 
     private static SqlSessionFactory sqlSessionFactory;

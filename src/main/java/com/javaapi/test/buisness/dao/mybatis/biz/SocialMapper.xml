@@ -5,13 +5,13 @@
 <!--     如果要使用mapper接口方式则 namespace 一定要跟对应的接口一样 -->
 <mapper namespace="com.javaapi.test.buisness.dao.mybatis.biz.SocialMapper">
 
-   <select id="getUserList" resultType="com.javaapi.test.buisness.dao.mybatis.Social">
+   <select id="getUserList" resultType="com.javaapi.test.buisness.dao.mybatis.biz.Social">
         select * from sns_social  
     </select>  
-   <select id="getTop1User" resultType="com.javaapi.test.buisness.dao.mybatis.Social">
+   <select id="getTop1User" resultType="com.javaapi.test.buisness.dao.mybatis.biz.Social">
        SELECT *  FROM csc_sns_dev.sns_social where id='0013399d-1392-4c2a-b196-0f8119e15bad';
     </select>  
-     <select id="setUser" resultType="com.javaapi.test.buisness.dao.mybatis.Social">
+     <select id="setUser" resultType="com.javaapi.test.buisness.dao.mybatis.biz.Social">
         insert into  sns_social(id,name,phone,email)values(#{id},#{name},#{phone},#{email});
     </select>  
     <select id="countUser" resultType="Integer">

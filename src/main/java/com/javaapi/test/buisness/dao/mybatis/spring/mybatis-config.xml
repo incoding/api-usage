@@ -5,7 +5,7 @@
   
 <configuration>  
 <typeHandlers>
-	<typeHandler handler="com.javaapi.test.buisness.dao.mybatis.MyTypeHandler" javaType="com.javaapi.test.buisness.dao.mybatis.UserInfo" jdbcType="VARCHAR"/>
+	<typeHandler handler="com.javaapi.test.buisness.dao.mybatis.features.typehandler.MyTypeHandler" javaType="com.javaapi.test.buisness.dao.mybatis.features.typehandler.UserInfo" jdbcType="VARCHAR"/>
 <!-- 	如果指定了package属性,则需要使用注解 @MappedTypes   @MappedJdbcTypes  ,来指定javaType 和jdbcType -->
 
 <!-- 	<package name=""/> -->

@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.dao.mybatis.thirdpart;
+package com.javaapi.test.buisness.dao.mybatis.thirdpart.tk;
 
 import com.javaapi.test.buisness.dao.mybatis.thirdpart.dao.UserDao;
 import com.javaapi.test.buisness.dao.mybatis.thirdpart.domain.User;

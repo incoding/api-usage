@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="testSqlNamespace">  
 <!-- 可以实现更灵活的配置 -->
-<resultMap  id="socialResultId" type="com.javaapi.test.buisness.dao.mybatis.Social">
+<resultMap  id="socialResultId" type="com.javaapi.test.buisness.dao.mybatis.biz.Social">
 	   <result column="id" property="id" />
        <result column="name" property="name" />
        <result column="phone" property="phone" />

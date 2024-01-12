@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.dao.mybatis.thirdpart.service;
+package com.javaapi.test.buisness.dao.mybatis.thirdpart.tk.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

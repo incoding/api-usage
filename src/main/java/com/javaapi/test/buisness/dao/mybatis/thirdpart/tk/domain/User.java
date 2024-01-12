@@ -1,4 +1,4 @@
-package com.javaapi.test.buisness.dao.mybatis.thirdpart.domain;
+package com.javaapi.test.buisness.dao.mybatis.thirdpart.tk.domain;
 
 
 import javax.persistence.*;
