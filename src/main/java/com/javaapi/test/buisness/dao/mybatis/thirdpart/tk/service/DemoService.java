@@ -1,6 +1,7 @@
 package com.javaapi.test.buisness.dao.mybatis.thirdpart.tk.service;
 
-import com.javaapi.test.buisness.dao.mybatis.thirdpart.domain.User;
+
+import com.javaapi.test.buisness.dao.mybatis.thirdpart.tk.domain.User;
 import org.springframework.stereotype.Service;
 
 /**
