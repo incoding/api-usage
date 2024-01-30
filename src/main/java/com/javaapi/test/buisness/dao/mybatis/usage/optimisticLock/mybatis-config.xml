@@ -3,8 +3,12 @@
     PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
     "http://mybatis.org/dtd/mybatis-3-config.dtd">  
   
-<configuration>  
+<configuration>
+    <plugins>
+        <plugin interceptor="com.javaapi.test.buisness.dao.mybatis.features.datafilter.MybatisDataFilterInterceptor"></plugin>
+    </plugins>
     <mappers>  
-        <mapper resource="com/javaapi/test/dao/mybatis/springInterface/optimisticLock/CashBookDao.xml" />  
-    </mappers>  
+        <mapper resource="com/javaapi/test/buisness/dao/mybatis/usage/optimisticLock/CashBookDao.xml" />
+    </mappers>
+
 </configuration>

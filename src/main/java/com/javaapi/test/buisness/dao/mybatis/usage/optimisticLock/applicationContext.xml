@@ -17,9 +17,9 @@
 class="org.apache.commons.dbcp.BasicDataSource"
 destroy-method="close"
         p:driverClassName="com.mysql.jdbc.Driver"
-        p:url="jdbc:mysql://127.0.0.1:3306/test?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=GBK"
-        p:username="root"
-        p:password="root"/>
+        p:url="jdbc:mysql://10.100.19.122:3306/test?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=GBK"
+        p:username="devops"
+        p:password="12345678"/>
         
  <bean id="txManager"  
         class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
