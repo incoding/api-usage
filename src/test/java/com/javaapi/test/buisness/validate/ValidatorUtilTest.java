@@ -13,16 +13,30 @@ public class ValidatorUtilTest {
         ValidationUtil.ValidResult validResult = ValidationUtil.validateBean(new Article());
         System.out.println("validate = " + JSON.toJSONString(validResult));
     }
+
+    /**
+     * 有校验注解
+     * 嵌套注解
+     */
     @Test
     public void test2(){
-        Set<ConstraintViolation<Article>> validate = cn.hutool.extra.validation.ValidationUtil.validate(new Article());
+        Article bean = new Article();
+        bean.setArticleInner(new ArticleInner());
+        Set<ConstraintViolation<Article>> validate = cn.hutool.extra.validation.ValidationUtil.validate(bean);
         for (ConstraintViolation<Article> articleConstraintViolation : validate) {
             System.out.println("articleConstraintViolation = " + articleConstraintViolation.getMessage());
         }
-
     }
 
-
-
+    /**
+     * 无校验注解
+     */
+    @Test
+    public void test3(){
+        Set<ConstraintViolation<ArticleRaw>> validate = cn.hutool.extra.validation.ValidationUtil.validate(new ArticleRaw());
+        for (ConstraintViolation<ArticleRaw> articleConstraintViolation : validate) {
+            System.out.println("articleConstraintViolation = " + articleConstraintViolation.getMessage());
+        }
+    }
 
 }
