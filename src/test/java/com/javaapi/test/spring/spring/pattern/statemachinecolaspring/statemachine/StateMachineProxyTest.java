@@ -13,6 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by user on 2020/12/20.
@@ -92,7 +93,6 @@ public class StateMachineProxyTest {
 
     /**
      * 传未定义过的当前状态和事件组合
-     * 正常case
      */
     @Test
     public void testFireTwiceSame() {
@@ -109,7 +109,6 @@ public class StateMachineProxyTest {
 
     /**
      * 传未定义过的当前状态和事件组合
-     * 正常case
      */
     @Test
     public void testFireTwiceDiff() {
@@ -126,7 +125,6 @@ public class StateMachineProxyTest {
 
     /**
      * 多个状态机,分表调用一次
-     * 正常case
      */
     @Test
     public void testFireOtherStateMachine() {
@@ -137,7 +135,44 @@ public class StateMachineProxyTest {
         log.info("end:{}", result);
     }
 
-    //TODO  exception 异常,runtime异常
+    /**
+     * RuntimeException 异常
+     */
+    @Test
+    public void testFireRuntimeException() {
+        log.info("start");
+        GuaranteeContext context = new GuaranteeContext();
+        context.setId(GuaranteeContext.RUNTIME_EXCEPTION_ID);
+        Object result = null;
+        try {
+            result = stateMachineProxy.fire("guarantee", "INIT", "CREATE", context);
+        } catch (Exception e) {
+            Assert.assertEquals(e.getClass(), RuntimeException.class);
+            Assert.assertEquals(InitToCheckingTransit.class.toString(), context.getThroughTransit());
+        }
+        log.info("end:{}", result);
+    }
 
+    /**
+     * Exception 异常
+     */
+    @Test
+    public void testFireException() {
+        log.info("start");
+        GuaranteeContext context = new GuaranteeContext();
+        context.setId(GuaranteeContext.EXCEPTION_ID);
+        Object result = null;
+        try {
+            result = stateMachineProxy.fire("guarantee", "INIT", "CREATE", context);
+        } catch (Exception e) {
+            Assert.assertEquals(e.getClass(), UnsupportedEncodingException.class);
+            Assert.assertEquals(InitToCheckingTransit.class.toString(), context.getThroughTransit());
+        }
+        log.info("end:{}", result);
+    }
+
+    //TODO 嵌套异常
+    //TODO 条件校验
+    //TODO 省略条件
 
 }
