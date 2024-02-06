@@ -6,13 +6,15 @@ import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.guarantee.e
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.guarantee.state.GuaranteeState;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine.IStateTransit;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine.Transit;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
- * @see  GuaranteeState
+ * @see GuaranteeState
  */
-@Transit(machine = StateMachineConfigEnum.GUARANTEE,from = "CHECKING",to = "CANCEL", event = "CHECK_REFUSE")
+@Transit(machine = StateMachineConfigEnum.GUARANTEE, from = "CHECKING", to = "CANCEL", event = "CHECK_REFUSE")
 @Component
+@Slf4j
 public class CheckingToCancelTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteeContext> {
 
     @Override
@@ -22,7 +24,8 @@ public class CheckingToCancelTransit implements IStateTransit<GuaranteeState, Gu
 
     @Override
     public void execute(GuaranteeState from, GuaranteeState to, GuaranteeEvent event, GuaranteeContext context) {
-        System.out.println("this.getClass() = " + this.getClass());
+        log.info("通过:{}",this.getClass());
+        context.setThroughTransit(this.getClass().toString());
     }
 
 }
