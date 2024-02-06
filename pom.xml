@@ -47,6 +47,21 @@
                 <directory>src/main/resources</directory>
             </resource>
         </resources>
+        <!--单元测试时引用src/main/resources下的资源文件 如何test下面有同类型的文件,则以test的为准-->
+        <testResources>
+            <testResource>
+                <directory>src/test/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.ftl</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.sql</include>
+                </includes>
+            </testResource>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
         <plugins>
             <!-- 根eclipse自带得插件有冲突 -->
             <!-- <plugin> -->
