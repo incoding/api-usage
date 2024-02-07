@@ -7,6 +7,7 @@ import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.guarantee.s
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine.IStateTransit;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine.Transit;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,7 +20,8 @@ public class CheckingToPayWaitTransit implements IStateTransit<GuaranteeState, G
 
     @Override
     public boolean condition(GuaranteeContext context) {
-        return true;
+        log.info("通过条件:{}",this.getClass());
+        return BooleanUtils.isTrue(context.getConditionResult());
     }
 
     @Override
