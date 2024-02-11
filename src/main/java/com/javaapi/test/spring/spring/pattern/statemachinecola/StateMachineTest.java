@@ -112,7 +112,8 @@ public class StateMachineTest {
                .perform(doAction());
         StateMachine<States, Events, Context> stateMachine = builder.build(MACHINE_ID + "2");
 
-        stateMachine.fireEvent(States.STATE1, Events.EVENT1, new Context());
+        States states = stateMachine.fireEvent(States.STATE1, Events.EVENT1, new Context());
+        System.out.println("states = " + states);
         States target = stateMachine.fireEvent(States.STATE1, Events.INTERNAL_EVENT, new Context());
         Assert.assertEquals(States.STATE1, target);
     }

@@ -3,6 +3,7 @@ package com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachi
 
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.guarantee.context.GuaranteeContext;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.guarantee.transit.CheckingToCancelTransit;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.guarantee.transit.CheckingToPayWaitTransit;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.guarantee.transit.InitToCheckingTransit;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.sms.context.SmsContext;
 import lombok.extern.slf4j.Slf4j;
@@ -92,7 +93,7 @@ public class StateMachineProxyTest {
     }
 
     /**
-     * 传未定义过的当前状态和事件组合
+     * 分别俩次调用状态机,源状态和事件相同看是否有影响
      */
     @Test
     public void testFireTwiceSame() {
@@ -108,7 +109,7 @@ public class StateMachineProxyTest {
     }
 
     /**
-     * 传未定义过的当前状态和事件组合
+     * 分别俩次调用状态机,源状态和事件不同看是否有影响
      */
     @Test
     public void testFireTwiceDiff() {
@@ -124,7 +125,7 @@ public class StateMachineProxyTest {
     }
 
     /**
-     * 多个状态机,分表调用一次
+     * 多个状态机,分别调用一次
      */
     @Test
     public void testFireOtherStateMachine() {
@@ -185,16 +186,16 @@ public class StateMachineProxyTest {
             result = stateMachineProxy.fire("guarantee", "CHECKING", "CHECK_PASS", context);
         } catch (Exception e) {
             Assert.assertEquals(UnsupportedOperationException.class, e.getClass());
-            Assert.assertEquals(null, context.getThroughTransit());
+            Assert.assertNotNull(null, context.getThroughTransit());
         }
         log.info("end:{}", result);
     }
 
     /**
-     * 内部异常
+     * service异常
      */
     @Test
-    public void testFireInnerException() {
+    public void testFireServiceException() {
         log.info("start");
         GuaranteeContext context = new GuaranteeContext();
         context.setId(3L);
@@ -208,7 +209,39 @@ public class StateMachineProxyTest {
         log.info("end:{}", result);
     }
 
+    /**
+     * 原状态和事件构成一个流转
+     * 多个流转的规则如下:
+     * 1 同一个源状态,多个不同事件? 算不同流转,不同transit 不会覆盖
+     * 2 同一个源状态,相同事件定义多次? 也算不同流转, 就是一个state不同transit,不会覆盖,
+     *  2.1 如果是相同源状态相同事件中都没有条件,就用最后一个
+     *  2.2 如果是相同源状态相同事件中有条件,则只选第一个符合的条件的. 没有符合条件的.就只选无条件的最后一个, 但只会选择满足一个condition 条件的执行 ,参考 CheckingToChecking2lTransit,CheckingToCheckinglTransit,CheckingToPayWaitTransit的关系
+     * 3 不同源状态,同一个事件 ?算不同流转,不同transit 不会覆盖
+     * 4 流转与目标状态相同,在状态机构建阶段就会出异常, 参考 CheckingToChecking3lTransit,CheckingToPayWaitTransit 的关系
+     */
+    @Test
+    public void testFireMultiplyTransit() {
+        log.info("start");
+        GuaranteeContext context = new GuaranteeContext();
+        context.setId(3L);
+        context.setConditionResult(true);
+        Object result;
+        result = stateMachineProxy.fire("guarantee", "CHECKING", "CHECK_PASS", context);
+        Assert.assertEquals(CheckingToPayWaitTransit.class.toString(), context.getThroughTransit());
+        log.info("end:{}", result);
+    }
+
+    /**
+     * 源状态与目标状态相同,但是事件不同.  基本只跟源状态和事件有关,目标状态无所谓.
+     */
+    @Test
+    public void testSameFromToStateTransit() {
+        testFireMultiplyTransit();
+    }
+
     //TODO 嵌套异常
     //TODO 可省略条件校验
+    //TODO 支持内部转换?,目前不支持内部转换
+    //TODO 子类重新定义有transit注解,子类无transit 注解 ?
 
 }

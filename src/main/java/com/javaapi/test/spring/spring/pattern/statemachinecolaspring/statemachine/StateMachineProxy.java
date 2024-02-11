@@ -15,6 +15,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 底层状态代理
+ */
 @Component
 @SuppressWarnings(value = {"rawtypes","unchecked"})
 @Slf4j
@@ -49,9 +52,9 @@ public class StateMachineProxy {
             String from = transit.from();
             String to = transit.to();
             String event = transit.event();
-            Enum fromEnum = this.getEnum(from, stateMacheConfigEnum.getFrom());
-            Enum toEnum = this.getEnum(to, stateMacheConfigEnum.getTo());
-            Enum eventEnum = this.getEnum(event, stateMacheConfigEnum.getEvent());
+            Enum fromEnum = StateMachineUtils.getEnum(from, stateMacheConfigEnum.getFrom());
+            Enum toEnum = StateMachineUtils.getEnum(to, stateMacheConfigEnum.getTo());
+            Enum eventEnum = StateMachineUtils.getEnum(event, stateMacheConfigEnum.getEvent());
             builder.externalTransition()
                    .from(fromEnum)
                    .to(toEnum)
@@ -96,13 +99,14 @@ public class StateMachineProxy {
             throw new IllegalArgumentException("业务暂不支持");
         }
         StateMachineConfigEnum machineConfig = StateMachineConfigEnum.getByMachineName(machineName);
-        Enum fromEnum = this.getEnum(sourceState, machineConfig.getFrom());
-        Enum eventEnum = this.getEnum(event, machineConfig.getEvent());
+        Enum fromEnum = StateMachineUtils.getEnum(sourceState, machineConfig.getFrom());
+        Enum eventEnum = StateMachineUtils.getEnum(event, machineConfig.getEvent());
         Object resultState = stateMachine.fireEvent(fromEnum, eventEnum, context);
         if (resultState.equals(fromEnum)){
-         /* 2种情况
-            1 未定义状态支持的事件
-            2 用户重试状态已变更
+         /* 3 种情况
+            1 未定义状态转换支持的事件
+            2 定义的状态转换中的条件不符合
+            3 状态正常已变更了,但是用户重试了之前的状态对应的事件
             */
             log.warn("状态转换未定义,machineName:{},sourceState:{},event:{}",machineName,sourceState,event);
             throw new UnsupportedOperationException("状态已变更");
@@ -110,14 +114,4 @@ public class StateMachineProxy {
         return resultState;
     }
 
-    private Enum getEnum(String name, Class clazz) {
-        Enum anEnum;
-        try {
-            anEnum = Enum.valueOf(clazz, name);
-        } catch (Exception e) {
-            log.info("业务暂时不支持,name:{},class:{}",name,clazz);
-            throw new IllegalArgumentException("操作暂不支持",e);
-        }
-        return anEnum;
-    }
 }
