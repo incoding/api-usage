@@ -14,11 +14,11 @@ public enum StateMachineConfigEnum {
     /**
      * 保单
      */
-    GUARANTEE("guarantee", GuaranteeState.class,GuaranteeState.class,GuaranteeEvent.class),
+    GUARANTEE("guarantee", GuaranteeState.class, GuaranteeState.class, GuaranteeEvent.class),
     /**
      * 短信单
      */
-    SMS("sms", SmsState.class,SmsState.class, SmsEvent.class),
+    SMS("sms", SmsState.class, SmsState.class, SmsEvent.class),
     ;
     private final String machineName;
     private final Class from;
@@ -31,14 +31,14 @@ public enum StateMachineConfigEnum {
         this.to = to;
         this.event = event;
     }
-    
-    public static StateMachineConfigEnum getByMachineName(String name){
+
+    public static StateMachineConfigEnum getByMachineName(String name) {
         for (StateMachineConfigEnum value : StateMachineConfigEnum.values()) {
             if (value.getMachineName().equals(name)) {
                 return value;
             }
         }
-        log.error("暂不支持该业务逻辑:{}",name);
+        log.error("暂不支持该业务逻辑:{}", name);
         throw new IllegalStateException("暂不支持该业务逻辑");
     }
 }

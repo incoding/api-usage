@@ -8,6 +8,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.config.StateMachineConfigEnum;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.annotation.AnnotationAwareOrderComparator;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -38,6 +39,7 @@ public class StateMachineProxy {
         for (StateMachineConfigEnum config : stateMachineGroup.keySet()) {
             // 状态机和对应的
             List<IStateTransit> iStateTransits = stateMachineGroup.get(config);
+            AnnotationAwareOrderComparator.sort(iStateTransits);
             StateMachineProxy.stateMachineMap.put(config.getMachineName(),buidStateMachine(config, iStateTransits));
         }
     }

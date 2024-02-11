@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class GuaranteeServiceImpl {
 
-    public void cancelOrder(Long orderId){
+    public void cancelOrder(Long orderId) {
         log.info("订单取消");
         if (orderId.equals(3L)) {
             log.info("订单取消发生异常");

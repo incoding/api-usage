@@ -28,7 +28,7 @@ public class InitToCheckingTransit implements IStateTransit<GuaranteeState, Guar
     @Override
     @SneakyThrows
     public void execute(GuaranteeState from, GuaranteeState to, GuaranteeEvent event, GuaranteeContext context) {
-        log.info("通过:{}",this.getClass());
+        log.info("通过:{}", this.getClass());
         context.setThroughTransit(this.getClass().toString());
         if (GuaranteeContext.RUNTIME_EXCEPTION_ID.equals(context.getId())) {
             log.info("内部RuntimeException异常");

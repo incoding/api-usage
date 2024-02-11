@@ -10,9 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
- * @see  SmsState
+ * @see SmsState
  */
-@Transit(machine = StateMachineConfigEnum.SMS,from = "SENDING",to = "SUCCESS", event = "SEND_SUCCESS")
+@Transit(machine = StateMachineConfigEnum.SMS, from = "SENDING", to = "SUCCESS", event = "SEND_SUCCESS")
 @Component
 @Slf4j
 public class SendingToSuccessSmsTransit implements IStateTransit<SmsState, SmsEvent, SmsContext> {
@@ -24,7 +24,7 @@ public class SendingToSuccessSmsTransit implements IStateTransit<SmsState, SmsEv
 
     @Override
     public void execute(SmsState from, SmsState to, SmsEvent event, SmsContext context) {
-        log.info("通过:{}",this.getClass());
+        log.info("通过:{}", this.getClass());
         context.setThroughTransit(this.getClass().toString());
     }
 

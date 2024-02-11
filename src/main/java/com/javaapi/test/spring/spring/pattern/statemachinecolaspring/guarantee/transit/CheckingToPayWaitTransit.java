@@ -8,6 +8,7 @@ import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachin
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine.Transit;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.BooleanUtils;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Component;
 @Transit(machine = StateMachineConfigEnum.GUARANTEE, from = "CHECKING", to = "PAY_WAIT", event = "CHECK_PASS")
 @Component
 @Slf4j
+@Order(-2)
 public class CheckingToPayWaitTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteeContext> {
 
     @Override

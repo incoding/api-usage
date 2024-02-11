@@ -110,6 +110,35 @@ public class StateMachineTest {
                .on(Events.INTERNAL_EVENT)
                .when(checkCondition())
                .perform(doAction());
+        builder.internalTransition()
+               .within(States.STATE1)
+               .on(Events.EVENT4)
+               .when(checkCondition())
+               .perform(doAction1());
+        builder.externalTransition()
+               .from(States.STATE1)
+               .to(States.STATE2)
+               .on(Events.EVENT4)
+               .when(checkCondition())
+               .perform(doAction2());
+        StateMachine<States, Events, Context> stateMachine = builder.build(MACHINE_ID + "2");
+
+        States states = stateMachine.fireEvent(States.STATE1, Events.EVENT1, new Context());
+        System.out.println("states = " + states);
+        States target = stateMachine.fireEvent(States.STATE1, Events.INTERNAL_EVENT, new Context());
+        Assert.assertEquals(States.STATE1, target);
+        target = stateMachine.fireEvent(States.STATE1, Events.EVENT4, new Context());
+        Assert.assertEquals(States.STATE1, target);
+    }
+
+    @Test
+    public void testInternalNormal2() {
+        StateMachineBuilder<States, Events, Context> builder = StateMachineBuilderFactory.create();
+        builder.internalTransition()
+               .within(States.STATE1)
+               .on(Events.INTERNAL_EVENT)
+               .when(checkCondition())
+               .perform(doAction());
         StateMachine<States, Events, Context> stateMachine = builder.build(MACHINE_ID + "2");
 
         States states = stateMachine.fireEvent(States.STATE1, Events.EVENT1, new Context());
@@ -222,7 +251,19 @@ public class StateMachineTest {
     private Action<States, Events, Context> doAction() {
         return (from, to, event, ctx) -> {
             System.out.println(
-                    ctx.operator + " is operating " + ctx.entityId + " from:" + from + " to:" + to + " on:" + event);
+                    ctx.operator + "->0 is operating " + ctx.entityId + " from:" + from + " to:" + to + " on:" + event);
+        };
+    }
+    private Action<States, Events, Context> doAction1() {
+        return (from, to, event, ctx) -> {
+            System.out.println(
+                    ctx.operator + "->1 is operating " + ctx.entityId + " from:" + from + " to:" + to + " on:" + event);
+        };
+    }
+    private Action<States, Events, Context> doAction2() {
+        return (from, to, event, ctx) -> {
+            System.out.println(
+                    ctx.operator + "->2 is operating " + ctx.entityId + " from:" + from + " to:" + to + " on:" + event);
         };
     }
 

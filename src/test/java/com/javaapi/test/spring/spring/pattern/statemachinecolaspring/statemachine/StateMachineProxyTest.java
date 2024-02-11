@@ -8,6 +8,7 @@ import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.guarantee.t
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.sms.context.SmsContext;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -213,9 +214,9 @@ public class StateMachineProxyTest {
      * 原状态和事件构成一个流转
      * 多个流转的规则如下:
      * 1 同一个源状态,多个不同事件? 算不同流转,不同transit 不会覆盖
-     * 2 同一个源状态,相同事件定义多次? 也算不同流转, 就是一个state不同transit,不会覆盖,
-     *  2.1 如果是相同源状态相同事件中都没有条件,就用最后一个
-     *  2.2 如果是相同源状态相同事件中有条件,则只选第一个符合的条件的. 没有符合条件的.就只选无条件的最后一个, 但只会选择满足一个condition 条件的执行 ,参考 CheckingToChecking2lTransit,CheckingToCheckinglTransit,CheckingToPayWaitTransit的关系
+     * 2 同一个源状态,相同事件定义多次? 也算不同流转, 就是一个state不同transit,不会覆盖, transit选择优先级如下
+     *  2.1 选择所有含执行条件的transit中按构建顺序遍历后符合条件的第一个transit: 只会选择满足一个condition 条件的执行 ,参考 CheckingToChecking2lTransit,CheckingToCheckinglTransit,CheckingToPayWaitTransit的关系
+     *  2.2 选择所有无条件的transit中最后一个构建的transit
      * 3 不同源状态,同一个事件 ?算不同流转,不同transit 不会覆盖
      * 4 流转与目标状态相同,在状态机构建阶段就会出异常, 参考 CheckingToChecking3lTransit,CheckingToPayWaitTransit 的关系
      */
@@ -232,16 +233,53 @@ public class StateMachineProxyTest {
     }
 
     /**
-     * 源状态与目标状态相同,但是事件不同.  基本只跟源状态和事件有关,目标状态无所谓.
+     * 源状态与目标状态相同,但是事件不同.
+     * 基本只跟源状态和事件有关,目标状态无所谓.
      */
     @Test
     public void testSameFromToStateTransit() {
         testFireMultiplyTransit();
     }
 
-    //TODO 嵌套异常
-    //TODO 可省略条件校验
-    //TODO 支持内部转换?,目前不支持内部转换
-    //TODO 子类重新定义有transit注解,子类无transit 注解 ?
+    /**
+     * 内部transit:
+     * 内部transit目前无特殊效果,同外部transit效果一致
+     */
+    @Test
+    public void testInnerTransit(){
+        testFireMultiplyTransit();
+    }
+
+    /**
+     * 子类重新定义有transit注解,按子类transit注解.
+     * 子类无transit 注解.取父类注解
+     * 参考 CheckingToCheckinglTransit,CheckingToChecking2lTransit
+     *
+     */
+    @Test
+    public void testTransitInherited() {
+        testFireMultiplyTransit();
+    }
+
+    /** 可控制构建顺序,因为构建顺序略微影响同一流程下多个transit最终选择
+     *  目前支持spring order 注解,order value 越小优先级越高
+     */
+    @Test
+    public void testOrder(){
+        testFireMultiplyTransit();
+    }
+
+    /**
+     * 省略条件校验,避免顺序认知混乱,全部要提供condition方法.
+     * CheckingToChecking2lTransit,CheckingToCheckinglTransit
+     *
+     */
+    @Test
+    @Ignore
+    public void testIgnoreCondition(){
+    }
+
+    //TODO 测试嵌套异常,就是会不会spring框架包装了个什么异常,无法获取原始异常
+    //TODO 目前源状态目标状态一致,事件不一样是不支持的 ,需要支持.
 
 }
