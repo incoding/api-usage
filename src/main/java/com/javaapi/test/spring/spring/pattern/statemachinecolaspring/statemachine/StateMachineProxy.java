@@ -109,6 +109,7 @@ public class StateMachineProxy {
             1 未定义状态转换支持的事件
             2 定义的状态转换中的条件不符合
             3 状态正常已变更了,但是用户重试了之前的状态对应的事件
+            4 内部事件转换 TODO 这个待定
             */
             log.warn("状态转换未定义,machineName:{},sourceState:{},event:{}",machineName,sourceState,event);
             throw new UnsupportedOperationException("状态已变更");

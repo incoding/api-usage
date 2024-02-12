@@ -279,7 +279,16 @@ public class StateMachineProxyTest {
     public void testIgnoreCondition(){
     }
 
+    /**
+     * //TODO 目前源状态目标状态一致,事件不一样是不支持的 ,需要支持.
+     * 1 要支持内部转换的原始目的是什么?
+     */
+    @Test
+    public void testSameFromToTransit(){
+
+    }
+
     //TODO 测试嵌套异常,就是会不会spring框架包装了个什么异常,无法获取原始异常
-    //TODO 目前源状态目标状态一致,事件不一样是不支持的 ,需要支持.
+
 
 }
