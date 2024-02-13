@@ -5,6 +5,7 @@ import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.gua
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.CheckingToCancelTransit;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.CheckingToPayWaitTransit;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.InitToCheckingTransit;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.nonesense.PayWaitToPayWaitTransit;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.sms.context.SmsContext;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
@@ -243,7 +244,7 @@ public class StateMachineProxyTest {
 
     /**
      * 内部transit:
-     * 内部transit目前无特殊效果,同外部transit效果一致
+     * 内部transit目前无特殊效果,同外部transit一样
      */
     @Test
     public void testInnerTransit(){
@@ -270,7 +271,7 @@ public class StateMachineProxyTest {
     }
 
     /**
-     * 省略条件校验,避免顺序认知混乱,全部要提供condition方法.
+     * 避免顺序认知混乱,全部要提供condition方法.
      * CheckingToChecking2lTransit,CheckingToCheckinglTransit
      *
      */
@@ -280,16 +281,22 @@ public class StateMachineProxyTest {
     }
 
     /**
-     * //TODO 目前源状态目标状态一致,事件不一样是不支持的 ,需要支持.
-     * 1 要支持内部转换的原始目的是什么?
+     * 目前源状态目标状态一致,事件不一样是支持的
+     * 要支持内部转换的原始目的是什么? 状态转换后的稳定态还重复过来之前的事件
      */
     @Test
     public void testSameFromToTransit(){
+        log.info("start");
+        GuaranteeContext context = new GuaranteeContext();
+        Object result;
+        result = stateMachineProxy.fire("guarantee", "PAY_WAIT", "CHECK_PASS", context);
+        Assert.assertEquals(PayWaitToPayWaitTransit.class.toString(), context.getThroughTransit());
+        log.info("end:{}", result);
     }
 
     /**
      *     //TODO 如何支持连续状态转换
-     *  连续状态转换?
+     *  连续状态转换?->考虑 内部继续调用状态机
      */
     @Test
     public void testContinusTransit(){

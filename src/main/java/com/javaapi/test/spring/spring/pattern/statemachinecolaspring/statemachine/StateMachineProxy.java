@@ -62,6 +62,9 @@ public class StateMachineProxy {
 
             Condition<ContextWrapper> conditonWrapper = (ContextWrapper c) -> iStateTransit.condition(c.getContext());
             Action<?,?,ContextWrapper> actionWrapper = (from1, to1, event1, context) -> {
+                if (from1.equals(to1)) {
+                    context.setSameFromToPassed(true);
+                }
                 Object execute = iStateTransit.execute(from1, to1, event1, context.getContext());
                 context.setResult(execute);
             };
@@ -113,20 +116,18 @@ public class StateMachineProxy {
         Enum eventEnum = StateMachineUtils.getEnum(event, machineConfig.getEvent());
         ContextWrapper<Object, Object> contextWrapper = new ContextWrapper<>();
         contextWrapper.setContext(context);
-        stateMachine.fireEvent(fromEnum, eventEnum, contextWrapper);
+        Object resultState = stateMachine.fireEvent(fromEnum, eventEnum, contextWrapper);
+        // 如果未定义状态转换就抛出异常
+        if (contextWrapper.isSameFromToPassed() ){
+            // 内部transit,源状态和目标状态就是一样的
+        }else if (resultState.equals(fromEnum)){
+         /* 外部transit 情况
+            1 未定义状态转换支持的事件:case 1 状态正常已变更了,但是用户重复点击. 2 开发人员开发阶段少定义 等等
+            2 定义的状态转换中的条件不符合: case 1 状态正常已变更了,但是用户重复点击  2 业务条件确实不匹配 等等
+            */
+            log.warn("状态转换未定义,machineName:{},sourceState:{},event:{}",machineName,sourceState,event);
+            throw new UnsupportedOperationException("状态已变更");
+        }
         return contextWrapper.getResult();
-//        //TODO
-//        if (resultState.equals(fromEnum)){
-//         /* 3 种情况
-//            1 未定义状态转换支持的事件
-//            2 定义的状态转换中的条件不符合
-//            3 状态正常已变更了,但是用户重试了之前的状态对应的事件
-//            4 内部事件转换 TODO 这个待定
-//            */
-//            log.warn("状态转换未定义,machineName:{},sourceState:{},event:{}",machineName,sourceState,event);
-//            throw new UnsupportedOperationException("状态已变更");
-//        }
-//        return resultState;
     }
-
 }
