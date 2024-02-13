@@ -1,11 +1,11 @@
 package com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine;
 
 
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.guarantee.context.GuaranteeContext;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.guarantee.transit.CheckingToCancelTransit;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.guarantee.transit.CheckingToPayWaitTransit;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.guarantee.transit.InitToCheckingTransit;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.sms.context.SmsContext;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeContext;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.CheckingToCancelTransit;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.CheckingToPayWaitTransit;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.InitToCheckingTransit;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.sms.context.SmsContext;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -285,10 +285,15 @@ public class StateMachineProxyTest {
      */
     @Test
     public void testSameFromToTransit(){
+    }
 
+    /**
+     *     //TODO 如何支持连续状态转换
+     *  连续状态转换?
+     */
+    @Test
+    public void testContinusTransit(){
     }
 
     //TODO 测试嵌套异常,就是会不会spring框架包装了个什么异常,无法获取原始异常
-
-
 }

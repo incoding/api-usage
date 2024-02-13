@@ -1,6 +1,8 @@
 package com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine;
 
 import cn.hutool.extra.spring.SpringUtil;
+import com.alibaba.cola.statemachine.Action;
+import com.alibaba.cola.statemachine.Condition;
 import com.alibaba.cola.statemachine.StateMachine;
 import com.alibaba.cola.statemachine.builder.StateMachineBuilder;
 import com.alibaba.cola.statemachine.builder.StateMachineBuilderFactory;
@@ -51,18 +53,24 @@ public class StateMachineProxy {
         StateMachineBuilder builder = StateMachineBuilderFactory.create();
         for (IStateTransit iStateTransit : iStateTransits) {
             Transit transit = iStateTransit.getClass().getAnnotation(Transit.class);
-            String from = transit.from();
-            String to = transit.to();
-            String event = transit.event();
-            Enum fromEnum = StateMachineUtils.getEnum(from, stateMacheConfigEnum.getFrom());
-            Enum toEnum = StateMachineUtils.getEnum(to, stateMacheConfigEnum.getTo());
-            Enum eventEnum = StateMachineUtils.getEnum(event, stateMacheConfigEnum.getEvent());
+            String fromStr = transit.from();
+            String toStr = transit.to();
+            String eventStr = transit.event();
+            Enum fromEnum = StateMachineUtils.getEnum(fromStr, stateMacheConfigEnum.getFrom());
+            Enum toEnum = StateMachineUtils.getEnum(toStr, stateMacheConfigEnum.getTo());
+            Enum eventEnum = StateMachineUtils.getEnum(eventStr, stateMacheConfigEnum.getEvent());
+
+            Condition<ContextWrapper> conditonWrapper = (ContextWrapper c) -> iStateTransit.condition(c.getContext());
+            Action<?,?,ContextWrapper> actionWrapper = (from1, to1, event1, context) -> {
+                Object execute = iStateTransit.execute(from1, to1, event1, context.getContext());
+                context.setResult(execute);
+            };
             builder.externalTransition()
                    .from(fromEnum)
                    .to(toEnum)
                    .on(eventEnum)
-                   .when(iStateTransit::condition)
-                   .perform(iStateTransit::execute);
+                   .when(conditonWrapper)
+                   .perform(actionWrapper);
         }
         return builder.build(stateMacheConfigEnum.getMachineName());
     }
@@ -103,18 +111,22 @@ public class StateMachineProxy {
         StateMachineConfigEnum machineConfig = StateMachineConfigEnum.getByMachineName(machineName);
         Enum fromEnum = StateMachineUtils.getEnum(sourceState, machineConfig.getFrom());
         Enum eventEnum = StateMachineUtils.getEnum(event, machineConfig.getEvent());
-        Object resultState = stateMachine.fireEvent(fromEnum, eventEnum, context);
-        if (resultState.equals(fromEnum)){
-         /* 3 种情况
-            1 未定义状态转换支持的事件
-            2 定义的状态转换中的条件不符合
-            3 状态正常已变更了,但是用户重试了之前的状态对应的事件
-            4 内部事件转换 TODO 这个待定
-            */
-            log.warn("状态转换未定义,machineName:{},sourceState:{},event:{}",machineName,sourceState,event);
-            throw new UnsupportedOperationException("状态已变更");
-        }
-        return resultState;
+        ContextWrapper<Object, Object> contextWrapper = new ContextWrapper<>();
+        contextWrapper.setContext(context);
+        stateMachine.fireEvent(fromEnum, eventEnum, contextWrapper);
+        return contextWrapper.getResult();
+//        //TODO
+//        if (resultState.equals(fromEnum)){
+//         /* 3 种情况
+//            1 未定义状态转换支持的事件
+//            2 定义的状态转换中的条件不符合
+//            3 状态正常已变更了,但是用户重试了之前的状态对应的事件
+//            4 内部事件转换 TODO 这个待定
+//            */
+//            log.warn("状态转换未定义,machineName:{},sourceState:{},event:{}",machineName,sourceState,event);
+//            throw new UnsupportedOperationException("状态已变更");
+//        }
+//        return resultState;
     }
 
 }

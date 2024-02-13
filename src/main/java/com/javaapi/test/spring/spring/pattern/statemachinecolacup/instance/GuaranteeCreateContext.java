@@ -1,8 +1,8 @@
 package com.javaapi.test.spring.spring.pattern.statemachinecolacup.instance;
 
 import com.javaapi.test.spring.spring.pattern.statemachinecolacup.TransitInfoListener;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.guarantee.event.GuaranteeEvent;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.guarantee.state.GuaranteeState;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.event.GuaranteeEvent;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.state.GuaranteeState;
 import lombok.Data;
 
 @Data
