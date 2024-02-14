@@ -10,6 +10,8 @@ import java.lang.reflect.Type;
 
 /**
  * 泛型类型当做可变参数
+ * 1 typereference 只支持1层可变参数
+ * 2 ParameterizedTypeImpl 支持多层
  */
 @SuppressWarnings("all")
 public class Client {
