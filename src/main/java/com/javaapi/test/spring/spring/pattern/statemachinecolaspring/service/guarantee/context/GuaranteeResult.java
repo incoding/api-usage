@@ -1,4 +1,4 @@
-package com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee;
+package com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

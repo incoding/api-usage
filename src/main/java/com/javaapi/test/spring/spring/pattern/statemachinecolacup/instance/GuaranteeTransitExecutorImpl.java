@@ -7,15 +7,15 @@ import org.springframework.stereotype.Component;
  * 流转执行器
  */
 @Component
-public class GuaranteeTransitExecutorImpl implements TransitExecutor<GuaranteeCreateContext,GuaranteeCreateResult> {
+public class GuaranteeTransitExecutorImpl implements TransitExecutor<MyCreateContext, MyCreateResult> {
 
     @Override
-    public GuaranteeCreateResult execute(GuaranteeCreateContext guaranteeCreateContext) {
-        System.out.println("myGuaranteeCreateContext.getFrom() = " + guaranteeCreateContext.getFrom());
-        System.out.println("myGuaranteeCreateContext.getTo() = " + guaranteeCreateContext.getTo());
-        System.out.println("myGuaranteeCreateContext.getEvent() = " + guaranteeCreateContext.getEvent());
-        GuaranteeCreateResult guaranteeCreateResult = new GuaranteeCreateResult();
-        guaranteeCreateResult.setResult(true);
-        return guaranteeCreateResult;
+    public MyCreateResult execute(MyCreateContext myCreateContext) {
+        System.out.println("myGuaranteeCreateContext.getFrom() = " + myCreateContext.getFrom());
+        System.out.println("myGuaranteeCreateContext.getTo() = " + myCreateContext.getTo());
+        System.out.println("myGuaranteeCreateContext.getEvent() = " + myCreateContext.getEvent());
+        MyCreateResult myCreateResult = new MyCreateResult();
+        myCreateResult.setResult(true);
+        return myCreateResult;
     }
 }

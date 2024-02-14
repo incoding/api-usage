@@ -1,5 +1,6 @@
 package com.javaapi.test.spring.spring.pattern.statemachinecolaspring.facade;
 
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeCreateContext;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine.StateMachineProxy;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
@@ -12,10 +13,20 @@ public class OrderController {
     @Resource
     private StateMachineProxy stateMachineProxy;
 
+    /**
+     * TODO 支持泛化调用
+     * @param fireVO
+     * @return
+     */
     @RequestMapping("fire")
-    public Object fire(String biz,String event,FireVO fireVO){
+    public Object fire(FireVO fireVO){
         String sourceState = getSourceState(fireVO);
-        return stateMachineProxy.fire(biz,sourceState,event, fireVO);
+        return stateMachineProxy.fire(fireVO.getBiz(),sourceState,fireVO.getEvent(), fireVO);
+    }
+
+    public Object fireCreate(GuaranteeCreateContext context) {
+        String sourceState = "INIT";
+        return stateMachineProxy.fire("guarantee",sourceState,"CREATE", context);
     }
 
     private String getSourceState(FireVO fireVO) {

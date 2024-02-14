@@ -1,8 +1,8 @@
 package com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit;
 
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.config.StateMachineConfigEnum;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.GuaranteeResult;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeContext;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeCreateContext;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeCreateResult;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.event.GuaranteeEvent;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.state.GuaranteeState;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine.IStateTransit;
@@ -19,27 +19,27 @@ import java.io.UnsupportedEncodingException;
 @Transit(machine = StateMachineConfigEnum.GUARANTEE, from = "INIT", to = "CHECKING", event = "CREATE")
 @Component
 @Slf4j
-public class InitToCheckingTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteeContext, GuaranteeResult> {
+public class InitToCheckingTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteeCreateContext, GuaranteeCreateResult> {
 
     @Override
-    public boolean condition(GuaranteeContext context) {
+    public boolean condition(GuaranteeCreateContext context) {
         return true;
     }
 
     @Override
     @SneakyThrows
-    public GuaranteeResult execute(GuaranteeState from, GuaranteeState to, GuaranteeEvent event, GuaranteeContext context) {
+    public GuaranteeCreateResult execute(GuaranteeState from, GuaranteeState to, GuaranteeEvent event, GuaranteeCreateContext context) {
         log.info("通过:{}", this.getClass());
         context.setThroughTransit(this.getClass().toString());
-        if (GuaranteeContext.RUNTIME_EXCEPTION_ID.equals(context.getId())) {
+        if (GuaranteeCreateContext.RUNTIME_EXCEPTION_ID.equals(context.getId())) {
             log.info("内部RuntimeException异常");
             throw new RuntimeException("内部RuntimeException异常");
         }
-        if (GuaranteeContext.EXCEPTION_ID.equals(context.getId())) {
+        if (GuaranteeCreateContext.EXCEPTION_ID.equals(context.getId())) {
             log.info("内部UnsupportedEncodingException异常");
             throw new UnsupportedEncodingException("内部UnsupportedEncodingException异常");
         }
-        GuaranteeResult guaranteeResult = new GuaranteeResult(this.getClass().toString());
+        GuaranteeCreateResult guaranteeResult = new GuaranteeCreateResult(this.getClass().toString());
         guaranteeResult.setSuccess(true);
         return guaranteeResult;
     }

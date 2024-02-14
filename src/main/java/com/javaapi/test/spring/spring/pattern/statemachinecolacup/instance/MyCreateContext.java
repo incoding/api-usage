@@ -6,7 +6,7 @@ import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.gua
 import lombok.Data;
 
 @Data
-public class GuaranteeCreateContext implements TransitInfoListener<GuaranteeState, GuaranteeEvent> {
+public class MyCreateContext implements TransitInfoListener<GuaranteeState, GuaranteeEvent> {
 
     private GuaranteeState from;
     private GuaranteeEvent event;

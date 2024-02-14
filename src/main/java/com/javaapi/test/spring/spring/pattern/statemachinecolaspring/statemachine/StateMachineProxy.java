@@ -117,17 +117,29 @@ public class StateMachineProxy {
         ContextWrapper<Object, Object> contextWrapper = new ContextWrapper<>();
         contextWrapper.setContext(context);
         Object resultState = stateMachine.fireEvent(fromEnum, eventEnum, contextWrapper);
-        // 如果未定义状态转换就抛出异常
+        transitExecuteCheck(machineName, sourceState, event, contextWrapper, resultState, fromEnum);
+        return contextWrapper.getResult();
+    }
+
+    /**
+     * 执行检查
+     *  内部transit,源状态和目标状态就是一样的
+     *  外部transit 情况
+     *      1 未定义状态转换支持的事件:case 1 状态正常已变更了,但是用户重复点击. 2 开发人员开发阶段少定义 等等
+     *      2 定义的状态转换中的条件不符合: case 1 状态正常已变更了,但是用户重复点击  2 业务条件确实不匹配 等等
+     */
+    private  void transitExecuteCheck(String machineName, String sourceState, String event, ContextWrapper<Object, Object> contextWrapper, Object resultState, Enum fromEnum) {
         if (contextWrapper.isSameFromToPassed() ){
             // 内部transit,源状态和目标状态就是一样的
-        }else if (resultState.equals(fromEnum)){
+            return;
+        }
+        if (resultState.equals(fromEnum)){
          /* 外部transit 情况
             1 未定义状态转换支持的事件:case 1 状态正常已变更了,但是用户重复点击. 2 开发人员开发阶段少定义 等等
             2 定义的状态转换中的条件不符合: case 1 状态正常已变更了,但是用户重复点击  2 业务条件确实不匹配 等等
             */
-            log.warn("状态转换未定义,machineName:{},sourceState:{},event:{}",machineName,sourceState,event);
+            log.warn("状态转换未定义,machineName:{},sourceState:{},event:{}", machineName, sourceState, event);
             throw new UnsupportedOperationException("状态已变更");
         }
-        return contextWrapper.getResult();
     }
 }

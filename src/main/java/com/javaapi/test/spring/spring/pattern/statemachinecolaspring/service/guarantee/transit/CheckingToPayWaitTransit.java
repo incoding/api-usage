@@ -1,7 +1,7 @@
 package com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit;
 
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.config.StateMachineConfigEnum;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.GuaranteeResult;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeResult;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeContext;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.event.GuaranteeEvent;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.state.GuaranteeState;
