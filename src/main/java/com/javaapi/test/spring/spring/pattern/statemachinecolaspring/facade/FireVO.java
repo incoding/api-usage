@@ -18,4 +18,5 @@ public class FireVO {
      * 临时测试用不是长期使用
      */
     private transient String sourceState;
+
 }

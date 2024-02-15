@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.javaapi.test.buisness.data.json.fastjson.annotation.jsontype.Student;
 import com.javaapi.test.buisness.joint.outter.Result;
+import lombok.Data;
 import org.junit.Test;
 
 import java.util.List;
@@ -24,7 +25,9 @@ public class JsonGenericUtilTest {
     @Test
     public void test2(){
         List<Class<?>> classes = com.google.common.collect.Lists.newArrayList(Result.class, List.class, Student.class);
-        Result<List<Student>> o = JsonGenericUtil.parseGeneric(getJson(), classes.toArray(new Class[classes.size()]));
+        String json = getJson();
+        System.out.println("json = " + json);
+        Result<List<Student>> o = JsonGenericUtil.parseGeneric(json, classes.toArray(new Class[classes.size()]));
         System.out.println("o = " + o);
     }
 
@@ -34,6 +37,5 @@ public class JsonGenericUtilTest {
         Result<List<Student>> success = Result.success(Lists.newArrayList(student));
         return JSON.toJSONString(success);
     }
-
 
 }
