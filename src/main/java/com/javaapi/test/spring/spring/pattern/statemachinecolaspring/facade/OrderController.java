@@ -13,15 +13,17 @@ public class OrderController {
     @Resource
     private StateMachineProxy stateMachineProxy;
 
+
+
+
     /**
-     * TODO 支持泛化调用
-     * @param fireVO
-     * @return
+     * 支持泛化调用
      */
     @RequestMapping("fire")
     public Object fire(FireVO fireVO){
         String sourceState = getSourceState(fireVO);
-        return stateMachineProxy.fire(fireVO.getBiz(),sourceState,fireVO.getEvent(), fireVO);
+        fireVO.setSourceState(sourceState);
+        return stateMachineProxy.fire(fireVO);
     }
 
     public Object fireCreate(GuaranteeCreateContext context) {

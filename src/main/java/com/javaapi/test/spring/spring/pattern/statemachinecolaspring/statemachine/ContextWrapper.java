@@ -19,4 +19,9 @@ public class ContextWrapper<C,R> {
      * 源状态和目标状态相同
      */
     private boolean sameFromToPassed = false;
+
+    /**
+     * 是否是泛化调用
+     */
+    private boolean genericInvoke = false;
 }

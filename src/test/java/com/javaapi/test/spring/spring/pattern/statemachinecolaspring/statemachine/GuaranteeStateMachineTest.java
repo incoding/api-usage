@@ -1,6 +1,8 @@
 package com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine;
 
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeContext;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeCreateContext;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeCreateResult;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,8 +28,8 @@ public class GuaranteeStateMachineTest {
     @Test
     public void testFireSuccess() {
         log.info("start");
-        GuaranteeContext context = new GuaranteeContext();
-        Object result = stateMachineProxy.fire("guarantee", "INIT", "CREATE", context);
+        GuaranteeCreateContext context = new GuaranteeCreateContext();
+        GuaranteeCreateResult result = stateMachineProxy.fire("guarantee", "INIT", "CREATE", context);
         log.info("end"+result);
     }
 

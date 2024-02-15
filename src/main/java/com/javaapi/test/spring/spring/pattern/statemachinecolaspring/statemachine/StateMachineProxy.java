@@ -6,6 +6,7 @@ import com.alibaba.cola.statemachine.Condition;
 import com.alibaba.cola.statemachine.StateMachine;
 import com.alibaba.cola.statemachine.builder.StateMachineBuilder;
 import com.alibaba.cola.statemachine.builder.StateMachineBuilderFactory;
+import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.config.StateMachineConfigEnum;
@@ -68,12 +69,26 @@ public class StateMachineProxy {
             Enum toEnum = StateMachineUtils.getEnum(toStr, stateMacheConfigEnum.getTo());
             Enum eventEnum = StateMachineUtils.getEnum(eventStr, stateMacheConfigEnum.getEvent());
 
-            Condition<ContextWrapper> conditonWrapper = (ContextWrapper c) -> iStateTransit.condition(c.getContext());
+            Condition<ContextWrapper> conditonWrapper = (ContextWrapper context) -> {
+                Object param;
+                if (context.isGenericInvoke()) {
+                    param = JSON.parseObject((String) context.getContext(), transitClassGeneric.get(iStateTransit.getClass().getName()).get(StateMachineConstant.CONTEXT));
+                }else{
+                    param = context.getContext();
+                }
+                return iStateTransit.condition(param);
+            };
             Action<?,?,ContextWrapper> actionWrapper = (from1, to1, event1, context) -> {
                 if (from1.equals(to1)) {
                     context.setSameFromToPassed(true);
                 }
-                Object execute = iStateTransit.execute(from1, to1, event1, context.getContext());
+                Object param;
+                if (context.isGenericInvoke()) {
+                    param = JSON.parseObject((String) context.getContext(), transitClassGeneric.get(iStateTransit.getClass().getName()).get(StateMachineConstant.CONTEXT));
+                }else{
+                    param = context.getContext();
+                }
+                Object execute = iStateTransit.execute(from1, to1, event1, param);
                 context.setResult(execute);
             };
             builder.externalTransition()
@@ -122,7 +137,7 @@ public class StateMachineProxy {
             keyToType.put(StateMachineConstant.EVENT, ((ParameterizedType) genericInterface).getActualTypeArguments()[1]);
             keyToType.put(StateMachineConstant.CONTEXT, ((ParameterizedType) genericInterface).getActualTypeArguments()[2]);
             keyToType.put(StateMachineConstant.RESULT, ((ParameterizedType) genericInterface).getActualTypeArguments()[3]);
-            transitClassGeneric.put(value.getClass().toString(), keyToType);
+            transitClassGeneric.put(value.getClass().getName(), keyToType);
         }
     }
 
@@ -144,6 +159,18 @@ public class StateMachineProxy {
      * @return 转换后的状态
      */
     public <C,R> R fire(String machineName,String sourceState,String event,C context){
+        return this.fire(machineName, sourceState, event, context, false);
+    }
+
+    /**
+     * 状态机触发
+     * @param machineName 状态机名字
+     * @param sourceState 源状态
+     * @param event 事件
+     * @param context 上下文
+     * @return 转换后的状态
+     */
+    public <C,R> R fire(String machineName,String sourceState,String event,C context,boolean genericInvoke){
         StateMachine stateMachine = stateMachineMap.get(machineName);
         if (stateMachine == null ){
             log.error("业务暂不支持,machine:{},sourceState:{},event:{},context:{}",machineName,sourceState,event,context);
@@ -154,9 +181,14 @@ public class StateMachineProxy {
         Enum eventEnum = StateMachineUtils.getEnum(event, machineConfig.getEvent());
         ContextWrapper<C, R> contextWrapper = new ContextWrapper<>();
         contextWrapper.setContext(context);
+        contextWrapper.setGenericInvoke(genericInvoke);
         Object resultState = stateMachine.fireEvent(fromEnum, eventEnum, contextWrapper);
         this.transitExecuteCheck(machineName, sourceState, event, contextWrapper, resultState, fromEnum);
         return (R)contextWrapper.getResult();
+    }
+
+    public Object fire(FireVO fireVO) {
+        return this.fire(fireVO.getBiz(),fireVO.getSourceState(),fireVO.getEvent(),fireVO.getExt(),true);
     }
 
     /**

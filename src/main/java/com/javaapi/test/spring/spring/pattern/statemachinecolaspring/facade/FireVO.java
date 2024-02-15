@@ -19,4 +19,6 @@ public class FireVO {
      */
     private transient String sourceState;
 
+    private String ext;
+
 }

@@ -27,15 +27,18 @@ public class OrderControllerTest {
     OrderController orderController;
 
     /**
-     * 创建 //TODO 转换异常
+     * 泛化调用 创建
      */
     @Test
-    @Ignore
     public void testFireCreateGeneric() {
         log.info("start");
         FireVO fireVO = new FireVO();
         fireVO.setBiz(StateMachineConfigEnum.GUARANTEE.getMachineName());
         fireVO.setEvent(GuaranteeEvent.CREATE.name());
+        GuaranteeCreateContext guaranteeCreateContext = new GuaranteeCreateContext();
+        guaranteeCreateContext.setId(22L);
+        fireVO.setExt(JSON.toJSONString(guaranteeCreateContext));
+        fireVO.setSourceState("INIT");
         Object fire = orderController.fire(fireVO);
         log.info("result is:{}", JSON.toJSONString(fire));
     }
