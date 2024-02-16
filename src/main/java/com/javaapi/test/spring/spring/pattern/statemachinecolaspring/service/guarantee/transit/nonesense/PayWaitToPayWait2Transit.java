@@ -1,3 +1,4 @@
+
 package com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.nonesense;
 
 import com.javaapi.test.buisness.joint.outter.Result;
@@ -23,6 +24,7 @@ public class PayWaitToPayWait2Transit implements IStateTransit<GuaranteeState, G
 
     @Override
     public boolean condition(GuaranteeContext context) {
+        log.info("通过条件:{}",this.getClass());
         return true;
     }
 

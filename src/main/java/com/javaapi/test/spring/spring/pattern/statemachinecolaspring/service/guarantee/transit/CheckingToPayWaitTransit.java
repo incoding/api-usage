@@ -1,8 +1,8 @@
 package com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit;
 
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.config.StateMachineConfigEnum;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeResult;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeContext;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeCheckPassContext;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeCheckPassResult;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.event.GuaranteeEvent;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.state.GuaranteeState;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine.IStateTransit;
@@ -19,19 +19,22 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 @Order(-2)
-public class CheckingToPayWaitTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteeContext, GuaranteeResult> {
+public class CheckingToPayWaitTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteeCheckPassContext, GuaranteeCheckPassResult> {
 
     @Override
-    public boolean condition(GuaranteeContext context) {
-        log.info("通过条件:{}",this.getClass());
-        return BooleanUtils.isTrue(context.getConditionResult());
+    public boolean condition(GuaranteeCheckPassContext context) {
+        boolean conditionResult = BooleanUtils.isTrue(context.getConditionResult());
+        if (conditionResult) {
+            log.info("通过条件:{}",this.getClass());
+        }
+        return conditionResult;
     }
 
     @Override
-    public  GuaranteeResult execute(GuaranteeState from, GuaranteeState to, GuaranteeEvent event, GuaranteeContext context) {
+    public GuaranteeCheckPassResult execute(GuaranteeState from, GuaranteeState to, GuaranteeEvent event, GuaranteeCheckPassContext context) {
         log.info("通过:{}",this.getClass());
         context.setThroughTransit(this.getClass().toString());
-        return new GuaranteeResult(this.getClass().toString());
+        return new GuaranteeCheckPassResult(this.getClass().toString());
     }
 
 }

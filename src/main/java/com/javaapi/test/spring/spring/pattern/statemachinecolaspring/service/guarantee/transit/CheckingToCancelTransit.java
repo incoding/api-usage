@@ -1,8 +1,8 @@
 package com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit;
 
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.config.StateMachineConfigEnum;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeResult;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeContext;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeCheckRefuseContext;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeCheckRefuseResult;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.event.GuaranteeEvent;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.service.GuaranteeServiceImpl;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.state.GuaranteeState;
@@ -19,23 +19,24 @@ import javax.annotation.Resource;
 @Transit(machine = StateMachineConfigEnum.GUARANTEE, from = "CHECKING", to = "CANCEL", event = "CHECK_REFUSE")
 @Component
 @Slf4j
-public class CheckingToCancelTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteeContext, GuaranteeResult> {
+public class CheckingToCancelTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteeCheckRefuseContext, GuaranteeCheckRefuseResult> {
 
     @Resource
     private GuaranteeServiceImpl guaranteeServiceImpl;
 
     @Override
-    public boolean condition(GuaranteeContext context) {
+    public boolean condition(GuaranteeCheckRefuseContext context) {
+        log.info("通过条件:{}",this.getClass());
         return true;
     }
 
 
     @Override
-    public GuaranteeResult execute(GuaranteeState from, GuaranteeState to, GuaranteeEvent event, GuaranteeContext context) {
+    public GuaranteeCheckRefuseResult execute(GuaranteeState from, GuaranteeState to, GuaranteeEvent event, GuaranteeCheckRefuseContext context) {
         log.info("通过:{}",this.getClass());
         context.setThroughTransit(this.getClass().toString());
         guaranteeServiceImpl.cancelOrder(context.getId());
-        return new GuaranteeResult(this.getClass().toString());
+        return new GuaranteeCheckRefuseResult(this.getClass().toString());
     }
 
 }

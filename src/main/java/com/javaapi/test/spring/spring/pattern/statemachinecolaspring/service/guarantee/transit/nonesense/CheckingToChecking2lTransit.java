@@ -1,8 +1,8 @@
 package com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.nonesense;
 
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.config.StateMachineConfigEnum;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeResult;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeContext;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeCheckPassContext;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeCheckPassResult;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.event.GuaranteeEvent;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.state.GuaranteeState;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.CheckingToPayWaitTransit;
@@ -21,14 +21,15 @@ import org.springframework.stereotype.Component;
 public class CheckingToChecking2lTransit extends CheckingToPayWaitTransit {
 
     @Override
-    public boolean condition(GuaranteeContext context) {
+    public boolean condition(GuaranteeCheckPassContext context) {
+        log.info("通过条件:{}",this.getClass());
         return true;
     }
 
     @Override
-    public GuaranteeResult execute(GuaranteeState from, GuaranteeState to, GuaranteeEvent event, GuaranteeContext context) {
+    public GuaranteeCheckPassResult execute(GuaranteeState from, GuaranteeState to, GuaranteeEvent event, GuaranteeCheckPassContext context) {
         log.info("通过:{}", this.getClass());
-        return new GuaranteeResult(this.getClass().toString());
+        return new GuaranteeCheckPassResult(this.getClass().toString());
     }
 
 }

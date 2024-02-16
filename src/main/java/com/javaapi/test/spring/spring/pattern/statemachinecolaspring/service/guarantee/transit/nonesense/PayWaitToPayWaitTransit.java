@@ -20,6 +20,7 @@ public class PayWaitToPayWaitTransit implements IStateTransit<GuaranteeState, Gu
 
     @Override
     public boolean condition(GuaranteeContext context) {
+        log.info("通过条件:{}",this.getClass());
         return true;
     }
 

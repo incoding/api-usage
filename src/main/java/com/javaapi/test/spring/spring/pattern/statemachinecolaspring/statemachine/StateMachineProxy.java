@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
 import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
 
 import javax.annotation.PostConstruct;
-import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
@@ -127,19 +126,36 @@ public class StateMachineProxy {
     private void initTransitType(IStateTransit value) {
         // 写入类型信息
         Class<?> aClass = value.getClass();
-        Type[] genericInterfaces = aClass.getGenericInterfaces();
-        for (Type genericInterface : genericInterfaces) {
-            if (!((ParameterizedTypeImpl) genericInterface).getRawType().getName().equals(IStateTransit.class.getName())) {
-                continue;
-            }
-            Map<String, Type> keyToType = Maps.newHashMap();
-            keyToType.put(StateMachineConstant.STATE, ((ParameterizedType) genericInterface).getActualTypeArguments()[0]);
-            keyToType.put(StateMachineConstant.EVENT, ((ParameterizedType) genericInterface).getActualTypeArguments()[1]);
-            keyToType.put(StateMachineConstant.CONTEXT, ((ParameterizedType) genericInterface).getActualTypeArguments()[2]);
-            keyToType.put(StateMachineConstant.RESULT, ((ParameterizedType) genericInterface).getActualTypeArguments()[3]);
-            transitClassGeneric.put(value.getClass().getName(), keyToType);
+        ParameterizedTypeImpl itransitGeneric = getItransitGeneric(aClass);
+        if (itransitGeneric == null) {
+            return;
         }
+        Map<String, Type> keyToType = Maps.newHashMap();
+        keyToType.put(StateMachineConstant.STATE, (itransitGeneric).getActualTypeArguments()[0]);
+        keyToType.put(StateMachineConstant.EVENT, (itransitGeneric).getActualTypeArguments()[1]);
+        keyToType.put(StateMachineConstant.CONTEXT, (itransitGeneric).getActualTypeArguments()[2]);
+        keyToType.put(StateMachineConstant.RESULT, (itransitGeneric).getActualTypeArguments()[3]);
+        transitClassGeneric.put(value.getClass().getName(), keyToType);
     }
+
+    /**
+     * 获取 IStateTransit 接口所有的泛型信息
+     */
+    private  ParameterizedTypeImpl getItransitGeneric(Class clazz) {
+        Class temp = clazz;
+        while (!temp.equals(Object.class)){
+            Type[] genericInterfaces = temp.getGenericInterfaces();
+            for (Type genericInterface : genericInterfaces) {
+                ParameterizedTypeImpl parameterizedType = (ParameterizedTypeImpl) genericInterface;
+                if (parameterizedType.getRawType().getName().equals(IStateTransit.class.getName())) {
+                    return parameterizedType;
+                }
+            }
+            temp = temp.getSuperclass();
+        }
+        return null;
+    }
+
 
     /**
      * 初始化transit的分组信息,是属于哪个状态机组
@@ -184,7 +200,7 @@ public class StateMachineProxy {
         contextWrapper.setGenericInvoke(genericInvoke);
         Object resultState = stateMachine.fireEvent(fromEnum, eventEnum, contextWrapper);
         this.transitExecuteCheck(machineName, sourceState, event, contextWrapper, resultState, fromEnum);
-        return (R)contextWrapper.getResult();
+        return contextWrapper.getResult();
     }
 
     public Object fire(FireVO fireVO) {

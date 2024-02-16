@@ -23,6 +23,7 @@ public class InitToCheckingTransit implements IStateTransit<GuaranteeState, Guar
 
     @Override
     public boolean condition(GuaranteeCreateContext context) {
+        log.info("通过条件:{}",this.getClass());
         return true;
     }
 
