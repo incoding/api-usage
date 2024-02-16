@@ -314,4 +314,7 @@ public class StateMachineProxyTest {
     }
 
     //TODO 测试嵌套异常,就是会不会spring框架包装了个什么异常,无法获取原始异常
+    //TODO context是否要改名?
+    //TODO fire 是否需要支持泛型?
+    //TODO serviceInvoker 拆分? 或者itransit 接口改名为serviceInvoker?
 }
