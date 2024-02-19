@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 @Transit(machine = StateMachineConfigEnum.GUARANTEE, from = "CHECKING", to = "CANCEL", event = "CHECK_REFUSE")
 @Component
 @Slf4j
-public class CheckingToCancelTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteeCheckRefuseContext, GuaranteeCheckRefuseResult> {
+public class P03CheckingToCancelTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteeCheckRefuseContext, GuaranteeCheckRefuseResult> {
 
     @Resource
     private GuaranteeServiceImpl guaranteeServiceImpl;

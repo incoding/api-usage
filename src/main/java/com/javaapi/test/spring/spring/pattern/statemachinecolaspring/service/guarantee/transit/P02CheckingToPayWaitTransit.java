@@ -22,7 +22,7 @@ import javax.annotation.Resource;
 @Component
 @Slf4j
 @Order(-2)
-public class CheckingToPayWaitTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteeCheckPassContext, GuaranteeCheckPassResult> {
+public class P02CheckingToPayWaitTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteeCheckPassContext, GuaranteeCheckPassResult> {
 
     @Resource
     private GuaranteeServiceImpl guaranteeServiceImpl;

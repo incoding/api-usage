@@ -1,8 +1,8 @@
 package com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit;
 
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.config.StateMachineConfigEnum;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteePayFailContext;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteePayFailResult;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteePaySuccessContext;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteePaySuccessResult;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.event.GuaranteeEvent;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.service.GuaranteeServiceImpl;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.state.GuaranteeState;
@@ -16,26 +16,26 @@ import javax.annotation.Resource;
 /**
  * @see GuaranteeState
  */
-@Transit(machine = StateMachineConfigEnum.GUARANTEE, from = "PAY_WAIT", to = "CANCEL", event = "PAY_TIMEOUT" )
+@Transit(machine = StateMachineConfigEnum.GUARANTEE, from = "PAY_WAIT", to = "COMPLETE", event = "PAY_SUCCESS")
 @Component
 @Slf4j
-public class PayWaitToCancelTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteePayFailContext, GuaranteePayFailResult> {
+public class P04PayWaitToCompleteTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteePaySuccessContext, GuaranteePaySuccessResult> {
 
     @Resource
     private GuaranteeServiceImpl guaranteeServiceImpl;
 
     @Override
-    public boolean condition(GuaranteePayFailContext context) {
+    public boolean condition(GuaranteePaySuccessContext context) {
         log.info("通过条件:{}",this.getClass());
         return true;
     }
 
     @Override
-    public GuaranteePayFailResult execute(GuaranteeState from, GuaranteeState to, GuaranteeEvent event, GuaranteePayFailContext context) {
+    public GuaranteePaySuccessResult execute(GuaranteeState from, GuaranteeState to, GuaranteeEvent event, GuaranteePaySuccessContext context) {
         log.info("通过:{}",this.getClass());
-        guaranteeServiceImpl.cancelOrder(context.getId());
+        guaranteeServiceImpl.paySuccess();
         context.setThroughTransit(this.getClass().toString());
-        return new GuaranteePayFailResult(this.getClass().toString());
+        return new GuaranteePaySuccessResult(this.getClass().toString());
     }
 
 }

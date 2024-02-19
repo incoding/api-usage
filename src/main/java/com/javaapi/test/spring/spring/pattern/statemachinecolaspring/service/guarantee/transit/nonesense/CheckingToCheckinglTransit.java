@@ -5,9 +5,10 @@ import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.gua
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeCheckPassResult;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.event.GuaranteeEvent;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.state.GuaranteeState;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.CheckingToPayWaitTransit;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.P02CheckingToPayWaitTransit;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine.Transit;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,7 +19,8 @@ import org.springframework.stereotype.Component;
 @Transit(machine = StateMachineConfigEnum.GUARANTEE, from = "CHECKING", to = "CHECKING", event = "CHECK_PASS")
 @Component
 @Slf4j
-public class CheckingToCheckinglTransit extends CheckingToPayWaitTransit {
+@Order
+public class CheckingToCheckinglTransit extends P02CheckingToPayWaitTransit {
 
     @Override
     public boolean condition(GuaranteeCheckPassContext context) {

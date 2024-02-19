@@ -5,10 +5,10 @@ import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.config.Stat
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.*;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.event.GuaranteeEvent;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.state.GuaranteeState;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.CheckingToCancelTransit;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.CheckingToPayWaitTransit;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.PayWaitToCancelTransit;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.PayWaitToCompleteTransit;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.P03CheckingToCancelTransit;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.P02CheckingToPayWaitTransit;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.P05PayWaitToCancelTransit;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.P04PayWaitToCompleteTransit;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -63,7 +63,7 @@ public class OrderControllerTest {
         fireVO.setSourceState(GuaranteeState.CHECKING.name());
         Object fire = orderController.fire(fireVO);
         Assert.assertTrue(fire instanceof GuaranteeCheckPassResult);
-        Assert.assertEquals(CheckingToPayWaitTransit.class.toString(),  ((GuaranteeCheckPassResult)fire).getThroughTransit());
+        Assert.assertEquals(P02CheckingToPayWaitTransit.class.toString(),  ((GuaranteeCheckPassResult)fire).getThroughTransit());
         log.info("result is:{}", JSON.toJSONString(fire));
     }
 
@@ -81,7 +81,7 @@ public class OrderControllerTest {
         fireVO.setSourceState(GuaranteeState.CHECKING.name());
         Object fire = orderController.fire(fireVO);
         Assert.assertTrue(fire instanceof GuaranteeCheckRefuseResult);
-        Assert.assertEquals(CheckingToCancelTransit.class.toString(),  ((GuaranteeCheckRefuseResult)fire).getThroughTransit());
+        Assert.assertEquals(P03CheckingToCancelTransit.class.toString(),  ((GuaranteeCheckRefuseResult)fire).getThroughTransit());
         log.info("result is:{}", JSON.toJSONString(fire));
     }
 
@@ -100,7 +100,7 @@ public class OrderControllerTest {
         fireVO.setSourceState(GuaranteeState.PAY_WAIT.name());
         Object fire = orderController.fire(fireVO);
         Assert.assertTrue(fire instanceof GuaranteePayFailResult);
-        Assert.assertEquals(PayWaitToCancelTransit.class.toString(),  ((GuaranteePayFailResult)fire).getThroughTransit());
+        Assert.assertEquals(P05PayWaitToCancelTransit.class.toString(),  ((GuaranteePayFailResult)fire).getThroughTransit());
         log.info("result is:{}", JSON.toJSONString(fire));
     }
 
@@ -119,7 +119,7 @@ public class OrderControllerTest {
         fireVO.setSourceState(GuaranteeState.PAY_WAIT.name());
         Object fire = orderController.fire(fireVO);
         Assert.assertTrue(fire instanceof GuaranteePaySuccessResult);
-        Assert.assertEquals(PayWaitToCompleteTransit.class.toString(),  ((GuaranteePaySuccessResult)fire).getThroughTransit());
+        Assert.assertEquals(P04PayWaitToCompleteTransit.class.toString(),  ((GuaranteePaySuccessResult)fire).getThroughTransit());
         log.info("result is:{}", JSON.toJSONString(fire));
     }
 }

@@ -21,7 +21,7 @@ import java.io.UnsupportedEncodingException;
 @Transit(machine = StateMachineConfigEnum.GUARANTEE, from = "INIT", to = "CHECKING", event = "CREATE")
 @Component
 @Slf4j
-public class InitToCheckingTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteeCreateContext, GuaranteeCreateResult> {
+public class P01InitToCheckingTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteeCreateContext, GuaranteeCreateResult> {
 
     @Resource
     private GuaranteeServiceImpl guaranteeServiceImpl;

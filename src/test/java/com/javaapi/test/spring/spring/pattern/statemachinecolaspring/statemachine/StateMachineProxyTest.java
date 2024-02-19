@@ -2,9 +2,9 @@ package com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachi
 
 
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.*;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.CheckingToCancelTransit;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.CheckingToPayWaitTransit;
-import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.InitToCheckingTransit;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.P03CheckingToCancelTransit;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.P02CheckingToPayWaitTransit;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.P01InitToCheckingTransit;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.nonesense.PayWaitToPayWaitTransit;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.sms.context.SmsContext;
 import lombok.extern.slf4j.Slf4j;
@@ -102,11 +102,11 @@ public class StateMachineProxyTest {
         log.info("start");
         GuaranteeCreateContext context = new GuaranteeCreateContext();
         GuaranteeCreateResult result = stateMachineProxy.fire("guarantee", "INIT", "CREATE", context);
-        Assert.assertEquals(InitToCheckingTransit.class.toString(), context.getThroughTransit());
+        Assert.assertEquals(P01InitToCheckingTransit.class.toString(), context.getThroughTransit());
         log.info("end:{}", result);
         GuaranteeCreateContext contextSecond = new GuaranteeCreateContext();
         result = stateMachineProxy.fire("guarantee", "INIT", "CREATE", contextSecond);
-        Assert.assertEquals(InitToCheckingTransit.class.toString(), contextSecond.getThroughTransit());
+        Assert.assertEquals(P01InitToCheckingTransit.class.toString(), contextSecond.getThroughTransit());
         log.info("end:{}", result);
     }
 
@@ -118,11 +118,11 @@ public class StateMachineProxyTest {
         log.info("start");
         GuaranteeCreateContext context = new GuaranteeCreateContext();
         GuaranteeCreateResult result = stateMachineProxy.fire("guarantee", "INIT", "CREATE", context);
-        Assert.assertEquals(InitToCheckingTransit.class.toString(), context.getThroughTransit());
+        Assert.assertEquals(P01InitToCheckingTransit.class.toString(), context.getThroughTransit());
         log.info("end:{}", result);
         GuaranteeCheckRefuseContext contextSecond = new GuaranteeCheckRefuseContext();
         GuaranteeCheckRefuseResult resultRefuse = stateMachineProxy.fire("guarantee", "CHECKING", "CHECK_REFUSE", contextSecond);
-        Assert.assertEquals(CheckingToCancelTransit.class.toString(), contextSecond.getThroughTransit());
+        Assert.assertEquals(P03CheckingToCancelTransit.class.toString(), contextSecond.getThroughTransit());
         log.info("end:{}", resultRefuse);
     }
 
@@ -151,7 +151,7 @@ public class StateMachineProxyTest {
             result = stateMachineProxy.fire("guarantee", "INIT", "CREATE", context);
         } catch (Exception e) {
             Assert.assertEquals(RuntimeException.class, e.getClass());
-            Assert.assertEquals(InitToCheckingTransit.class.toString(), context.getThroughTransit());
+            Assert.assertEquals(P01InitToCheckingTransit.class.toString(), context.getThroughTransit());
         }
         log.info("end:{}", result);
     }
@@ -169,7 +169,7 @@ public class StateMachineProxyTest {
             result = stateMachineProxy.fire("guarantee", "INIT", "CREATE", context);
         } catch (Exception e) {
             Assert.assertEquals(UnsupportedEncodingException.class, e.getClass());
-            Assert.assertEquals(InitToCheckingTransit.class.toString(), context.getThroughTransit());
+            Assert.assertEquals(P01InitToCheckingTransit.class.toString(), context.getThroughTransit());
         }
         log.info("end:{}", result);
     }
@@ -206,7 +206,7 @@ public class StateMachineProxyTest {
             result = stateMachineProxy.fire("guarantee", "CHECKING", "CHECK_REFUSE", context);
         } catch (Exception e) {
             Assert.assertEquals(RuntimeException.class, e.getClass());
-            Assert.assertEquals(CheckingToCancelTransit.class.toString(), context.getThroughTransit());
+            Assert.assertEquals(P03CheckingToCancelTransit.class.toString(), context.getThroughTransit());
         }
         log.info("end:{}", result);
     }
@@ -229,7 +229,7 @@ public class StateMachineProxyTest {
         context.setConditionResult(true);
         GuaranteeCheckPassResult result;
         result = stateMachineProxy.fire("guarantee", "CHECKING", "CHECK_PASS", context);
-        Assert.assertEquals(CheckingToPayWaitTransit.class.toString(), context.getThroughTransit());
+        Assert.assertEquals(P02CheckingToPayWaitTransit.class.toString(), context.getThroughTransit());
         log.info("end:{}", result);
     }
 
