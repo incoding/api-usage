@@ -4,11 +4,14 @@ import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.config.Stat
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteePayFailContext;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteePayFailResult;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.event.GuaranteeEvent;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.service.GuaranteeServiceImpl;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.state.GuaranteeState;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine.IStateTransit;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine.Transit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * @see GuaranteeState
@@ -17,6 +20,9 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class PayWaitToCancelTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteePayFailContext, GuaranteePayFailResult> {
+
+    @Resource
+    private GuaranteeServiceImpl guaranteeServiceImpl;
 
     @Override
     public boolean condition(GuaranteePayFailContext context) {
@@ -27,6 +33,7 @@ public class PayWaitToCancelTransit implements IStateTransit<GuaranteeState, Gua
     @Override
     public GuaranteePayFailResult execute(GuaranteeState from, GuaranteeState to, GuaranteeEvent event, GuaranteePayFailContext context) {
         log.info("通过:{}",this.getClass());
+        guaranteeServiceImpl.cancelOrder(context.getId());
         context.setThroughTransit(this.getClass().toString());
         return new GuaranteePayFailResult(this.getClass().toString());
     }

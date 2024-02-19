@@ -4,11 +4,14 @@ import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.config.Stat
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteePaySuccessContext;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteePaySuccessResult;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.event.GuaranteeEvent;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.service.GuaranteeServiceImpl;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.state.GuaranteeState;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine.IStateTransit;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine.Transit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * @see GuaranteeState
@@ -17,6 +20,9 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class PayWaitToCompleteTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteePaySuccessContext, GuaranteePaySuccessResult> {
+
+    @Resource
+    private GuaranteeServiceImpl guaranteeServiceImpl;
 
     @Override
     public boolean condition(GuaranteePaySuccessContext context) {
@@ -27,6 +33,7 @@ public class PayWaitToCompleteTransit implements IStateTransit<GuaranteeState, G
     @Override
     public GuaranteePaySuccessResult execute(GuaranteeState from, GuaranteeState to, GuaranteeEvent event, GuaranteePaySuccessContext context) {
         log.info("通过:{}",this.getClass());
+        guaranteeServiceImpl.paySuccess();
         context.setThroughTransit(this.getClass().toString());
         return new GuaranteePaySuccessResult(this.getClass().toString());
     }

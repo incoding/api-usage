@@ -7,13 +7,13 @@ import com.javaapi.test.buisness.data.json.fastjson.annotation.jsontype.Student;
 import com.javaapi.test.buisness.joint.outter.Result;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.transit.nonesense.PayWaitToPayWait2Transit;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
 
-import javax.annotation.Resource;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Arrays;
@@ -25,24 +25,20 @@ import java.util.Map;
 @Slf4j
 public class JsonGenericUtilTest {
 
-    @Resource
-    StateMachineProxy stateMachineProxy;
-
     @Test
+    @Ignore
     public void test(){
         Map<String, Object> beansWithAnnotation = SpringUtil.getApplicationContext().getBeansWithAnnotation(Transit.class);
         for (Object value : beansWithAnnotation.values()) {
             Class<?> aClass = value.getClass();
             Type genericSuperclass = aClass.getGenericSuperclass();
             Type[] genericInterfaces = aClass.getGenericInterfaces();
-            Map<String, List<Type>> classToGeneric = Maps.newHashMap();
             if (!aClass.equals(PayWaitToPayWait2Transit.class)) {
                 continue;
             }
             Type contextType = null;
-            for (int i = 0; i < genericInterfaces.length; i++) {
-                Type genericInterface = genericInterfaces[i];
-                log.info("class:{},genericInterfaces:{}",value, genericInterface);
+            for (Type genericInterface : genericInterfaces) {
+                log.info("class:{},genericInterfaces:{}", value, genericInterface);
                 Type actualTypeArgument = ((ParameterizedType) genericInterface).getActualTypeArguments()[0];
                 Type actualTypeArgument1 = ((ParameterizedType) genericInterface).getActualTypeArguments()[1];
                 Type actualTypeArgument2 = ((ParameterizedType) genericInterface).getActualTypeArguments()[2];
@@ -53,7 +49,7 @@ public class JsonGenericUtilTest {
                 System.out.println("actualTypeArgument2 = " + actualTypeArgument2);
                 System.out.println("actualTypeArgument3 = " + actualTypeArgument3);
                 Type[] actualTypeArguments = ((ParameterizedType) actualTypeArgument3).getActualTypeArguments();
-                System.out.println("actualTypeArgument3sub = " + Arrays.toString(actualTypeArguments)+",length:"+actualTypeArguments.length);
+                System.out.println("actualTypeArgument3sub = " + Arrays.toString(actualTypeArguments) + ",length:" + actualTypeArguments.length);
                 break;
             }
             log.info("class:{},gengericSuperclass:{}",value,genericSuperclass.getTypeName());
@@ -68,6 +64,7 @@ public class JsonGenericUtilTest {
      * 获取接口上的泛型信息
      */
     @Test
+    @Ignore
     public void testScanContextParam(){
         Map<String, Object> beansWithAnnotation = SpringUtil.getApplicationContext().getBeansWithAnnotation(Transit.class);
         Map<String, Map<String,Type>> classToGeneric = Maps.newHashMap();

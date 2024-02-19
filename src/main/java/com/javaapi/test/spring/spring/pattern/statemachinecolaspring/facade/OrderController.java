@@ -1,6 +1,7 @@
 package com.javaapi.test.spring.spring.pattern.statemachinecolaspring.facade;
 
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeCreateContext;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeCreateResult;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine.StateMachineProxy;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
@@ -13,9 +14,6 @@ public class OrderController {
     @Resource
     private StateMachineProxy stateMachineProxy;
 
-
-
-
     /**
      * 支持泛化调用
      */
@@ -26,7 +24,8 @@ public class OrderController {
         return stateMachineProxy.fire(fireVO);
     }
 
-    public Object fireCreate(GuaranteeCreateContext context) {
+    @RequestMapping("fire/guarantee/create")
+    public GuaranteeCreateResult fireCreate(GuaranteeCreateContext context) {
         String sourceState = "INIT";
         return stateMachineProxy.fire("guarantee",sourceState,"CREATE", context);
     }

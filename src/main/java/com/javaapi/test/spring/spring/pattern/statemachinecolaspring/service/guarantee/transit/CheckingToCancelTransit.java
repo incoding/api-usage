@@ -35,7 +35,7 @@ public class CheckingToCancelTransit implements IStateTransit<GuaranteeState, Gu
     public GuaranteeCheckRefuseResult execute(GuaranteeState from, GuaranteeState to, GuaranteeEvent event, GuaranteeCheckRefuseContext context) {
         log.info("通过:{}",this.getClass());
         context.setThroughTransit(this.getClass().toString());
-        guaranteeServiceImpl.cancelOrder(context.getId());
+        guaranteeServiceImpl.check(false, context.getId());
         return new GuaranteeCheckRefuseResult(this.getClass().toString());
     }
 

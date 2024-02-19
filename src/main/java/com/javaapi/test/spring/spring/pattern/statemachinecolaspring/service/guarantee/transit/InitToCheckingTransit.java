@@ -4,6 +4,7 @@ import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.config.Stat
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeCreateContext;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.context.GuaranteeCreateResult;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.event.GuaranteeEvent;
+import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.service.GuaranteeServiceImpl;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.service.guarantee.state.GuaranteeState;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine.IStateTransit;
 import com.javaapi.test.spring.spring.pattern.statemachinecolaspring.statemachine.Transit;
@@ -11,6 +12,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.io.UnsupportedEncodingException;
 
 /**
@@ -20,6 +22,10 @@ import java.io.UnsupportedEncodingException;
 @Component
 @Slf4j
 public class InitToCheckingTransit implements IStateTransit<GuaranteeState, GuaranteeEvent, GuaranteeCreateContext, GuaranteeCreateResult> {
+
+    @Resource
+    private GuaranteeServiceImpl guaranteeServiceImpl;
+
 
     @Override
     public boolean condition(GuaranteeCreateContext context) {
@@ -40,6 +46,7 @@ public class InitToCheckingTransit implements IStateTransit<GuaranteeState, Guar
             log.info("内部UnsupportedEncodingException异常");
             throw new UnsupportedEncodingException("内部UnsupportedEncodingException异常");
         }
+        guaranteeServiceImpl.createOrder();
         GuaranteeCreateResult guaranteeResult = new GuaranteeCreateResult(this.getClass().toString());
         guaranteeResult.setSuccess(true);
         return guaranteeResult;
