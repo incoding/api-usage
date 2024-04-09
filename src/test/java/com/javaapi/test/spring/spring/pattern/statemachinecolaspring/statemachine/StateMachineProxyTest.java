@@ -310,4 +310,5 @@ public class StateMachineProxyTest {
     //TODO 添加锁
     //TODO 状态校验, 通过,幂等,拒绝
     //TODO transit ,入参类型被固化了,可否改成map,这种通用形式? 这样controller不同的入参就可以都适配同一个transit.
+    //TODO 异常类收口,方便调用端catch异常,并打印日志
 }
