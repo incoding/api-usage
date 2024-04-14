@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 /**
  * Created by user on 2018/11/29
+ * 快排-挖坑法
  */
 public class QuickSort {
 
