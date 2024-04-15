@@ -1,4 +1,4 @@
-package com.javaapi.test.util.math.algorithm.sort.swap.quick2;
+package com.javaapi.test.util.math.algorithm.sort.swap.quicksort.quick2;
 
 import org.junit.Test;
 

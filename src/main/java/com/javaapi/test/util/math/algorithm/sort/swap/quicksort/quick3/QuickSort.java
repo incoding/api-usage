@@ -1,4 +1,4 @@
-package com.javaapi.test.util.math.algorithm.sort.swap.quick3;
+package com.javaapi.test.util.math.algorithm.sort.swap.quicksort.quick3;
 
 /**
  * refer

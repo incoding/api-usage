@@ -1,4 +1,4 @@
-package com.javaapi.test.util.math.algorithm.sort.swap.quick.lesson1;
+package com.javaapi.test.util.math.algorithm.sort.swap.quicksort.quick.lesson1;
 
 import org.junit.Test;
 

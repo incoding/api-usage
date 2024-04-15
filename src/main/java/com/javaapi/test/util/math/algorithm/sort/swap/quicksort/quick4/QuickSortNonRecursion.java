@@ -1,4 +1,4 @@
-package com.javaapi.test.util.math.algorithm.sort.swap.quick4;
+package com.javaapi.test.util.math.algorithm.sort.swap.quicksort.quick4;
 
 import java.util.Stack;
 
