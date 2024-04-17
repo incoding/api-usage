@@ -4,6 +4,9 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
+/**
+ * 计数排序
+ */
 public class CountingSort {
 
     @Test
