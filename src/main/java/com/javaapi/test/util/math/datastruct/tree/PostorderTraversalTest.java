@@ -6,6 +6,7 @@ import java.util.Stack;
 
 /**
  * 参考 https://www.cnblogs.com/toone/p/8529264.html
+ * https://www.jianshu.com/p/456af5480cee
  */
 public class PostorderTraversalTest {
 

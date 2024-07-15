@@ -10,6 +10,7 @@ import java.util.Stack;
 
 /**
  * 参考 https://www.cnblogs.com/toone/p/8529264.html
+ * https://www.jianshu.com/p/456af5480cee
  * <p>
  * 后续遍历要考虑2种场景,
  * 一种是右节点是null,

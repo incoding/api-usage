@@ -26,7 +26,7 @@ public class PostorderTravelsal3Test {
                 // 根
                 TreeNode node = stack.peek();
                 if (node.right != null || node.right != prev) {
-                    // 有右节点，并且 没方位过
+                    // 有右节点，并且 没访问过
                     pNode = node.right;
                 } else {
                     // 没有右节点，或者右节点访问过了。
