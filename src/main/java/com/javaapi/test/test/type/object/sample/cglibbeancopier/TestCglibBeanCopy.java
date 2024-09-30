@@ -1,4 +1,4 @@
-package com.javaapi.test.test.type.object.sample.cglib;
+package com.javaapi.test.test.type.object.sample.cglibbeancopier;
 
 import net.sf.cglib.beans.BeanCopier;
 
