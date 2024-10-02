@@ -12,6 +12,7 @@ public class TestSpel {
         Order order = new Order();
         order.setPurchaseName("张三");
         System.out.println(expression.getValue(order));
+        System.out.println(parser.parseExpression("#root.getCustomName()").getValue(order));
     }
 
     public class Order {
@@ -23,6 +24,10 @@ public class TestSpel {
 
         public void setPurchaseName(String purchaseName) {
             this.purchaseName = purchaseName;
+        }
+
+        public String getCustomName(){
+            return this.purchaseName + "custom";
         }
     }
 }
