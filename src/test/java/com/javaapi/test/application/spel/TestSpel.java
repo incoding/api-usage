@@ -12,7 +12,7 @@ public class TestSpel {
         Order order = new Order();
         order.setPurchaseName("张三");
         System.out.println(expression.getValue(order));
-        System.out.println(parser.parseExpression("#root.getCustomName()").getValue(order));
+        System.out.println(parser.parseExpression("#root.getCustomName()+'2'").getValue(order));
     }
 
     public class Order {
