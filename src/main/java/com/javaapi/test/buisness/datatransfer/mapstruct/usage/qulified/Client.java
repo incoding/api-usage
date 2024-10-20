@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
+ * 有多个源和目标类型都匹配的话需要指定具体使用哪个个映射
  * Created by user on 2020/10/3.
  */
 public class Client {
