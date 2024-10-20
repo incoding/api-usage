@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozermapper.github.io/schema/bean-mapping"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozermapper.github.io/schema/bean-mapping http://dozermapper.github.io/schema/bean-mapping.xsd">
+    <configuration>
+        <variables>
+            <variable name="type_name">address
+            </variable>
+        </variables>
+    </configuration>
+    <mapping>
+        <class-a>com.javaapi.test.test.type.object.sample.spring.bean.FromBean</class-a>
+        <class-b>com.javaapi.test.test.type.object.sample.spring.bean.ToBean</class-b>
+        <field >
+            <a >amount</a>
+            <b >bigDecimal</b>
+        </field>
+        <field >
+            <a >name.toUpperCase()</a>
+            <b >addressName</b>
+        </field>
+    </mapping>
+</mappings>

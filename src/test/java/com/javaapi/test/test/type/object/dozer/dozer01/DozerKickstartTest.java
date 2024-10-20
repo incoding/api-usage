@@ -1,4 +1,4 @@
-package com.javaapi.test.test.type.object.dozer;
+package com.javaapi.test.test.type.object.dozer.dozer01;
 
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
@@ -13,10 +13,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.function.Supplier;
 
 @Slf4j
-public class ClientTest {
+public class DozerKickstartTest {
 
     @Test
-    public void test(){
+    public void testDefault(){
         FromBean fromBean = new FromBean();
         fromBean.setAmount(12.123d);
         log.info("fromBean = " + fromBean);
@@ -27,9 +27,9 @@ public class ClientTest {
 
     @Test
     public void testXml(){
-        String path1 = ClientTest.class.getResource("one2oneMapping.xml").getPath();
+        String path1 = DozerKickstartTest.class.getResource("one2oneMapping.xml").getPath();
         log.info(path1);
-        String path = ClientTest.class.getResource("one2oneMapping.xml").getPath();
+        String path = DozerKickstartTest.class.getResource("one2oneMapping.xml").getPath();
         Mapper mapper = DozerBeanMapperBuilder.create()
                                               .withMappingFiles("file:"+path)
                                               .build();

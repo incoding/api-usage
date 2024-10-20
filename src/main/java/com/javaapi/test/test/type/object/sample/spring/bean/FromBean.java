@@ -1,24 +1,16 @@
 package com.javaapi.test.test.type.object.sample.spring.bean;
 
+import lombok.Data;
+
 /**
  * Created by user on 2018/6/19
  */
+@Data
 public class FromBean {
+
+    private String name;
+    private String address;
     private double amount ;
 
-    public double getAmount() {
-        return amount;
-    }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("FromBean{");
-        sb.append("amount=").append(amount);
-        sb.append('}');
-        return sb.toString();
-    }
 }

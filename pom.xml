@@ -277,6 +277,12 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>5.0.0.Final</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>javax.el</artifactId>
+                    <groupId>org.glassfish.web</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- hibernate end -->
         <!-- server -->
@@ -745,22 +751,34 @@
         </dependency>
 
         <!-- hadoop -->
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-core</artifactId>
-            <version>0.20.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-common</artifactId>
-            <version>0.22.0</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>slf4j-log4j12</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.hadoop</groupId>-->
+<!--            <artifactId>hadoop-core</artifactId>-->
+<!--            <version>0.20.2</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.hadoop</groupId>-->
+<!--            <artifactId>hadoop-common</artifactId>-->
+<!--            <version>0.22.0</version>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>slf4j-log4j12</artifactId>-->
+<!--                    <groupId>org.slf4j</groupId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>jsp-2.1-glassfish</artifactId>-->
+<!--                    <groupId>org.mortbay.jetty</groupId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>jsp-api-2.1-glassfish</artifactId>-->
+<!--                    <groupId>org.mortbay.jetty</groupId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>jsp-2.1-jetty</artifactId>-->
+<!--                    <groupId>org.mortbay.jetty</groupId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>net.jodah</groupId>
             <artifactId>failsafe</artifactId>
@@ -910,6 +928,11 @@
             <groupId>com.github.dozermapper</groupId>
             <artifactId>dozer-core</artifactId>
             <version>6.5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>3.0.0</version>
         </dependency>
     </dependencies>
 
